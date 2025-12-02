@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
+
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('assets/font/Coolvetica\ Rg.otf') format('opentype');
+
+}
+body , html{
+  font-family: 'Coolvetica', sans-serif;
+  letter-spacing: 1.1px;
+}

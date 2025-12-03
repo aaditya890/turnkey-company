@@ -16,7 +16,7 @@ export class HomeComponent {
     'https://img.freepik.com/free-photo/optimistic-hopeful-girl-having-faith-desire-come-true-standing-with-crossed-fingers-good_1258-142999.jpg?t=st=1764594806~exp=1764598406~hmac=72ebc1bed0b0e7be9d78929bed8180327d8728fbbdec4570469d742d45d2721b&w=1480',
     // 'https://img.freepik.com/premium-photo/back-school-fall-fashion-accessory-happy-stylish-girl-leather-wear-child-with-autumn-umbrella-rainy-weather-horizontal-poster-banner-with-copy-space_545934-33001.jpg?w=1480',
     'https://img.freepik.com/free-photo/friendlylooking-sociable-stylish-woman-with-curly-hair-red-beanie-winking-joyfully-pointi_1258-152292.jpg?t=st=1764595965~exp=1764599565~hmac=444b28f082173618de04fc70ddfb57ce2500d385e5eed61b331106aaeabc64a8&w=1480',
-        'https://img.freepik.com/free-photo/optimistic-hopeful-girl-having-faith-desire-come-true-standing-with-crossed-fingers-good_1258-142999.jpg?t=st=1764594806~exp=1764598406~hmac=72ebc1bed0b0e7be9d78929bed8180327d8728fbbdec4570469d742d45d2721b&w=1480',
+    'https://img.freepik.com/free-photo/optimistic-hopeful-girl-having-faith-desire-come-true-standing-with-crossed-fingers-good_1258-142999.jpg?t=st=1764594806~exp=1764598406~hmac=72ebc1bed0b0e7be9d78929bed8180327d8728fbbdec4570469d742d45d2721b&w=1480',
 
   ];
 

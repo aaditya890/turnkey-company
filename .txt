@@ -1,13 +1,13 @@
 <div class="relative z-50">
-  <!-- NAVIGATION BAR - Same as before but enhanced -->
   <nav class="relative w-full bg-white shadow-md sticky top-0 z-50 animate-fadeSlide
-         px-4 md:px-14 py-3 flex items-center justify-between">
+         px-4 md:px-24 lg:px-36 py-3 flex items-center justify-between">
 
+    <!-- LEFT: LOGO -->
     <div class="flex items-center gap-3 cursor-pointer">
       <img src="assets/logo-2.png" alt="logo" class="h-10" />
+      <!-- <span class="text-2xl font-bold tracking-widest text-[#2C2327]">LIVSPACE</span> -->
     </div>
 
-    <!-- ... existing nav menu code ... -->
     <!-- DESKTOP MENU -->
     <ul class="hidden xl:flex items-center gap-8 text-[#2C2327]">
       <li class="group flex items-center gap-1 cursor-pointer transition hover:text-[#D4894E]">
@@ -20,7 +20,7 @@
           </svg>
         </span>
         <!-- MEGA DROPDOWN -->
-        <div class="absolute left-0 right-0 mx-auto top-full mt-1 w-[900px] bg-gradient-to-br from-white to-[#f9f6f4] border border-gray-100 shadow-xl
+        <div class="absolute left-0 right-0 mx-auto top-full mt-1 w-[900px] bg-white shadow-xl border
            rounded-xl p-6 z-50
            opacity-0 invisible group-hover:opacity-100 group-hover:visible
            transition-all duration-500">
@@ -78,7 +78,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>
           <!-- DROPDOWN -->
-          <div class="absolute left-0 right-0 mx-auto top-full mt-1 w-[650px] bg-gradient-to-br from-white to-[#f9f6f4] border border-gray-100 shadow-xl
+          <div class="absolute left-0 right-0 mx-auto top-full mt-1 w-[650px] bg-white shadow-xl border
            rounded-xl p-6 z-50
            opacity-0 invisible group-hover:opacity-100 group-hover:visible
            transition-all duration-300">
@@ -131,7 +131,7 @@
           </svg>
 
           <!-- DROPDOWN -->
-          <div class="absolute left-0 -right-[527px] mx-auto top-full mt-1 w-[260px] bg-gradient-to-br from-white to-[#f9f6f4] border border-gray-100 shadow-xl
+          <div class="absolute left-0 -right-[527px] mx-auto top-full mt-1 w-[260px] bg-white shadow-xl border
            rounded-xl p-4 z-50
            opacity-0 invisible group-hover:opacity-100 group-hover:visible
            transition-all duration-300">
@@ -208,7 +208,7 @@
       {{ mobileOpen ? "✕" : "☰" }}
     </button>
   </nav>
-
+  
   <!-- Mobile Menu - Expanded -->
   <div *ngIf="mobileOpen" class="xl:hidden w-full bg-white shadow-lg border-t border-gray-200
          absolute top-[64px] left-0 z-50 animate-slideDown">
@@ -254,18 +254,24 @@
 
     </div>
   </div>
-  <!-- HERO SECTION - Optimized -->
+
+  <!-- HERO SECTION -->
   <div class="relative w-full h-[92vh] flex items-start md:items-center bg-cover animate-fadeSlide bg-center"
     style="background-image: url('assets/heroimage.jpg');">
+
+    <!-- DARK OVERLAY FOR READABILITY -->
     <div class="absolute inset-0 bg-black/40"></div>
 
-    <div class="relative z-10 w-full mt-24 md:mt-0 mx-auto px-4 md:px-14 text-center md:text-left">
-      <!-- Circular Badge -->
-      <div class="slow-spin absolute md:right-[35rem] top-[-30px] hidden md:block opacity-80 border rounded-full">
+    <!-- HERO CONTENT -->
+    <div class="relative z-10 w-full max-w-7xl mt-40 md:mt-0 mx-auto px-6 text-center md:text-left">
+
+      <!-- CIRCULAR TEXT BADGE -->
+      <div class="slow-spin absolute md:right-[24rem] top-[-30px] hidden md:block opacity-80 border rounded-full">
         <svg viewBox="0 0 300 300" class="w-40 h-40">
           <defs>
             <path id="circlePath" d="M150,150 m-120,0 a120,120 0 1,1 240,0 a120,120 0 1,1 -240,0" />
           </defs>
+
           <text fill="white" font-size="22" font-weight="400" letter-spacing="4" class="border">
             <textPath href="#circlePath">
               BEST INTERIOR FIRM • SINCE 1992 • BEST INTERIOR FIRM
@@ -274,19 +280,29 @@
         </svg>
       </div>
 
-      <h1 class="text-[#fdfafa] font-semibold leading-2
-         text-7xl sm:text-5xl md:text-7xl lg:text-8xl
+
+      <!-- MAIN HEADING -->
+      <!-- MAIN HEADING -->
+      <h1 class="text-[#fdfafa] font-semibold leading-[1.1]
+         text-4xl sm:text-5xl md:text-7xl lg:text-8xl
          mb-6 md:mb-8 text-center md:text-left">
         Elevating Spaces <br class="hidden md:block"> Crafting Dreams
       </h1>
 
-      <div class="flex flex-col md:flex-row md:items-center gap-6 md:gap-10 text-center md:text-left">
-        <p class="text-white/90 leading-2 text-base sm:text-lg md:text-xl max-w-md md:max-w-xl mx-auto md:mx-0">
+      <!-- SUBTEXT + BUTTON WRAPPER -->
+      <div class="flex flex-col md:flex-row md:items-center gap-6 md:gap-10 
+         text-center md:text-left">
+
+        <!-- SUBTEXT -->
+        <p class="text-white/90 leading-relaxed
+           text-base sm:text-lg md:text-xl
+           max-w-md md:max-w-xl mx-auto md:mx-0">
           We specialize in transforming visions into reality.
-          <br class="hidden md:block"/>
+          <br />
           Explore our work of innovative architectural.
         </p>
 
+        <!-- BUTTON -->
         <button class="px-6 py-3 sm:px-8 sm:py-4 bg-[#D4894E] text-white
            text-base sm:text-lg font-semibold rounded-full shadow-lg
            hover:bg-[#c57d46] active:scale-95 transition-all duration-300
@@ -294,203 +310,67 @@
           BOOK FREE CONSULTATION
         </button>
       </div>
+
+    </div>
+  </div>
+</div>
+<!-- ABOUT US -->
+<div class="w-full py-24 bg-white">
+
+  <!-- TOP TEXT SECTION -->
+  <div class="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto px-8">
+    <div>
+      <p class="text-sm tracking-widest text-gray-500 mb-3 font-semibold">
+        ABOUT US
+      </p>
+
+      <h2 class="text-[#D4894E] text-4xl md:text-5xl font-semibold leading-tight">
+        Architecture <br> Interior.
+      </h2>
+    </div>
+
+    <div>
+      <p class="text-[#D4894E] text-xl leading-relaxed font-medium">
+        We specialize in transforming visions into reality. Explore our
+        portfolio of innovative architectural and interior design
+        projects crafted with precision.
+      </p>
     </div>
   </div>
 
-  <!-- ENHANCED ABOUT US SECTION -->
-  <div class="w-full py-24 bg-white">
-    <!-- Header Section -->
-    <div class="grid md:grid-cols-2 gap-12 items-center mx-auto px-4 md:px-14 mb-16">
-      <div class="space-y-4">
-        <p class="text-sm tracking-widest text-gray-500 font-semibold uppercase">About Us</p>
-        <h2 class="text-4xl md:text-6xl font-bold leading-tight text-[#2C2327]">
-          <span class="text-[#D4894E]">Architecture</span> <br /> Interior Design
-        </h2>
-        <div class="h-1 w-16 bg-[#D4894E]"></div>
-      </div>
+  <!-- IMAGE SLIDER -->
+  <div class="slider-wrapper overflow-hidden relative mt-20" #sliderWrapper>
+    <div class="slider-track flex gap-8 w-max" #sliderTrack>
+      <!-- TALL IMAGE -->
+      <img src="https://framerusercontent.com/images/TvRymMb9eE6gexPti05pMO8KzfI.png"
+        class="w-[350px] h-[520px] object-cover rounded-sm shadow-lg" />
 
-      <div class="space-y-6">
-        <!-- <p class="text-lg text-gray-700 leading-relaxed">
-          We specialize in transforming visions into reality. With over 30 years of excellence, our team crafts
-          innovative architectural and interior design projects with precision and creativity.
-        </p> -->
-        <div class="grid grid-cols-3 gap-4">
-          <div class="text-center">
-            <p class="text-3xl font-bold text-[#D4894E]">500+</p>
-            <p class="text-sm text-gray-600">Projects</p>
-          </div>
-          <div class="text-center">
-            <p class="text-3xl font-bold text-[#D4894E]">30Y</p>
-            <p class="text-sm text-gray-600">Experience</p>
-          </div>
-          <div class="text-center">
-            <p class="text-3xl font-bold text-[#D4894E]">100%</p>
-            <p class="text-sm text-gray-600">Satisfied</p>
-          </div>
-        </div>
-      </div>
-    </div>
+      <!-- WIDE IMAGE -->
+      <img src="https://framerusercontent.com/images/MeKJAlOXXupItPDmkok7GEkRjg.png"
+        class="w-[420px] h-[420px] object-cover rounded-sm shadow-lg" />
 
-    <!-- <CHANGE> Enhanced Image Slider with Controls and Indicators -->
-    <div class="w-full px-4">
-      <!-- Slider Container -->
-      <div class="px-4 md:px-14 mx-auto">
-        <!-- Main Slider -->
-        <div class="relative group" #sliderContainer>
-          <div class="slider-wrapper overflow-hidden relative rounded-lg" #sliderWrapper>
-            <div class="slider-track flex gap-6 w-max" #sliderTrack>
-              <!-- Images - Duplicated for seamless loop -->
-              <img *ngFor="let img of sliderImages; let i = index" [src]="img.src" [alt]="img.alt" [ngClass]="img.size"
-                class="object-cover rounded-lg shadow-lg flex-shrink-0 transition-transform duration-300 hover:scale-105" />
+      <!-- TALL -->
+      <img src="https://framerusercontent.com/images/4kzBVuRSxzERYTPFFvq46XUrexA.png"
+        class="w-[350px] h-[520px] object-cover rounded-sm shadow-lg" />
 
-              <!-- Duplicates for seamless loop -->
-              <img *ngFor="let img of sliderImages; let i = index" [src]="img.src" [alt]="img.alt" [ngClass]="img.size"
-                class="object-cover rounded-lg shadow-lg flex-shrink-0" />
-            </div>
-          </div>
+      <!-- WIDE -->
+      <img src="https://framerusercontent.com/images/4sU8ZcE1VPt5tOMPRWaOZKjCMk.png"
+        class="w-[420px] h-[420px] object-cover rounded-sm shadow-lg" />
 
-          <!-- <CHANGE> Navigation Arrows -->
-          <button (click)="prevSlide()"
-            class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100 md:flex items-center justify-center hidden">
-            <svg class="w-6 h-6 text-[#D4894E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-          </button>
+      <!-- DUPLICATES FOR LOOP -->
+      <img src="https://framerusercontent.com/images/TvRymMb9eE6gexPti05pMO8KzfI.png"
+        class="w-[350px] h-[520px] object-cover rounded-sm shadow-lg" />
 
-          <button (click)="nextSlide()"
-            class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100 md:flex items-center justify-center hidden">
-            <svg class="w-6 h-6 text-[#D4894E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </button>
-        </div>
+      <img src="https://framerusercontent.com/images/MeKJAlOXXupItPDmkok7GEkRjg.png"
+        class="w-[420px] h-[420px] object-cover rounded-sm shadow-lg" />
 
-        <!-- <CHANGE> Slider Indicators -->
-        <div class="flex justify-center gap-2 mt-8">
-          <button *ngFor="let img of sliderImages; let i = index" (click)="goToSlide(i)" [ngClass]="{
-              'bg-[#D4894E] w-3': currentSlideIndex === i,
-              'bg-gray-300 w-2': currentSlideIndex !== i
-            }" class="h-2 rounded-full transition-all duration-300 cursor-pointer">
-          </button>
-        </div>
-      </div>
-    </div>
+      <img src="https://framerusercontent.com/images/4kzBVuRSxzERYTPFFvq46XUrexA.png"
+        class="w-[350px] h-[520px] object-cover rounded-sm shadow-lg" />
 
-    <!-- Stats Section - New -->
-    <div class="px-4 md:px-14 mt-20">
-      <div class="grid md:grid-cols-4 gap-8">
-        <div class="text-center p-6 rounded-lg bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:bg-[#D4894E]/5 transition">
-          <p class="text-4xl font-bold text-[#D4894E] mb-2">32</p>
-          <p class="text-gray-700 font-semibold">Awards Won</p>
-        </div>
-        <div class="text-center p-6 rounded-lg bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:bg-[#D4894E]/5 transition">
-          <p class="text-4xl font-bold text-[#D4894E] mb-2">10K+</p>
-          <p class="text-gray-700 font-semibold">Happy Clients</p>
-        </div>
-        <div class="text-center p-6 rounded-lg bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:bg-[#D4894E]/5 transition">
-          <p class="text-4xl font-bold text-[#D4894E] mb-2">25</p>
-          <p class="text-gray-700 font-semibold">Cities</p>
-        </div>
-        <div class="text-center p-6 rounded-lg bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:bg-[#D4894E]/5 transition">
-          <p class="text-4xl font-bold text-[#D4894E] mb-2">2M+</p>
-          <p class="text-gray-700 font-semibold">Sq. Ft.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Services Preview - New -->
-    <div class="max-w-full mx-auto px-8 mt-20">
-      <h3 class="text-5xl font-semibold text-center mb-12 text-[#2C2327]">
-        Our Services
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-
-        <!-- Card 1 - Large -->
-        <div class="md:col-span-2 md:row-span-2 p-10 rounded-3xl 
-           bg-gradient-to-br from-white to-[#faf7f5]
-           border border-[#e8e3dd]
-           hover:shadow-[0_6px_20px_rgba(0,0,0,0.06)]
-           hover:-translate-y-1 transition-all duration-300">
-
-          <h4 class="text-2xl font-semibold text-[#D4894E] mb-4 tracking-tight">
-            Interior Design
-          </h4>
-
-          <p class="text-gray-600 text-[15px] leading-relaxed max-w-md">
-            Transform your living spaces with stunning interior design solutions
-            tailored beautifully to your lifestyle.
-          </p>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="md:col-span-2 p-10 rounded-3xl
-           bg-gradient-to-br from-white to-[#faf7f5]
-           border border-[#e8e3dd]
-           hover:shadow-[0_6px_20px_rgba(0,0,0,0.06)]
-           hover:-translate-y-1 transition-all duration-300">
-
-          <h4 class="text-2xl font-semibold text-[#D4894E] mb-3 tracking-tight">
-            Architecture
-          </h4>
-
-          <p class="text-gray-600 text-[15px] leading-relaxed">
-            From concept to completion, we deliver architectural excellence
-            with precision and creativity.
-          </p>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="p-10 rounded-3xl 
-           bg-gradient-to-br from-white to-[#faf7f5]
-           border border-[#e8e3dd]
-           hover:shadow-[0_6px_20px_rgba(0,0,0,0.06)]
-           hover:-translate-y-1 transition-all duration-300">
-
-          <h4 class="text-2xl font-semibold text-[#D4894E] mb-3 tracking-tight">
-            Furniture & Decor
-          </h4>
-
-          <p class="text-gray-600 text-[15px] leading-relaxed">
-            Curated premium decor pieces designed to elevate your home effortlessly.
-          </p>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="p-10 rounded-3xl 
-           bg-gradient-to-br from-white to-[#faf7f5]
-           border border-[#e8e3dd]
-           hover:shadow-[0_6px_20px_rgba(0,0,0,0.06)]
-           hover:-translate-y-1 transition-all duration-300">
-
-          <h4 class="text-2xl font-semibold text-[#D4894E] mb-3 tracking-tight">
-            Space Planning
-          </h4>
-
-          <p class="text-gray-600 text-[15px] leading-relaxed">
-            Intelligent layouts that maximize both beauty and functional flow.
-          </p>
-        </div>
-
-        <!-- Card 5 - Full Width -->
-        <div class="md:col-span-4 p-10 rounded-3xl
-           bg-gradient-to-br from-white to-[#faf7f5]
-           border border-[#e8e3dd]
-           hover:shadow-[0_6px_20px_rgba(0,0,0,0.06)]
-           hover:-translate-y-1 transition-all duration-300">
-
-          <h4 class="text-2xl font-semibold text-[#D4894E] mb-4 tracking-tight">
-            Turnkey Solutions
-          </h4>
-
-          <p class="text-gray-600 text-[15px] leading-relaxed max-w-3xl">
-            End-to-end project execution including design, materials, installation,
-            supervision, and finishing—delivered with total accountability and
-            uncompromising quality.
-          </p>
-        </div>
-
-      </div>
+      <img src="https://framerusercontent.com/images/4sU8ZcE1VPt5tOMPRWaOZKjCMk.png"
+        class="w-[420px] h-[420px] object-cover rounded-sm shadow-lg" />
 
     </div>
+
   </div>
 </div>

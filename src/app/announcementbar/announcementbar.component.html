@@ -1,0 +1,56 @@
+<!-- Compact Announcement Bar -->
+<div
+  class="w-full"
+  aria-live="polite"
+  role="region"
+>
+  <div
+    class="mx-auto max-w-full"
+    style="background: #314054;"
+  >
+    <div class="flex items-center justify-between max-w-7xl mx-auto px-3 py-1.5">
+      
+      <!-- Left: Icon + message -->
+      <div class="flex items-center gap-2">
+        <span
+          class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 text-white text-[10px]"
+          aria-hidden="true"
+        >✨</span>
+
+        <div class="overflow-hidden h-4 flex items-center">
+          <p
+            class="text-white text-xs font-medium transform transition-all duration-300 ease-out"
+            [ngClass]="{
+              'opacity-0 -translate-y-1': state === 'hidden',
+              'opacity-100 translate-y-0': state === 'visible'
+            }"
+            style="white-space: nowrap;"
+          >
+            {{ messages[current] }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: CTA + Close -->
+      <div class="flex items-center gap-2">
+        <a
+          href="/contact"
+          class="hidden sm:inline-block px-3 py-1 rounded-full bg-[#D4894E] text-white text-xs font-medium shadow hover:opacity-95 transition"
+        >
+          Book Now
+        </a>
+
+        <button
+          (click)="close()"
+          aria-label="Close"
+          class="text-white/80 hover:text-white text-sm p-1"
+        >
+          ✕
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>

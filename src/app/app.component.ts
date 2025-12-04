@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, ViewChild, AfterViewInit, OnInit } from '@angular/core';
+import { AnnouncementbarComponent } from "./announcementbar/announcementbar.component";
 
 interface SliderImage {
   src: string;
@@ -16,7 +17,7 @@ interface Service {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AnnouncementbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

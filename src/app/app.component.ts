@@ -1,224 +1,218 @@
-import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, ViewChild, AfterViewInit, OnInit } from '@angular/core';
-import { AnnouncementbarComponent } from "./announcementbar/announcementbar.component";
+import { CommonModule } from "@angular/common"
+import {
+  Component,
+  type ElementRef,
+  HostListener,
+  ViewChild,
+  type AfterViewInit,
+  type OnInit,
+  type OnDestroy,
+} from "@angular/core"
 
 interface SliderImage {
-  src: string;
-  alt: string;
-  size: string;
+  src: string
+  alt: string
+  size: string
 }
 
 interface Service {
-  icon: string;
-  title: string;
-  description: string;
+  icon: string
+  title: string
+  description: string
 }
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
-  imports: [CommonModule, AnnouncementbarComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [CommonModule],
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.scss",
 })
-export class AppComponent implements AfterViewInit, OnInit {
+export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
+  title = "turnkey-company"
 
-  title = 'turnkey-company';
   /* ================================
      MOBILE & PROFILE MENU LOGIC
   ================================= */
-  mobileOpen = false;
-  profileOpen = false;
-  
-
-  @ViewChild('profileDropdown') profileDropdown!: ElementRef;
-  @ViewChild('profileButton') profileButton!: ElementRef;
+  mobileOpen = false
+  profileOpen = false
+  scrolled = false
+  @ViewChild("profileDropdown") profileDropdown!: ElementRef
+  @ViewChild("profileButton") profileButton!: ElementRef
 
   toggleMobile() {
-    this.mobileOpen = !this.mobileOpen;
+    this.mobileOpen = !this.mobileOpen
   }
 
   toggleProfile() {
-    this.profileOpen = !this.profileOpen;
+    this.profileOpen = !this.profileOpen
   }
 
-  @HostListener('document:click', ['$event'])
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    this.scrolled = window.scrollY > 50
+  }
+
+  @HostListener("document:click", ["$event"])
   onClickOutside(event: Event) {
-    if (!this.profileOpen) return;
+    if (!this.profileOpen) return
 
-    const clickedInsideDropdown =
-      this.profileDropdown?.nativeElement.contains(event.target);
+    const clickedInsideDropdown = this.profileDropdown?.nativeElement.contains(event.target)
 
-    const clickedProfileButton =
-      this.profileButton?.nativeElement.contains(event.target);
+    const clickedProfileButton = this.profileButton?.nativeElement.contains(event.target)
 
     if (!clickedInsideDropdown && !clickedProfileButton) {
-      this.profileOpen = false;
+      this.profileOpen = false
     }
   }
 
   /* ================================
-        IMAGE SLIDER WITH INDICATORS
+     IMAGE SLIDER WITH INDICATORS
   ================================= */
 
-  @ViewChild('sliderTrack') sliderTrack!: ElementRef;
-  @ViewChild('sliderWrapper') sliderWrapper!: ElementRef;
-  @ViewChild('sliderContainer') sliderContainer!: ElementRef;
+  @ViewChild("sliderTrack") sliderTrack!: ElementRef
+  @ViewChild("sliderWrapper") sliderWrapper!: ElementRef
+  @ViewChild("sliderContainer") sliderContainer!: ElementRef
 
-  // <CHANGE> Added slider images array and control properties
   sliderImages: SliderImage[] = [
     {
-      src: 'https://framerusercontent.com/images/TvRymMb9eE6gexPti05pMO8KzfI.png',
-      alt: 'Interior Design 1',
-      size: 'w-[350px] h-[520px]'
+      src: "https://framerusercontent.com/images/TvRymMb9eE6gexPti05pMO8KzfI.png",
+      alt: "Interior Design 1",
+      size: "w-[350px] h-[520px]",
     },
     {
-      src: 'https://framerusercontent.com/images/MeKJAlOXXupItPDmkok7GEkRjg.png',
-      alt: 'Interior Design 2',
-      size: 'w-[420px] h-[420px]'
+      src: "https://framerusercontent.com/images/MeKJAlOXXupItPDmkok7GEkRjg.png",
+      alt: "Interior Design 2",
+      size: "w-[420px] h-[420px]",
     },
     {
-      src: 'https://framerusercontent.com/images/4kzBVuRSxzERYTPFFvq46XUrexA.png',
-      alt: 'Interior Design 3',
-      size: 'w-[350px] h-[520px]'
+      src: "https://framerusercontent.com/images/4kzBVuRSxzERYTPFFvq46XUrexA.png",
+      alt: "Interior Design 3",
+      size: "w-[350px] h-[520px]",
     },
     {
-      src: 'https://framerusercontent.com/images/4sU8ZcE1VPt5tOMPRWaOZKjCMk.png',
-      alt: 'Interior Design 4',
-      size: 'w-[420px] h-[420px]'
+      src: "https://framerusercontent.com/images/4sU8ZcE1VPt5tOMPRWaOZKjCMk.png",
+      alt: "Interior Design 4",
+      size: "w-[420px] h-[420px]",
     },
     {
-      src: 'https://framerusercontent.com/images/4kzBVuRSxzERYTPFFvq46XUrexA.png',
-      alt: 'Interior Design 3',
-      size: 'w-[350px] h-[520px]'
+      src: "https://framerusercontent.com/images/TvRymMb9eE6gexPti05pMO8KzfI.png",
+      alt: "Interior Design 1",
+      size: "w-[350px] h-[520px]",
     },
     {
-      src: 'https://framerusercontent.com/images/4sU8ZcE1VPt5tOMPRWaOZKjCMk.png',
-      alt: 'Interior Design 4',
-      size: 'w-[420px] h-[420px]'
+      src: "https://framerusercontent.com/images/MeKJAlOXXupItPDmkok7GEkRjg.png",
+      alt: "Interior Design 2",
+      size: "w-[420px] h-[420px]",
     },
     {
-      src: 'https://framerusercontent.com/images/TvRymMb9eE6gexPti05pMO8KzfI.png',
-      alt: 'Interior Design 1',
-      size: 'w-[350px] h-[520px]'
+      src: "https://framerusercontent.com/images/4kzBVuRSxzERYTPFFvq46XUrexA.png",
+      alt: "Interior Design 3",
+      size: "w-[350px] h-[520px]",
     },
     {
-      src: 'https://framerusercontent.com/images/MeKJAlOXXupItPDmkok7GEkRjg.png',
-      alt: 'Interior Design 2',
-      size: 'w-[420px] h-[420px]'
+      src: "https://framerusercontent.com/images/4sU8ZcE1VPt5tOMPRWaOZKjCMk.png",
+      alt: "Interior Design 4",
+      size: "w-[420px] h-[420px]",
     },
-  ];
+  ]
 
-  // <CHANGE> Added services array for the services section
-  // services: Service[] = [
-  //   {
-  //     icon: '🎨',
-  //     title: 'Interior Design',
-  //     description: 'Transform your living spaces with our innovative and personalized interior design solutions tailored to your lifestyle.'
-  //   },
-  //   {
-  //     icon: '🏗️',
-  //     title: 'Architecture',
-  //     description: 'From concept to completion, we deliver architectural excellence combining functionality with aesthetic beauty.'
-  //   },
-  //   {
-  //     icon: '🛋️',
-  //     title: 'Furniture & Decor',
-  //     description: 'Curated selection of premium furniture and decorative pieces that complement your interior perfectly.'
-  //   }
-  // ];
-
-  currentSlideIndex = 0;
-  sliderPosition = 0;
-  isAutoSliding = true;
-  autoSlideInterval: any;
-  normalSpeed = 0.5;
-  slowSpeed = 0.1;
-  currentSpeed = this.normalSpeed;
+  currentSlideIndex = 0
+  sliderPosition = 0
+  isAutoSliding = true
+  autoSlideInterval: any
 
   ngOnInit() {
-    this.startAutoSlide();
+    this.startAutoSlide()
   }
 
   ngAfterViewInit() {
-    this.startSmoothSlider();
+    this.startSmoothSlider()
   }
 
-  // <CHANGE> Auto-slide functionality with pause on hover
   startAutoSlide() {
     this.autoSlideInterval = setInterval(() => {
       if (this.isAutoSliding) {
-        this.nextSlide();
+        this.nextSlide()
       }
-    }, 5000);
+    }, 6000)
   }
 
-  // <CHANGE> Manual slide navigation
+  goToSlide(index: number) {
+    this.currentSlideIndex = index
+    this.updateSliderPosition()
+  }
+  
+  imageWidth = 380 + 24;    // width + gap
+  totalSlides = this.sliderImages.length;
+  updateSliderPosition() {
+    const track = this.sliderTrack?.nativeElement as HTMLElement;
+
+    if (!track) return;
+
+    this.sliderPosition = -(this.currentSlideIndex * this.imageWidth);
+
+    track.style.transition = "transform 0.7s ease";
+    track.style.transform = `translateX(${this.sliderPosition}px)`;
+
+    // if last slide, jump instantly to 0 (no white space)
+    if (this.currentSlideIndex >= this.totalSlides) {
+      setTimeout(() => {
+        track.style.transition = "none"; // remove animation
+        this.currentSlideIndex = 0;
+        this.sliderPosition = 0;
+        track.style.transform = `translateX(0px)`;
+      }, 700); // match animation duration
+    }
+  }
+
   nextSlide() {
-    this.currentSlideIndex = (this.currentSlideIndex + 1) % this.sliderImages.length;
+    this.currentSlideIndex++;
     this.updateSliderPosition();
   }
 
   prevSlide() {
-    this.currentSlideIndex = (this.currentSlideIndex - 1 + this.sliderImages.length) % this.sliderImages.length;
-    this.updateSliderPosition();
-  }
-
-  goToSlide(index: number) {
-    this.currentSlideIndex = index;
-    this.updateSliderPosition();
-  }
-
-  // <CHANGE> Update slider position with smooth animation
-  updateSliderPosition() {
-    const track = this.sliderTrack?.nativeElement as HTMLElement;
-    if (track) {
-      const itemWidth = 350; // Adjust based on your image sizes
-      const gap = 24;
-      this.sliderPosition = -(this.currentSlideIndex * (itemWidth + gap));
-      track.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-      track.style.transform = `translateX(${this.sliderPosition}px)`;
+    if (this.currentSlideIndex === 0) {
+      // jump to duplicate end
+      this.currentSlideIndex = this.totalSlides;
+      this.updateSliderPosition();
     }
+    this.currentSlideIndex--;
+    this.updateSliderPosition();
   }
 
-  // <CHANGE> Smooth slider with hover effects
   startSmoothSlider() {
-    const track = this.sliderTrack?.nativeElement as HTMLElement;
-    const wrapper = this.sliderWrapper?.nativeElement as HTMLElement;
-    const container = this.sliderContainer?.nativeElement as HTMLElement;
+    const track = this.sliderTrack?.nativeElement as HTMLElement
+    const wrapper = this.sliderWrapper?.nativeElement as HTMLElement
 
-    if (!track || !wrapper) return;
+    if (!track || !wrapper) return
 
-    // Pause auto-slide on hover
-    wrapper.addEventListener('mouseenter', () => {
-      this.isAutoSliding = false;
-      this.currentSpeed = this.slowSpeed;
-    });
+    wrapper.addEventListener("mouseenter", () => {
+      this.isAutoSliding = false
+    })
 
-    wrapper.addEventListener('mouseleave', () => {
-      this.isAutoSliding = true;
-      this.currentSpeed = this.normalSpeed;
-    });
+    wrapper.addEventListener("mouseleave", () => {
+      this.isAutoSliding = true
+    })
 
-    // Optional: Add touch support for mobile
-    let touchStartX = 0;
-    wrapper.addEventListener('touchstart', (e) => {
-      touchStartX = e.touches[0].clientX;
-    });
+    let touchStartX = 0
+    wrapper.addEventListener("touchstart", (e) => {
+      touchStartX = e.touches[0].clientX
+    })
 
-    wrapper.addEventListener('touchend', (e) => {
-      const touchEndX = e.changedTouches[0].clientX;
+    wrapper.addEventListener("touchend", (e) => {
+      const touchEndX = e.changedTouches[0].clientX
       if (touchStartX - touchEndX > 50) {
-        this.nextSlide();
+        this.nextSlide()
       } else if (touchEndX - touchStartX > 50) {
-        this.prevSlide();
+        this.prevSlide()
       }
-    });
+    })
   }
 
   ngOnDestroy() {
     if (this.autoSlideInterval) {
-      clearInterval(this.autoSlideInterval);
+      clearInterval(this.autoSlideInterval)
     }
   }
 }

@@ -1,16 +1,18 @@
-/* Enhanced Slider Styles */
+/* Enhanced slider animations and transitions */
 .slider-wrapper {
   will-change: transform;
   perspective: 1000px;
+  // background: linear-gradient(135deg, #f9f7f5 0%, #ffffff 100%);
 }
 
 .slider-track {
   display: flex;
   gap: 24px;
   will-change: transform;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 8px;
 }
 
+/* Circular text animation */
 @keyframes slow-rotate {
   from {
     transform: rotate(0deg);
@@ -21,15 +23,14 @@
 }
 
 .slow-spin {
-  animation: slow-rotate 15s linear infinite;
+  animation: slow-rotate 20s linear infinite;
 }
 
-
-/* Smooth animations */
+/* Smooth entrance animations */
 @keyframes slideInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -37,17 +38,57 @@
   }
 }
 
-.animate-slideInUp {
-  animation: slideInUp 0.6s ease-out forwards;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-/* Service cards animation */
+/* Staggered card animations */
 .service-card {
   animation: slideInUp 0.6s ease-out forwards;
   
-  @for $i from 1 through 3 {
+  @for $i from 1 through 4 {
     &:nth-child(#{$i}) {
-      animation-delay: #{$i * 0.1}s;
+      animation-delay: #{$i * 0.15}s;
     }
+  }
+}
+
+/* Navigation button effects */
+button {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .slider-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .slow-spin {
+    display: none;
+  }
+}
+
+/* Smooth navigation transitions */
+nav {
+  backdrop-filter: blur(10px);
+}
+
+/* Indicator pulse effect */
+.indicator-dot {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  &:hover {
+    transform: scale(1.3);
   }
 }

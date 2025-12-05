@@ -1,35 +1,35 @@
-
 <div class="relative z-50">
-  <app-announcementbar></app-announcementbar>
-  <!-- NAVIGATION BAR - Same as before but enhanced -->
-  <nav class="relative w-full bg-white shadow-md sticky top-0 z-50 animate-fadeSlide
-         px-4 md:px-14 py-3 flex items-center justify-between">
+  <!-- NAVIGATION BAR - Enhanced -->
+  <nav [ngClass]="{'shadow-lg bg-white/95': scrolled, 'bg-white': !scrolled}" class="relative w-full sticky top-0 z-50 transition-all duration-300
+         px-4 md:px-14 py-4 flex items-center justify-between">
 
     <div class="flex items-center gap-3 cursor-pointer">
-      <img src="assets/logo-2.png" alt="logo" class="h-10" />
+      <img src="assets/logo-2.png" alt="logo" class="h-11" />
     </div>
 
-    <!-- ... existing nav menu code ... -->
     <!-- DESKTOP MENU -->
-    <ul class="hidden xl:flex items-center gap-8 text-[#2C2327]">
-      <li class="group flex items-center gap-1 cursor-pointer transition hover:text-[#D4894E]">
-        Design Ideas
-        <span class="text-xs">
+    <ul class="hidden xl:flex items-center gap-8 text-[#2C2327] text-sm font-medium">
+      <!-- NAV ITEM + MEGA DROPDOWN WRAPPER (IMPORTANT) -->
+      <li class="relative group">
+
+        <!-- Main Hover Text -->
+        <div class="flex items-center gap-1 cursor-pointer py-3
+              transition text-[15px] text-[#2C2327] group-hover:text-[#D4894E]">
+          Design Ideas
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-            stroke="currentColor"
-            class="size-3 transition-transform duration-300 group-hover:rotate-180 group-hover:stroke-[#D4894E]">
+            stroke="currentColor" class="size-3 transition-transform duration-300 group-hover:rotate-180">
             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>
-        </span>
+        </div>
+
         <!-- MEGA DROPDOWN -->
-        <div class="absolute left-0 right-0 mx-auto top-full mt-1 w-[900px] bg-gradient-to-br from-white to-[#f9f6f4] border border-gray-100 shadow-xl
-           rounded-xl p-6 z-50
-           opacity-0 invisible group-hover:opacity-100 group-hover:visible
-           transition-all duration-500">
-
-          <!-- GRID CONTENT -->
+        <div class="absolute left-1/2 -translate-x-1/2 top-full mt-4
+              w-[900px] bg-white border shadow-xl rounded-xl p-6 z-50
+              opacity-0 invisible 
+              group-hover:opacity-100 group-hover:visible
+              transition-all duration-500
+              translate-y-4 group-hover:translate-y-0">
           <div class="grid grid-cols-3 gap-6 text-[15px] text-[#333]">
-
             <div class="flex flex-col gap-3">
               <a class="hover:text-[#D4894E]">Modular Kitchen Designs</a>
               <a class="hover:text-[#D4894E]">Wardrobe Designs</a>
@@ -73,202 +73,119 @@
 
       <li class="group flex items-center gap-1 cursor-pointer transition hover:text-[#D4894E]">
         Magazine
-        <span class="text-xs">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-            stroke="currentColor"
-            class="size-3 transition-transform duration-300 group-hover:rotate-180 group-hover:stroke-[#D4894E]">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-          </svg>
-          <!-- DROPDOWN -->
-          <div class="absolute left-0 right-0 mx-auto top-full mt-1 w-[650px] bg-gradient-to-br from-white to-[#f9f6f4] border border-gray-100 shadow-xl
-           rounded-xl p-6 z-50
-           opacity-0 invisible group-hover:opacity-100 group-hover:visible
-           transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"
+          class="size-3 transition-transform duration-300 group-hover:rotate-180">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+        <!-- MAGAZINE DROPDOWN -->
+        <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0
+            w-[650px] bg-white border shadow-xl rounded-xl p-6 z-50
 
-            <div class="grid grid-cols-2 justify-center text-[15px] text-[#333]">
+            opacity-0 invisible
+            group-hover:opacity-100 group-hover:visible
 
-              <div class="flex flex-col gap-3">
-                <a class="hover:text-[#D4894E]">Room Ideas</a>
-                <a class="hover:text-[#D4894E]">Decor & Inspiration</a>
-                <a class="hover:text-[#D4894E]">Ceiling Design</a>
-                <a class="hover:text-[#D4894E]">Furniture Ideas</a>
-                <a class="hover:text-[#D4894E]">Home Decor</a>
-                <a class="hover:text-[#D4894E]">Lighting Ideas</a>
-                <a class="hover:text-[#D4894E]">Wall Design Ideas</a>
-                <a class="hover:text-[#D4894E]">Expert Advice</a>
-                <a class="hover:text-[#D4894E]">Interior Advice</a>
-                <a class="hover:text-[#D4894E]">Vastu Tips</a>
-              </div>
+            transition-all duration-500
+            translate-y-4 group-hover:translate-y-0">
 
-              <div class="flex flex-col gap-3">
-                <a class="hover:text-[#D4894E]">Home Organisation</a>
-                <a class="hover:text-[#D4894E]">Materials Guide</a>
-                <a class="hover:text-[#D4894E]">Home Renovation Ideas</a>
-              </div>
+          <div class="grid grid-cols-2 gap-6 text-[15px] text-[#333] leading-relaxed">
 
+            <!-- Column 1 -->
+            <div class="flex flex-col gap-3">
+              <a class="hover:text-[#D4894E] transition">Room Ideas</a>
+              <a class="hover:text-[#D4894E] transition">Decor & Inspiration</a>
+              <a class="hover:text-[#D4894E] transition">Ceiling Design</a>
+              <a class="hover:text-[#D4894E] transition">Furniture Ideas</a>
+              <a class="hover:text-[#D4894E] transition">Home Decor</a>
+              <a class="hover:text-[#D4894E] transition">Lighting Ideas</a>
+              <a class="hover:text-[#D4894E] transition">Wall Design Ideas</a>
+              <a class="hover:text-[#D4894E] transition">Expert Advice</a>
+              <a class="hover:text-[#D4894E] transition">Interior Advice</a>
+              <a class="hover:text-[#D4894E] transition">Vastu Tips</a>
             </div>
+
+            <!-- Column 2 -->
+            <div class="flex flex-col gap-3">
+              <a class="hover:text-[#D4894E] transition">Home Organisation</a>
+              <a class="hover:text-[#D4894E] transition">Materials Guide</a>
+              <a class="hover:text-[#D4894E] transition">Home Renovation Ideas</a>
+              <a class="hover:text-[#D4894E] transition">DIY Tips</a>
+              <a class="hover:text-[#D4894E] transition">Trending Styles</a>
+            </div>
+
           </div>
-        </span>
+
+        </div>
+
       </li>
-
-      <li class="flex items-center gap-1 cursor-pointer transition hover:text-[#D4894E]">
-        Cities <span class="text-xs"></span>
-      </li>
-
-      <li class="flex items-center gap-1 cursor-pointer transition hover:text-[#D4894E]">
-        Projects
-      </li>
-
-      <li class="flex items-center gap-1 cursor-pointer transition hover:text-[#D4894E]">
-        Store Locator
-      </li>
-
-      <li class="group flex items-center gap-1 cursor-pointer transition hover:text-[#D4894E]">
-        More
-        <span class="text-xs">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-            stroke="currentColor"
-            class="size-3 transition-transform duration-300 group-hover:rotate-180 group-hover:stroke-[#D4894E]">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-          </svg>
-
-          <!-- DROPDOWN -->
-          <div class="absolute left-0 -right-[527px] mx-auto top-full mt-1 w-[260px] bg-gradient-to-br from-white to-[#f9f6f4] border border-gray-100 shadow-xl
-           rounded-xl p-4 z-50
-           opacity-0 invisible group-hover:opacity-100 group-hover:visible
-           transition-all duration-300">
-
-            <ul class="flex flex-col gap-3 text-[15px] text-[#333]">
-              <li class="hover:text-[#D4894E] cursor-pointer">Turnkey TV</li>
-              <li class="hover:text-[#D4894E] cursor-pointer">Refer A Friend</li>
-              <li class="hover:text-[#D4894E] cursor-pointer">Press</li>
-              <li class="hover:text-[#D4894E] cursor-pointer">Careers</li>
-              <li class="hover:text-[#D4894E] cursor-pointer">About Us</li>
-              <li class="hover:text-[#D4894E] cursor-pointer">Contact Us</li>
-              <li class="hover:text-[#D4894E] cursor-pointer">Policies</li>
-
-            </ul>
-          </div>
-        </span>
-      </li>
+      <li class="cursor-pointer transition hover:text-[#D4894E]">Cities</li>
+      <li class="cursor-pointer transition hover:text-[#D4894E]">Projects</li>
+      <li class="cursor-pointer transition hover:text-[#D4894E]">Store</li>
 
       <!-- Divider -->
       <div class="h-6 w-px bg-gray-300"></div>
 
-      <!-- Shop Furnishings + NEW Badge -->
+      <!-- Shop with Badge -->
       <li class="flex items-center gap-2 cursor-pointer hover:text-[#D4894E] transition">
         Shop Furnishings
-        <span class="px-2 py-0.5 bg-[#D4894E] text-white text-xs rounded">NEW</span>
+        <span class="px-2.5 py-1 bg-[#D4894E] text-white text-xs font-semibold rounded-full">NEW</span>
       </li>
 
       <!-- Profile Icon -->
-      <!-- PROFILE DROPDOWN TRIGGER -->
       <li class="relative" (click)="toggleProfile()" #profileButton>
-
-        <!-- ICON BUTTON -->
-        <div class="flex items-center gap-1 p-2 border rounded-full cursor-pointer hover:bg-gray-100 transition">
-
-          <!-- PROFILE ICON -->
+        <div class="flex items-center gap-1 p-2 rounded-full cursor-pointer hover:bg-gray-100 transition">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="size-6">
+            stroke="currentColor" class="size-5">
             <path stroke-linecap="round" stroke-linejoin="round"
               d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-          </svg>
-
-          <!-- DOWN ICON -->
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="size-4 transition-transform duration-300"
-            [ngClass]="{ 'rotate-180': profileOpen }">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>
         </div>
 
         <!-- DROPDOWN PANEL -->
         <div *ngIf="profileOpen"
-          class="absolute right-0 mt-4 w-[280px] bg-white shadow-xl border rounded-2xl p-5 z-50 animate-fadeSlide"
-          #profileDropdown>
-
-          <!-- LOGIN BUTTON -->
+          class="absolute right-0 mt-3 w-72 bg-white shadow-2xl border border-gray-100 rounded-2xl p-5 z-50 animate-in fade-in slide-in-from-top-2">
           <button
-            class="w-full py-3 border-2 border-orange-400 rounded-full flex items-center justify-center gap-2 text-orange-400 font-medium hover:bg-orange-50 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="size-5">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-            </svg>
+            class="w-full py-3 border-2 border-[#D4894E] rounded-full text-[#D4894E] font-semibold hover:bg-[#D4894E]/5 transition">
             Login / Signup
           </button>
-
-          <!-- LINE -->
           <div class="border-t my-4"></div>
         </div>
       </li>
     </ul>
 
     <!-- MOBILE MENU BUTTON -->
-    <button (click)="toggleMobile()" class="xl:hidden text-3xl text-gray-700 hover:text-black transition">
+    <button (click)="toggleMobile()" class="xl:hidden text-3xl text-gray-700">
       {{ mobileOpen ? "✕" : "☰" }}
     </button>
   </nav>
 
-  <!-- Mobile Menu - Expanded -->
-  <div *ngIf="mobileOpen" class="xl:hidden w-full bg-white shadow-lg border-t border-gray-200
-         absolute top-[64px] left-0 z-50 animate-slideDown">
-
+  <!-- Mobile Menu -->
+  <div *ngIf="mobileOpen"
+    class="xl:hidden w-full bg-white shadow-lg border-t border-gray-200 absolute top-[72px] left-0 z-50 animate-in slide-in-from-top">
     <div class="px-6 py-4 space-y-4">
-
-      <!-- MENU ITEMS -->
-      <button class="block w-full text-left py-3 text-gray-700 font-medium border-b">
-        Design Ideas
-      </button>
-
-      <button class="block w-full text-left py-3 text-gray-700 font-medium border-b">
-        Magazine
-      </button>
-
-      <button class="block w-full text-left py-3 text-gray-700 font-medium border-b">
-        Cities
-      </button>
-
-      <button class="block w-full text-left py-3 text-gray-700 font-medium border-b">
-        Projects
-      </button>
-
-      <button class="block w-full text-left py-3 text-gray-700 font-medium border-b">
-        Store Locator
-      </button>
-
-      <button class="w-full text-left py-3 text-gray-700 font-medium border-b flex items-center justify-between">
-        More
-        <span class="rotate-0">▾</span>
-      </button>
-
-      <!-- LOGIN / SIGNUP -->
-      <div class="pt-4">
-        <button class="w-full bg-[#004D46] text-white py-3 rounded-full mb-3 font-semibold">
+      <button class="block w-full text-left py-3 text-gray-700 font-medium border-b">Design Ideas</button>
+      <button class="block w-full text-left py-3 text-gray-700 font-medium border-b">Magazine</button>
+      <button class="block w-full text-left py-3 text-gray-700 font-medium border-b">Cities</button>
+      <button class="block w-full text-left py-3 text-gray-700 font-medium border-b">Projects</button>
+      <div class="pt-4 space-y-3">
+        <button class="w-full bg-[#D4894E] text-white py-3 rounded-full font-semibold hover:bg-[#c57d46] transition">
           Login
         </button>
-
-        <button class="w-full bg-[#D4894E] text-white py-3 rounded-full font-semibold">
-          Signup
-        </button>
       </div>
-
     </div>
   </div>
-  <!-- HERO SECTION - Optimized -->
-  <div class="relative w-full h-[92vh] flex items-start md:items-center bg-cover animate-fadeSlide bg-center"
-    style="background-image: url('assets/heroimage.jpg');">
-    <div class="absolute inset-0 bg-black/40"></div>
 
-    <div class="relative z-10 w-full mt-24 md:mt-0 mx-auto px-4 md:px-14 text-center md:text-left">
-      <!-- Circular Badge -->
-      <div class="slow-spin absolute md:right-[35rem] top-[-30px] hidden md:block opacity-80 border rounded-full">
+  <!-- HERO SECTION -->
+  <div class="relative w-full h-[92vh] flex items-center bg-cover bg-center"
+    style="background-image: url('assets/heroimage.jpg');">
+    <div class="absolute inset-0 bg-black/35"></div>
+
+    <div class="relative z-10 w-full mx-auto px-4 md:px-14 text-center md:text-left">
+      <div class="slow-spin absolute md:right-[35rem] top-[-30px] hidden md:block opacity-70 border rounded-full">
         <svg viewBox="0 0 300 300" class="w-40 h-40">
           <defs>
             <path id="circlePath" d="M150,150 m-120,0 a120,120 0 1,1 240,0 a120,120 0 1,1 -240,0" />
           </defs>
-          <text fill="white" font-size="22" font-weight="400" letter-spacing="4" class="border">
+          <text fill="white" font-size="20" font-weight="300" letter-spacing="6" class="border">
             <textPath href="#circlePath">
               BEST INTERIOR FIRM • SINCE 1992 • BEST INTERIOR FIRM
             </textPath>
@@ -276,223 +193,353 @@
         </svg>
       </div>
 
-      <h1 class="text-[#fdfafa] font-semibold leading-2
-         text-7xl sm:text-5xl md:text-7xl lg:text-8xl
-         mb-6 md:mb-8 text-center md:text-left">
-        Elevating Spaces <br class="hidden md:block"> Crafting Dreams
+      <h1 class="text-white font-semibold leading-2 text-7xl lg:text-8xl mb-8 text-balance">
+        Elevating Spaces<br class="hidden md:block"> Crafting Dreams
       </h1>
 
       <div class="flex flex-col md:flex-row md:items-center gap-6 md:gap-10 text-center md:text-left">
-        <p class="text-white/90 leading-2 text-base sm:text-lg md:text-xl max-w-md md:max-w-xl mx-auto md:mx-0">
-          We specialize in transforming visions into reality.
-          <br class="hidden md:block"/>
-          Explore our work of innovative architectural.
+        <p class="text-white/90 leading-relaxed text-base md:text-lg max-w-2xl mx-auto md:mx-0 font-light">
+          We specialize in transforming visions into reality. Explore our work of innovative architectural and interior
+          design solutions.
         </p>
 
-        <button class="px-6 py-3 sm:px-8 sm:py-4 bg-[#D4894E] text-white
-           text-base sm:text-lg font-semibold rounded-full shadow-lg
-           hover:bg-[#c57d46] active:scale-95 transition-all duration-300
-           w-full sm:w-auto mx-auto md:mx-0">
-          BOOK FREE CONSULTATION
+        <button
+          class="px-8 py-4 bg-[#D4894E] text-white text-base font-semibold rounded-full shadow-xl hover:bg-[#c57d46] active:scale-95 transition-all duration-300 whitespace-nowrap">
+          BOOK CONSULTATION
         </button>
       </div>
     </div>
   </div>
 
   <!-- ENHANCED ABOUT US SECTION -->
-  <div class="w-full py-24 bg-white">
-    <!-- Header Section -->
-    <div class="grid md:grid-cols-2 gap-12 items-center mx-auto px-4 md:px-14 mb-16">
-      <div class="space-y-4">
-        <p class="text-sm tracking-widest text-gray-500 font-semibold uppercase">About Us</p>
-        <h2 class="text-4xl md:text-6xl font-bold leading-tight text-[#2C2327]">
-          <span class="text-[#D4894E]">Architecture</span> <br /> Interior Design
+  <div class="w-full py-5 md:py-24 bg-white">
+    <!-- Header -->
+    <div class="grid md:grid-cols-2 gap-12 items-center mx-auto px-4 md:px-14 mb-10">
+
+      <div class="space-y-4 text-center md:text-left">
+        <p class="text-xs tracking-widest text-gray-500 font-semibold uppercase">
+          About Us
+        </p>
+
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-light leading-tight text-[#2C2327] text-balance">
+          <span class="text-[#D4894E] font-semibold">Architecture</span> & Interior Design
         </h2>
-        <div class="h-1 w-16 bg-[#D4894E]"></div>
-      </div>
-
-      <div class="space-y-6">
-        <!-- <p class="text-lg text-gray-700 leading-relaxed">
-          We specialize in transforming visions into reality. With over 30 years of excellence, our team crafts
-          innovative architectural and interior design projects with precision and creativity.
-        </p> -->
-        <div class="grid grid-cols-3 gap-4">
-          <div class="text-center">
-            <p class="text-3xl font-bold text-[#D4894E]">500+</p>
-            <p class="text-sm text-gray-600">Projects</p>
-          </div>
-          <div class="text-center">
-            <p class="text-3xl font-bold text-[#D4894E]">30Y</p>
-            <p class="text-sm text-gray-600">Experience</p>
-          </div>
-          <div class="text-center">
-            <p class="text-3xl font-bold text-[#D4894E]">100%</p>
-            <p class="text-sm text-gray-600">Satisfied</p>
-          </div>
-        </div>
+        <div class="h-1 w-20 bg-[#D4894E] mx-auto md:mx-0"></div>
       </div>
     </div>
 
-    <!-- <CHANGE> Enhanced Image Slider with Controls and Indicators -->
-    <div class="w-full px-4">
-      <!-- Slider Container -->
-      <div class="px-4 md:px-14 mx-auto">
-        <!-- Main Slider -->
-        <div class="relative group" #sliderContainer>
-          <div class="slider-wrapper overflow-hidden relative rounded-lg" #sliderWrapper>
-            <div class="slider-track flex gap-6 w-max" #sliderTrack>
-              <!-- Images - Duplicated for seamless loop -->
-              <img *ngFor="let img of sliderImages; let i = index" [src]="img.src" [alt]="img.alt" [ngClass]="img.size"
-                class="object-cover rounded-lg shadow-lg flex-shrink-0 transition-transform duration-300 hover:scale-105" />
+    <!-- Image Slider -->
+    <div class="relative px-4 md:px-14 mx-auto mb-20">
+      <div class="relative group" #sliderContainer>
+        <div class="slider-wrapper overflow-hidden relative" #sliderWrapper>
+          <div class="slider-track flex gap-6 w-max" #sliderTrack>
+            <ng-container *ngFor="let img of sliderImages">
+              <img [src]="img.src" [alt]="img.alt" [ngClass]="img.size" class="object-cover rounded-lg flex-shrink-0" />
+            </ng-container>
 
-              <!-- Duplicates for seamless loop -->
-              <img *ngFor="let img of sliderImages; let i = index" [src]="img.src" [alt]="img.alt" [ngClass]="img.size"
-                class="object-cover rounded-lg shadow-lg flex-shrink-0" />
-            </div>
+            <!-- Duplicate -->
+            <ng-container *ngFor="let img of sliderImages">
+              <img [src]="img.src" [alt]="img.alt" [ngClass]="img.size" class="object-cover rounded-lg flex-shrink-0" />
+            </ng-container>
           </div>
 
-          <!-- <CHANGE> Navigation Arrows -->
-          <button (click)="prevSlide()"
-            class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100 md:flex items-center justify-center hidden">
-            <svg class="w-6 h-6 text-[#D4894E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-          </button>
-
-          <button (click)="nextSlide()"
-            class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100 md:flex items-center justify-center hidden">
-            <svg class="w-6 h-6 text-[#D4894E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </button>
         </div>
 
-        <!-- <CHANGE> Slider Indicators -->
-        <div class="flex justify-center gap-2 mt-8">
-          <button *ngFor="let img of sliderImages; let i = index" (click)="goToSlide(i)" [ngClass]="{
-              'bg-[#D4894E] w-3': currentSlideIndex === i,
-              'bg-gray-300 w-2': currentSlideIndex !== i
-            }" class="h-2 rounded-full transition-all duration-300 cursor-pointer">
-          </button>
-        </div>
+        <!-- Navigation Arrows -->
+        <button (click)="prevSlide()"
+          class="absolute left-4 top-1/2 z-20 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100 md:flex items-center justify-center hidden">
+          <svg class="w-6 h-6 text-[#D4894E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+
+        <button (click)="nextSlide()"
+          class="absolute right-4 top-1/2 z-20 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100 md:flex items-center justify-center hidden">
+          <svg class="w-6 h-6 text-[#D4894E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Indicators -->
+      <div class="flex justify-center gap-3 mt-8">
+        <button *ngFor="let img of sliderImages; let i = index" (click)="goToSlide(i)"
+          [ngClass]="{'bg-[#D4894E] w-3': currentSlideIndex === i, 'bg-gray-300 w-2': currentSlideIndex !== i}"
+          class="h-2 rounded-full transition-all duration-300 cursor-pointer">
+        </button>
       </div>
     </div>
 
-    <!-- Stats Section - New -->
-    <div class="px-4 md:px-14 mt-20">
-      <div class="grid md:grid-cols-4 gap-8">
-        <div class="text-center p-6 rounded-lg bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:bg-[#D4894E]/5 transition">
-          <p class="text-4xl font-bold text-[#D4894E] mb-2">32</p>
-          <p class="text-gray-700 font-semibold">Awards Won</p>
+    <!-- Achievement Stats -->
+    <div class="px-4 md:px-14 mx-auto">
+      <div class="grid md:grid-cols-4 gap-6">
+        <div
+          class="text-center p-8 rounded-xl bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 transition-all duration-300">
+          <p class="text-3xl md:text-4xl font-bold text-[#D4894E] mb-2">32</p>
+          <p class="text-gray-700 font-medium">Awards Won</p>
         </div>
-        <div class="text-center p-6 rounded-lg bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:bg-[#D4894E]/5 transition">
-          <p class="text-4xl font-bold text-[#D4894E] mb-2">10K+</p>
-          <p class="text-gray-700 font-semibold">Happy Clients</p>
+        <div
+          class="text-center p-8 rounded-xl bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 transition-all duration-300">
+          <p class="text-3xl md:text-4xl font-bold text-[#D4894E] mb-2">10K+</p>
+          <p class="text-gray-700 font-medium">Happy Clients</p>
         </div>
-        <div class="text-center p-6 rounded-lg bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:bg-[#D4894E]/5 transition">
-          <p class="text-4xl font-bold text-[#D4894E] mb-2">25</p>
-          <p class="text-gray-700 font-semibold">Cities</p>
+        <div
+          class="text-center p-8 rounded-xl bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 transition-all duration-300">
+          <p class="text-3xl md:text-4xl font-bold text-[#D4894E] mb-2">25</p>
+          <p class="text-gray-700 font-medium">Cities</p>
         </div>
-        <div class="text-center p-6 rounded-lg bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:bg-[#D4894E]/5 transition">
-          <p class="text-4xl font-bold text-[#D4894E] mb-2">2M+</p>
-          <p class="text-gray-700 font-semibold">Sq. Ft.</p>
+        <div
+          class="text-center p-8 rounded-xl bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 transition-all duration-300">
+          <p class="text-3xl md:text-4xl font-bold text-[#D4894E] mb-2">2M+</p>
+          <p class="text-gray-700 font-medium">Sq. Ft.</p>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Services Preview - New -->
-    <div class="max-w-full mx-auto px-8 mt-20">
-      <h3 class="text-5xl font-semibold text-center mb-12 text-[#2C2327]">
-        Our Services
+  <!-- Premium Services Section -->
+  <div class="max-w-full mx-auto px-4 md:px-14">
+    <!-- SERVICES HEADING -->
+    <div class="mb-12 text-center md:text-left">
+      <!-- small label -->
+      <p class="text-[11px] md:text-xs font-semibold tracking-[0.25em] text-gray-500 uppercase mb-3">
+        OUR SERVICES
+      </p>
+
+      <!-- main heading -->
+      <h3 class="text-3xl md:text-5xl font-semibold leading-tight tracking-tight text-[#2C2327]">
+        <span class="text-[#D4894E]">Our Premium</span><br class="hidden md:block" />
+        <span class="font-normal text-[#2C2327]">Services</span>
       </h3>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
 
-        <!-- Card 1 - Large -->
-        <div class="md:col-span-2 md:row-span-2 p-10 rounded-3xl 
-           bg-gradient-to-br from-white to-[#faf7f5]
-           border border-[#e8e3dd]
-           hover:shadow-[0_6px_20px_rgba(0,0,0,0.06)]
-           hover:-translate-y-1 transition-all duration-300">
+      <!-- underline bar -->
+      <div class="mt-3 h-[3px] w-16 bg-[#D4894E] mx-auto md:mx-0"></div>
+    </div>
 
-          <h4 class="text-2xl font-semibold text-[#D4894E] mb-4 tracking-tight">
-            Interior Design
-          </h4>
 
-          <p class="text-gray-600 text-[15px] leading-relaxed max-w-md">
-            Transform your living spaces with stunning interior design solutions
-            tailored beautifully to your lifestyle.
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 auto-rows-[240px] gap-6 mt-12">
+
+      <!-- Image 1 – Large Feature -->
+      <div class="relative md:col-span-2 md:row-span-2 rounded-3xl overflow-hidden group cursor-pointer">
+        <img
+          src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/living-1759750377-O1Yiw/lr-13-1763111912-Rl3YP.jpg"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+          Living Room
+        </span>
+      </div>
+
+      <!-- Image 2 -->
+      <div class="relative md:col-span-2 rounded-3xl overflow-hidden group cursor-pointer">
+        <img
+          src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/mbr-1759750466-DinYK/mbr-10-1763100361-s4LQX.jpg"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+          Master Bedroom
+        </span>
+      </div>
+
+      <!-- Image 3 -->
+      <div class="relative rounded-3xl overflow-hidden group cursor-pointer">
+        <img
+          src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/tv-1761583761-DjqGd/20-1762773267-P8Vt9.jpg"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+          False Ceiling
+        </span>
+      </div>
+
+      <!-- Image 4 -->
+      <div class="relative rounded-3xl overflow-hidden group cursor-pointer">
+        <img
+          src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/wr-1759751175-9MtjY/21-1762774027-Iei06.jpg"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+          Wardrobe
+        </span>
+      </div>
+
+      <!-- Image 5 – Large Full Width -->
+      <!-- <div class="relative md:col-span-4 h-[380px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer">
+          <img src="https://framerusercontent.com/images/4rmGC8C7OCFdTQE64j3kp3rbFNw.png"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+          <span class="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+            Kitchen
+          </span>
+        </div> -->
+
+      <!-- Image 6 – Left Bottom Half -->
+      <div class="relative md:col-span-2 h-[260px] rounded-3xl overflow-hidden group cursor-pointer">
+        <img
+          src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/di-1759750788-LFDCZ/16-1762773650-i8mOT.jpg"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+          Dining Area
+        </span>
+      </div>
+
+      <!-- Image 7 – Right Bottom Half -->
+      <div class="relative md:col-span-2 h-[260px] rounded-3xl overflow-hidden group cursor-pointer">
+        <img
+          src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/ond-2023-1696420252-fyaIE/renders-1696505505-hTG0j/study-table-1696505519-Q0m8k/st10-1702448336-FYVVc.jpg"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+          Study Room
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- WHY CHOOSE US — CNtravel Premium Layout -->
+  <div class="max-w-full mx-auto px-4 md:px-14 py-10 md:py-24">
+    <!-- WHY CHOOSE US HEADING -->
+    <div class="mb-5 md:mb-10 text-center md:text-left">
+      <!-- small label -->
+      <p class="text-[11px] md:text-xs font-semibold tracking-[0.25em] text-gray-500 uppercase mb-3">
+        WHY CHOOSE US
+      </p>
+
+      <!-- main heading -->
+      <h2 class="text-3xl md:text-5xl font-semibold leading-tight tracking-tight text-[#2C2327]">
+        <span class="text-[#D4894E]">Why Choose Us</span>
+        <span class="text-[#D4894E] ml-3">&</span><br class="hidden md:block" />
+        <span class="font-normal text-[#2C2327]">What We Do</span>
+      </h2>
+
+      <!-- underline bar -->
+      <div class="mt-3 h-[3px] w-16 bg-[#D4894E] mx-auto md:mx-0"></div>
+    </div>
+
+
+    <div class="grid md:grid-cols-3 gap-10">
+
+      <!-- LEFT SIDE — 4 CARDS -->
+      <div class="md:col-span-2 grid md:grid-cols-2 gap-6">
+        <!-- Card 1 -->
+        <div
+          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
+          <div class="flex items-center gap-3 mb-1 md:mb-3">
+            <span class="text-[#D4894E] text-xl"></span>
+            <h3 class="font-semibold text-gray-800 text-lg">End-to-End Turnkey Solutions</h3>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
+            Complete turnkey execution from design to handover with assured quality.
           </p>
         </div>
 
         <!-- Card 2 -->
-        <div class="md:col-span-2 p-10 rounded-3xl
-           bg-gradient-to-br from-white to-[#faf7f5]
-           border border-[#e8e3dd]
-           hover:shadow-[0_6px_20px_rgba(0,0,0,0.06)]
-           hover:-translate-y-1 transition-all duration-300">
-
-          <h4 class="text-2xl font-semibold text-[#D4894E] mb-3 tracking-tight">
-            Architecture
-          </h4>
-
-          <p class="text-gray-600 text-[15px] leading-relaxed">
-            From concept to completion, we deliver architectural excellence
-            with precision and creativity.
+        <div
+          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
+          <div class="flex items-center gap-3 mb-1 md:mb-3">
+            <span class="text-[#D4894E] text-xl"></span>
+            <h3 class="font-semibold text-gray-800 text-lg">Comprehensive Services</h3>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
+            Plumbing, electrical, tiling, flooring, carpentry, furniture & much more.
           </p>
         </div>
 
         <!-- Card 3 -->
-        <div class="p-10 rounded-3xl 
-           bg-gradient-to-br from-white to-[#faf7f5]
-           border border-[#e8e3dd]
-           hover:shadow-[0_6px_20px_rgba(0,0,0,0.06)]
-           hover:-translate-y-1 transition-all duration-300">
-
-          <h4 class="text-2xl font-semibold text-[#D4894E] mb-3 tracking-tight">
-            Furniture & Decor
-          </h4>
-
-          <p class="text-gray-600 text-[15px] leading-relaxed">
-            Curated premium decor pieces designed to elevate your home effortlessly.
+        <div
+          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
+          <div class="flex items-center gap-3 mb-1 md:mb-3">
+            <span class="text-[#D4894E] text-xl"></span>
+            <h3 class="font-semibold text-gray-800 text-lg">Dedicated Technical Team</h3>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
+            Expert execution, centralized support & quality checks at every step.
           </p>
         </div>
 
         <!-- Card 4 -->
-        <div class="p-10 rounded-3xl 
-           bg-gradient-to-br from-white to-[#faf7f5]
-           border border-[#e8e3dd]
-           hover:shadow-[0_6px_20px_rgba(0,0,0,0.06)]
-           hover:-translate-y-1 transition-all duration-300">
-
-          <h4 class="text-2xl font-semibold text-[#D4894E] mb-3 tracking-tight">
-            Space Planning
-          </h4>
-
-          <p class="text-gray-600 text-[15px] leading-relaxed">
-            Intelligent layouts that maximize both beauty and functional flow.
+        <div
+          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
+          <div class="flex items-center gap-3 mb-1 md:mb-3">
+            <span class="text-[#D4894E] text-xl"></span>
+            <h3 class="font-semibold text-gray-800 text-lg">Multi-Sector Experience</h3>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
+            Homes, offices, hospitals, restaurants, hotels & commercial spaces.
           </p>
         </div>
 
-        <!-- Card 5 - Full Width -->
-        <div class="md:col-span-4 p-10 rounded-3xl
-           bg-gradient-to-br from-white to-[#faf7f5]
-           border border-[#e8e3dd]
-           hover:shadow-[0_6px_20px_rgba(0,0,0,0.06)]
-           hover:-translate-y-1 transition-all duration-300">
-
-          <h4 class="text-2xl font-semibold text-[#D4894E] mb-4 tracking-tight">
-            Turnkey Solutions
-          </h4>
-
-          <p class="text-gray-600 text-[15px] leading-relaxed max-w-3xl">
-            End-to-end project execution including design, materials, installation,
-            supervision, and finishing—delivered with total accountability and
-            uncompromising quality.
+        <!-- WHAT WE DO CARDS -->
+        <!-- Card 5 -->
+        <div
+          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
+          <div class="flex items-center gap-3 mb-1 md:mb-3">
+            <span class="text-[#D4894E] text-xl"></span>
+            <h3 class="font-semibold text-gray-800 text-lg">Project Delivery</h3>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
+            Kitchens, wardrobes, bedrooms, living areas & office interiors.
           </p>
         </div>
 
+        <!-- Card 6 -->
+        <div
+          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 p-3 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
+          <div class="flex items-center gap-3 mb-1 md:mb-3">
+            <span class="text-[#D4894E] text-xl"></span>
+            <h3 class="font-semibold text-gray-800 text-lg">Modular Kitchen & Electrical</h3>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
+            Modular kitchen systems, electrical fittings & appliance integration.
+          </p>
+        </div>
+
+        <!-- Card 7 -->
+        <div
+          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 p-3 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
+          <div class="flex items-center gap-3 mb-1 md:mb-3">
+            <span class="text-[#D4894E] text-xl"></span>
+            <h3 class="font-semibold text-gray-800 text-lg">Interior & Civil Works</h3>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
+            Marble, flooring, ceilings, AC, windows, fixtures & finishing work.
+          </p>
+        </div>
+
+        <!-- Card 8 -->
+        <div
+          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 p-3 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
+          <div class="flex items-center gap-3 mb-1 md:mb-3">
+            <span class="text-[#D4894E] text-xl"></span>
+            <h3 class="font-semibold text-gray-800 text-lg">Full Project Handover</h3>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
+            Seamless completion of civil + interior works with full accountability.
+          </p>
+        </div>
       </div>
 
+      <!-- RIGHT SIDE — PREMIUM HIGHLIGHT CARD -->
+      <div
+        class="p-10 rounded-3xl flex flex-col justify-between shadow-xl text-[#2C2327]
+         bg-gradient-to-tr from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 relative overflow-hidden">
+
+        <!-- subtle top soft light (optional, looks premium) -->
+        <div class="absolute inset-0 bg-gradient-to-b from-white/70 via-transparent to-transparent pointer-events-none">
+        </div>
+
+        <div class="relative z-10">
+          <h3 class="text-2xl font-semibold mb-3 text-[#2C2327]">
+            Why We Stand Out
+          </h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            With 30+ years of trusted experience, centralized support, expert teams
+            and full turnkey execution — we deliver unmatched quality and reliability.
+          </p>
+        </div>
+
+        <button class="relative z-10 mt-8 border border-[#2C2327] py-3 rounded-xl text-sm tracking-wide
+           hover:bg-[#2C2327] hover:text-white transition">
+          Learn More
+        </button>
+      </div>
     </div>
   </div>
 </div>

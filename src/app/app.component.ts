@@ -142,12 +142,17 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
     this.currentSlideIndex = index
     this.updateSliderPosition()
   }
-  
+
+  @HostListener("window:scroll", [])
+  onScroll() {
+    this.scrolled = window.scrollY > 50;
+  }
+
   imageWidth = 380 + 24;    // width + gap
   totalSlides = this.sliderImages.length;
+  
   updateSliderPosition() {
     const track = this.sliderTrack?.nativeElement as HTMLElement;
-
     if (!track) return;
 
     this.sliderPosition = -(this.currentSlideIndex * this.imageWidth);
@@ -165,6 +170,8 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
       }, 700); // match animation duration
     }
   }
+
+
 
   nextSlide() {
     this.currentSlideIndex++;

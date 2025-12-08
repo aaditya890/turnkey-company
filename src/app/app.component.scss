@@ -82,7 +82,16 @@ button {
 /* Smooth navigation transitions */
 nav {
   backdrop-filter: blur(10px);
+  // border-radius: 80px;
 }
+
+.floating-nav {
+  border-radius: 40px;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+
 
 /* Indicator pulse effect */
 .indicator-dot {

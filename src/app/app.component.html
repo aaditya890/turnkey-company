@@ -1,20 +1,25 @@
 <div class="relative z-50">
   <!-- NAVIGATION BAR - Enhanced -->
-  <nav [ngClass]="{'shadow-lg bg-white/95': scrolled, 'bg-white': !scrolled}" class="relative w-full sticky top-0 z-50 transition-all duration-300
-         px-4 md:px-14 py-4 flex items-center justify-between">
+  <nav [ngClass]="{
+    'top-4 mx-auto w-[94%] md:w-[90%] lg:w-[85%]
+     bg-white/80 backdrop-blur-xl shadow-xl rounded-[80px] text-[#2C2327]': scrolled,
+    'top-0 w-full 
+      bg-gradient-to-br from-white to-[#faf7f5] text-[#2C2327] rounded-none shadow-none': !scrolled
+  }" class="fixed inset-x-0 transition-all duration-500 z-50
+         px-6 py-4 flex items-center justify-between">
+
 
     <div class="flex items-center gap-3 cursor-pointer">
       <img src="assets/logo-2.png" alt="logo" class="h-11" />
     </div>
 
     <!-- DESKTOP MENU -->
-    <ul class="hidden xl:flex items-center gap-8 text-[#2C2327] text-sm font-medium">
+    <ul class="hidden xl:flex items-center gap-8 text-sm font-medium transition-colors duration-300">
       <!-- NAV ITEM + MEGA DROPDOWN WRAPPER (IMPORTANT) -->
       <li class="relative group">
-
         <!-- Main Hover Text -->
         <div class="flex items-center gap-1 cursor-pointer py-3
-              transition text-[15px] text-[#2C2327] group-hover:text-[#D4894E]">
+              transition text-[15px] group-hover:text-[#D4894E]">
           Design Ideas
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
             stroke="currentColor" class="size-3 transition-transform duration-300 group-hover:rotate-180">
@@ -24,7 +29,7 @@
 
         <!-- MEGA DROPDOWN -->
         <div class="absolute left-1/2 -translate-x-1/2 top-full mt-4
-              w-[900px] bg-white border shadow-xl rounded-xl p-6 z-50
+              w-[900px] bg-gradient-to-br from-white to-[#faf7f5] border shadow-xl rounded-xl p-6 z-50
               opacity-0 invisible 
               group-hover:opacity-100 group-hover:visible
               transition-all duration-500
@@ -70,7 +75,6 @@
           </div>
         </div>
       </li>
-
       <li class="group flex items-center gap-1 cursor-pointer transition hover:text-[#D4894E]">
         Magazine
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"
@@ -79,7 +83,7 @@
         </svg>
         <!-- MAGAZINE DROPDOWN -->
         <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0
-            w-[650px] bg-white border shadow-xl rounded-xl p-6 z-50
+            w-[650px] bg-gradient-to-br from-white to-[#faf7f5] border shadow-xl rounded-xl p-6 z-50
 
             opacity-0 invisible
             group-hover:opacity-100 group-hover:visible
@@ -121,6 +125,39 @@
       <li class="cursor-pointer transition hover:text-[#D4894E]">Projects</li>
       <li class="cursor-pointer transition hover:text-[#D4894E]">Store</li>
 
+      <li class="relative group flex items-center gap-1 cursor-pointer transition hover:text-[#D4894E]">
+
+        <!-- Trigger -->
+        <div class="flex items-center gap-1 py-3 text-[15px]">
+          More
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+            stroke="currentColor" class="size-3 transition-transform duration-300 group-hover:rotate-180">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+          </svg>
+        </div>
+
+        <!-- DROPDOWN -->
+        <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2
+              w-56 bg-gradient-to-br from-white to-[#faf7f5] border shadow-xl rounded-xl py-4 z-50
+              
+              opacity-0 invisible 
+              group-hover:opacity-100 group-hover:visible
+              
+              transition-all duration-300
+              translate-y-3 group-hover:translate-y-1">
+
+          <ul class="flex flex-col gap-3 text-[15px] text-[#333] px-6">
+            <li><a class="hover:text-[#D4894E] transition">Turnkey TV</a></li>
+            <li><a class="hover:text-[#D4894E] transition">Refer a Friend</a></li>
+            <li><a class="hover:text-[#D4894E] transition">Press</a></li>
+            <li><a class="hover:text-[#D4894E] transition">Careers</a></li>
+            <li><a class="hover:text-[#D4894E] transition">About Us</a></li>
+            <li><a class="hover:text-[#D4894E] transition">Contact Us</a></li>
+            <li><a class="hover:text-[#D4894E] transition">Policies</a></li>
+          </ul>
+        </div>
+      </li>
+
       <!-- Divider -->
       <div class="h-6 w-px bg-gray-300"></div>
 
@@ -160,7 +197,7 @@
 
   <!-- Mobile Menu -->
   <div *ngIf="mobileOpen"
-    class="xl:hidden w-full bg-white shadow-lg border-t border-gray-200 absolute top-[72px] left-0 z-50 animate-in slide-in-from-top">
+    class="xl:hidden w-full floating-nav bg-white/80 backdrop-blur-xl shadow-lg border-t border-gray-200 absolute top-[72px] left-0 z-50 animate-in slide-in-from-top">
     <div class="px-6 py-4 space-y-4">
       <button class="block w-full text-left py-3 text-gray-700 font-medium border-b">Design Ideas</button>
       <button class="block w-full text-left py-3 text-gray-700 font-medium border-b">Magazine</button>
@@ -193,12 +230,13 @@
         </svg>
       </div>
 
-      <h1 class="text-white font-semibold leading-2 text-7xl lg:text-8xl mb-8 text-balance">
+      <h1
+        class="text-white font-semibold leading-2 text-7xl lg:text-8xl mb-4 md:mb-8 text-justify md:text-balance mt-10 md:mt-0">
         Elevating Spaces<br class="hidden md:block"> Crafting Dreams
       </h1>
 
       <div class="flex flex-col md:flex-row md:items-center gap-6 md:gap-10 text-center md:text-left">
-        <p class="text-white/90 leading-relaxed text-base md:text-lg max-w-2xl mx-auto md:mx-0 font-light">
+        <p class="text-white/90 leading-relaxed text-left text-base md:text-lg max-w-2xl mx-auto md:mx-0 font-light">
           We specialize in transforming visions into reality. Explore our work of innovative architectural and interior
           design solutions.
         </p>
@@ -322,42 +360,114 @@
 
       <!-- Image 1 – Large Feature -->
       <div class="relative md:col-span-2 md:row-span-2 rounded-3xl overflow-hidden group cursor-pointer">
+
+        <!-- Image -->
         <img
           src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/living-1759750377-O1Yiw/lr-13-1763111912-Rl3YP.jpg"
           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+
+        <!-- Small Label (Default) -->
+        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-md px-3 py-1 rounded-full 
+               transition-all duration-300 group-hover:opacity-0">
           Living Room
         </span>
+
+        <!-- SLIDE-UP PANEL ON HOVER -->
+        <div class="absolute bottom-0 left-0 w-full 
+           bg-white/20 backdrop-blur-md
+           translate-y-full group-hover:translate-y-0
+           transition-all duration-500 ease-out
+           px-6 py-6">
+
+          <p class="text-3xl md:text-5xl font-bold text-white">
+            Living Room
+          </p>
+
+        </div>
+
       </div>
 
-      <!-- Image 2 -->
+      <!-- Image 2 – Master Bedroom -->
       <div class="relative md:col-span-2 rounded-3xl overflow-hidden group cursor-pointer">
+        <!-- Image -->
         <img
           src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/mbr-1759750466-DinYK/mbr-10-1763100361-s4LQX.jpg"
           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+
+        <!-- Small Label (Default) -->
+        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-md px-3 py-1 rounded-full
+               transition-all duration-300 group-hover:opacity-0">
           Master Bedroom
         </span>
+
+        <!-- SLIDE-UP PANEL ON HOVER -->
+        <div class="absolute bottom-0 left-0 w-full
+           bg-white/20 backdrop-blur-md
+           translate-y-full group-hover:translate-y-0
+           transition-all duration-500 ease-out
+           px-6 py-6">
+
+          <p class="text-3xl md:text-5xl font-bold text-white">
+            Master Bedroom
+          </p>
+
+        </div>
+
       </div>
 
       <!-- Image 3 -->
       <div class="relative rounded-3xl overflow-hidden group cursor-pointer">
+
+        <!-- Image -->
         <img
           src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/tv-1761583761-DjqGd/20-1762773267-P8Vt9.jpg"
           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+
+        <!-- Small Label (Default) -->
+        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-md px-3 py-1 rounded-full
+               transition-all duration-300 group-hover:opacity-0">
           False Ceiling
         </span>
+
+        <!-- SLIDE-UP PANEL -->
+        <div class="absolute bottom-0 left-0 w-full
+           bg-white/20 backdrop-blur-md
+           translate-y-full group-hover:translate-y-0
+           transition-all duration-500 ease-out
+           px-6 py-6">
+
+          <p class="text-3xl md:text-4xl font-bold text-white tracking-wide">
+            False Ceiling
+          </p>
+        </div>
       </div>
 
       <!-- Image 4 -->
       <div class="relative rounded-3xl overflow-hidden group cursor-pointer">
+
+        <!-- Image -->
         <img
           src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/wr-1759751175-9MtjY/21-1762774027-Iei06.jpg"
           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+
+        <!-- Small Label (Default) -->
+        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-md px-3 py-1 rounded-full
+           transition-all duration-300 group-hover:opacity-0">
           Wardrobe
         </span>
+
+        <!-- SLIDE-UP WHITE OVERLAY -->
+        <div class="absolute bottom-0 left-0 w-full
+           bg-white/20 backdrop-blur-md
+           translate-y-full group-hover:translate-y-0
+           transition-all duration-500 ease-out
+           px-6 py-6">
+
+          <p class="text-3xl md:text-5xl font-bold text-white tracking-wide">
+            Wardrobe
+          </p>
+
+        </div>
       </div>
 
       <!-- Image 5 – Large Full Width -->
@@ -369,26 +479,60 @@
           </span>
         </div> -->
 
-      <!-- Image 6 – Left Bottom Half -->
+      <!-- Image 5 – Left Bottom Half -->
       <div class="relative md:col-span-2 h-[260px] rounded-3xl overflow-hidden group cursor-pointer">
+
+        <!-- Image -->
         <img
           src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/di-1759750788-LFDCZ/16-1762773650-i8mOT.jpg"
           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+
+        <!-- Small Label (Default) -->
+        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-md px-3 py-1 rounded-full
+           transition-all duration-300 group-hover:opacity-0">
           Dining Area
         </span>
+
+        <!-- SLIDE-UP OVERLAY -->
+        <div class="absolute bottom-0 left-0 w-full
+           bg-white/20 backdrop-blur-md
+           translate-y-full group-hover:translate-y-0
+           transition-all duration-500 ease-out
+           px-6 py-6">
+
+          <p class="text-3xl md:text-5xl font-bold text-white tracking-wide">
+            Dining Area
+          </p>
+
+        </div>
       </div>
 
-      <!-- Image 7 – Right Bottom Half -->
+      <!-- Image 6 – Right Bottom Half -->
       <div class="relative md:col-span-2 h-[260px] rounded-3xl overflow-hidden group cursor-pointer">
+
+        <!-- Image -->
         <img
           src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/ond-2023-1696420252-fyaIE/renders-1696505505-hTG0j/study-table-1696505519-Q0m8k/st10-1702448336-FYVVc.jpg"
           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+
+        <!-- Small Label -->
+        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-md px-3 py-1 rounded-full
+           transition-all duration-300 group-hover:opacity-0">
           Study Room
         </span>
-      </div>
 
+        <!-- Premium Slide-Up Overlay -->
+        <div class="absolute bottom-0 left-0 w-full
+           bg-white/20 backdrop-blur-md
+           translate-y-full group-hover:translate-y-0
+           transition-all duration-500 ease-out
+           px-6 py-6">
+
+          <p class="text-3xl md:text-5xl font-bold text-white tracking-wide">
+            Study Room
+          </p>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -413,133 +557,169 @@
       <div class="mt-3 h-[3px] w-16 bg-[#D4894E] mx-auto md:mx-0"></div>
     </div>
 
+    <!-- Why choose us -->
+    <div class="grid md:grid-cols-3 gap-12">
 
-    <div class="grid md:grid-cols-3 gap-10">
+      <!-- LEFT SIDE — FEATURE CARDS -->
+      <div class="md:col-span-2 grid md:grid-cols-2 gap-8">
 
-      <!-- LEFT SIDE — 4 CARDS -->
-      <div class="md:col-span-2 grid md:grid-cols-2 gap-6">
-        <!-- Card 1 -->
-        <div
-          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
-          <div class="flex items-center gap-3 mb-1 md:mb-3">
-            <span class="text-[#D4894E] text-xl"></span>
-            <h3 class="font-semibold text-gray-800 text-lg">End-to-End Turnkey Solutions</h3>
+        <!-- CARD TEMPLATE -->
+        <div class="group bg-white rounded-3xl p-8 shadow-[0_4px_30px_rgba(0,0,0,0.04)]
+             hover:shadow-[0_6px_35px_rgba(0,0,0,0.07)] hover:-translate-y-1
+             transition-all duration-300">
+
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-[#D4894E]/10 flex items-center justify-center">
+              <i class="ri-tools-line text-[#D4894E] text-2xl">E</i>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-[#2C2327] leading-tight">
+                End-to-End Turnkey Solutions
+              </h3>
+              <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+                Complete turnkey execution from design to handover with assured quality.
+              </p>
+            </div>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
-            Complete turnkey execution from design to handover with assured quality.
-          </p>
         </div>
 
-        <!-- Card 2 -->
-        <div
-          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
-          <div class="flex items-center gap-3 mb-1 md:mb-3">
-            <span class="text-[#D4894E] text-xl"></span>
-            <h3 class="font-semibold text-gray-800 text-lg">Comprehensive Services</h3>
+        <!-- CARD 2 -->
+        <div class="group bg-white rounded-3xl p-8 shadow-[0_4px_30px_rgba(0,0,0,0.04)]
+             hover:shadow-[0_6px_35px_rgba(0,0,0,0.07)] hover:-translate-y-1
+             transition-all duration-300">
+
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-[#D4894E]/10 flex items-center justify-center">
+              <i class="ri-building-2-line text-[#D4894E] text-2xl">C</i>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-[#2C2327] leading-tight">
+                Comprehensive Services
+              </h3>
+              <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+                Plumbing, electrical, flooring, carpentry, furniture & more.
+              </p>
+            </div>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
-            Plumbing, electrical, tiling, flooring, carpentry, furniture & much more.
-          </p>
         </div>
 
-        <!-- Card 3 -->
-        <div
-          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
-          <div class="flex items-center gap-3 mb-1 md:mb-3">
-            <span class="text-[#D4894E] text-xl"></span>
-            <h3 class="font-semibold text-gray-800 text-lg">Dedicated Technical Team</h3>
+        <!-- CARD 3 -->
+        <div class="group bg-white rounded-3xl p-8 shadow-[0_4px_30px_rgba(0,0,0,0.04)]
+             hover:shadow-[0_6px_35px_rgba(0,0,0,0.07)] hover:-translate-y-1
+             transition-all duration-300">
+
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-[#D4894E]/10 flex items-center justify-center">
+              <i class="ri-team-line text-[#D4894E] text-2xl">D</i>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-[#2C2327] leading-tight">
+                Dedicated Technical Team
+              </h3>
+              <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+                Expert execution with quality checks & centralized support.
+              </p>
+            </div>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
-            Expert execution, centralized support & quality checks at every step.
-          </p>
         </div>
 
-        <!-- Card 4 -->
-        <div
-          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
-          <div class="flex items-center gap-3 mb-1 md:mb-3">
-            <span class="text-[#D4894E] text-xl"></span>
-            <h3 class="font-semibold text-gray-800 text-lg">Multi-Sector Experience</h3>
+        <!-- CARD 4 -->
+        <div class="group bg-white rounded-3xl p-8 shadow-[0_4px_30px_rgba(0,0,0,0.04)]
+             hover:shadow-[0_6px_35px_rgba(0,0,0,0.07)] hover:-translate-y-1
+             transition-all duration-300">
+
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-[#D4894E]/10 flex items-center justify-center">
+              <i class="ri-community-line text-[#D4894E] text-2xl">M</i>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-[#2C2327] leading-tight">
+                Multi-Sector Experience
+              </h3>
+              <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+                Homes, offices, hospitals, restaurants, hotels & more.
+              </p>
+            </div>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
-            Homes, offices, hospitals, restaurants, hotels & commercial spaces.
-          </p>
         </div>
 
-        <!-- WHAT WE DO CARDS -->
-        <!-- Card 5 -->
-        <div
-          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
-          <div class="flex items-center gap-3 mb-1 md:mb-3">
-            <span class="text-[#D4894E] text-xl"></span>
-            <h3 class="font-semibold text-gray-800 text-lg">Project Delivery</h3>
+        <!-- CARD 5–8 (same pattern, premium version) -->
+        <div class="group bg-white rounded-3xl p-8 shadow-[0_4px_30px_rgba(0,0,0,0.04)]
+                hover:shadow-[0_6px_35px_rgba(0,0,0,0.07)] hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-[#D4894E]/10 flex items-center justify-center">
+              <i class="ri-truck-line text-[#D4894E] text-2xl">P</i>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-[#2C2327]">Project Delivery</h3>
+              <p class="mt-2 text-sm text-gray-600">Kitchens, wardrobes, bedrooms & office interiors.</p>
+            </div>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
-            Kitchens, wardrobes, bedrooms, living areas & office interiors.
-          </p>
         </div>
 
-        <!-- Card 6 -->
-        <div
-          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 p-3 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
-          <div class="flex items-center gap-3 mb-1 md:mb-3">
-            <span class="text-[#D4894E] text-xl"></span>
-            <h3 class="font-semibold text-gray-800 text-lg">Modular Kitchen & Electrical</h3>
+        <div class="group bg-white rounded-3xl p-8 shadow-[0_4px_30px_rgba(0,0,0,0.04)]
+                hover:shadow-[0_6px_35px_rgba(0,0,0,0.07)] hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-[#D4894E]/10 flex items-center justify-center">
+              <i class="ri-flashlight-line text-[#D4894E] text-2xl">M</i>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-[#2C2327]">Modular Kitchen & Electrical</h3>
+              <p class="mt-2 text-sm text-gray-600">Fittings, appliances & integration.</p>
+            </div>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
-            Modular kitchen systems, electrical fittings & appliance integration.
-          </p>
         </div>
 
-        <!-- Card 7 -->
-        <div
-          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 p-3 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
-          <div class="flex items-center gap-3 mb-1 md:mb-3">
-            <span class="text-[#D4894E] text-xl"></span>
-            <h3 class="font-semibold text-gray-800 text-lg">Interior & Civil Works</h3>
+        <div class="group bg-white rounded-3xl p-8 shadow-[0_4px_30px_rgba(0,0,0,0.04)]
+                hover:shadow-[0_6px_35px_rgba(0,0,0,0.07)] hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-[#D4894E]/10 flex items-center justify-center">
+              <i class="ri-home-gear-line text-[#D4894E] text-2xl">I</i>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-[#2C2327]">Interior & Civil Works</h3>
+              <p class="mt-2 text-sm text-gray-600">Flooring, ceilings, AC, windows & finishing.</p>
+            </div>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
-            Marble, flooring, ceilings, AC, windows, fixtures & finishing work.
-          </p>
         </div>
 
-        <!-- Card 8 -->
-        <div
-          class=" bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 p-3 py-6 px-3 md:py-6 md:px-4 rounded-2xl shadow-sm">
-          <div class="flex items-center gap-3 mb-1 md:mb-3">
-            <span class="text-[#D4894E] text-xl"></span>
-            <h3 class="font-semibold text-gray-800 text-lg">Full Project Handover</h3>
+        <div class="group bg-white rounded-3xl p-8 shadow-[0_4px_30px_rgba(0,0,0,0.04)]
+                hover:shadow-[0_6px_35px_rgba(0,0,0,0.07)] hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-[#D4894E]/10 flex items-center justify-center">
+              <i class="ri-checkbox-circle-line text-[#D4894E] text-2xl">F</i>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-[#2C2327]">Full Project Handover</h3>
+              <p class="mt-2 text-sm text-gray-600">Complete accountability from start to finish.</p>
+            </div>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed px-4 md:px-2">
-            Seamless completion of civil + interior works with full accountability.
-          </p>
         </div>
+
       </div>
 
-      <!-- RIGHT SIDE — PREMIUM HIGHLIGHT CARD -->
-      <div
-        class="p-10 rounded-3xl flex flex-col justify-between shadow-xl text-[#2C2327]
-         bg-gradient-to-tr from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 relative overflow-hidden">
+      <!-- RIGHT PREMIUM BLOCK -->
+      <div class="relative p-10 rounded-3xl bg-white shadow-[0_4px_40px_rgba(0,0,0,0.05)]">
+        <h3 class="text-2xl font-semibold text-[#2C2327]">
+          Why We Stand Out
+        </h3>
 
-        <!-- subtle top soft light (optional, looks premium) -->
-        <div class="absolute inset-0 bg-gradient-to-b from-white/70 via-transparent to-transparent pointer-events-none">
-        </div>
+        <p class="mt-4 text-gray-600 text-sm leading-relaxed">
+          With 30+ years of trusted experience, centralized support, expert teams
+          and full turnkey execution — we deliver unmatched quality and reliability.
+        </p>
 
-        <div class="relative z-10">
-          <h3 class="text-2xl font-semibold mb-3 text-[#2C2327]">
-            Why We Stand Out
-          </h3>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            With 30+ years of trusted experience, centralized support, expert teams
-            and full turnkey execution — we deliver unmatched quality and reliability.
-          </p>
-        </div>
-
-        <button class="relative z-10 mt-8 border border-[#2C2327] py-3 rounded-xl text-sm tracking-wide
-           hover:bg-[#2C2327] hover:text-white transition">
+        <button class="mt-8 px-6 py-3 border border-[#2C2327] rounded-xl text-sm 
+             hover:bg-[#2C2327] hover:text-white transition-all duration-300">
           Learn More
         </button>
       </div>
+
     </div>
+
   </div>
 </div>

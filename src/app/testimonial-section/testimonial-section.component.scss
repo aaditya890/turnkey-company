@@ -1,0 +1,5 @@
+/* Smooth fade animation for card focus */
+.card-active {
+  transform: scale(1.05);
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.12);
+}

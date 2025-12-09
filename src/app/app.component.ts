@@ -8,6 +8,7 @@ import {
   type OnInit,
   type OnDestroy,
 } from "@angular/core"
+import { FaqComponent } from "./faq/faq.component";
 
 interface SliderImage {
   src: string
@@ -24,7 +25,7 @@ interface Service {
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FaqComponent],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
 })

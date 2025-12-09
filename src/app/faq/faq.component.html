@@ -1,0 +1,68 @@
+<section class="w-full py-20 px-6 md:px-14 lg:px-20">
+
+  <div class="grid md:grid-cols-3 gap-12">
+
+    <!-- LEFT SECTION -->
+    <div class="space-y-6">
+      <p class="text-xs tracking-widest text-gray-500 font-semibold uppercase">
+        FAQs
+      </p>
+
+      <h2 class="text-4xl font-semibold text-[#314054] leading-tight">
+        Still Have A <br /> Question?
+      </h2>
+
+      <button class="bg-[#D4894E] text-white px-8 py-4 rounded-full flex items-center gap-2
+                     hover:bg-[#bc733b] transition font-medium mt-4 w-fit">
+        See all FAQs
+        <span>↗</span>
+      </button>
+    </div>
+
+    <!-- FAQ ITEMS -->
+    <div class="md:col-span-2 space-y-6">
+
+      <div *ngFor="let item of faqs; let i = index"
+           class="p-6 rounded-2xl border border-gray-200 bg-white shadow-sm
+                  hover:shadow-md transition duration-300 cursor-pointer"
+           (click)="toggleFAQ(i)">
+
+        <div class="flex justify-between items-center">
+          
+          <!-- Number & Title -->
+          <div>
+            <p class="text-gray-400 font-semibold">{{ item.id }}</p>
+            <h3 class="text-md md:text-lg font-medium text-[#083b3b] mt-1">
+              {{ item.question }}
+            </h3>
+          </div>
+
+          <!-- Arrow -->
+          <svg *ngIf="!item.open" xmlns="http://www.w3.org/2000/svg" 
+            fill="none" viewBox="0 0 24 24" stroke-width="2"
+            stroke="#083b3b" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="m6 9 6 6 6-6" />
+          </svg>
+
+          <svg *ngIf="item.open" xmlns="http://www.w3.org/2000/svg" 
+            fill="none" viewBox="0 0 24 24" stroke-width="2"
+            stroke="#083b3b" class="w-6 h-6 rotate-180">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="m6 9 6 6 6-6" />
+          </svg>
+
+        </div>
+
+        <!-- Answer -->
+        <div *ngIf="item.open"
+             class="mt-4 text-gray-600 text-sm leading-relaxed animate-fadeIn">
+          {{ item.answer }}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

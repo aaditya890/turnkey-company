@@ -1,64 +1,88 @@
-<section class="py-20 px-6 md:px-14 lg:px-20 mx-auto max-w-8xl">
+<section class="py-20 px-6 md:px-14 lg:px-20 mx-auto max-w-6xl">
   <!-- Heading -->
-  <div class="text-center mb-14">
-    <h2 class="text-4xl md:text-5xl font-light text-[#2C2327]">
+  <div class="text-center mb-12">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-light text-[#2C2327]">
       Don’t take our word for it! <br />
-      <span class="font-semibold text-[#4169E1]">Hear what our Customers say</span>
+      <span class="font-semibold text-[#D4894E]">
+        Hear what our Customers say
+      </span>
     </h2>
-    <p class="text-gray-500 mt-4">With over 100k+ clients served, here's what they have to say</p>
+    <p class="text-gray-500 mt-3 text-sm md:text-base">
+      With over 100k+ clients served, here’s what they have to say
+    </p>
   </div>
 
   <!-- Slider -->
-  <div class="relative flex justify-center items-center overflow-hidden">
+  <div class="relative flex items-center justify-center gap-6 md:gap-10">
+    <!-- Slides: prev / current / next -->
+    <ng-container *ngFor="let t of visibleTestimonials; let i = index">
+      <article
+        class="flex-none w-[350px] sm:w-[300px] md:w-[360px] lg:w-[420px]
+               rounded-3xl border border-gray-100 bg-white
+               transition-all duration-500 ease-out"
+        [ngClass]="{
+          'scale-100 shadow-xl opacity-100 z-20 py-10 px-8 md:px-10':
+            i === 1,
+          'scale-90 opacity-60 blur-[0px] border-2 border-gray-100 z-10 py-8 px-6 shadow-sm':
+            i !== 1
+        }"
+      >
+        <div class="text-[#f3c29e] text-4xl md:text-5xl mb-4">“</div>
 
-    <div class="flex gap-8 transition-transform duration-500 ease-in-out"
-         [style.transform]="'translateX(-' + currentIndex * 340 + 'px)'">
-
-      <div *ngFor="let t of testimonials"
-        class="min-w-[320px] md:min-w-[380px] bg-white p-8 rounded-3xl border border-gray-200">
-
-        <div class="text-[#cccccc] text-5xl mb-4">“</div>
-
-        <p class="text-gray-700 leading-relaxed text-sm mb-6">
+        <p class="text-gray-700 leading-relaxed text-sm md:text-base mb-6">
           {{ t.text }}
         </p>
 
         <div class="flex items-center gap-3">
-          <img [src]="t.avatar" class="w-10 h-10 rounded-full" />
+          <img
+            [src]="t.avatar"
+            alt="{{ t.name }}"
+            class="w-10 h-10 rounded-full object-cover"
+          />
           <div>
-            <h4 class="text-sm font-semibold text-[#2C2327]">{{ t.name }}</h4>
-            <p class="text-xs text-gray-500">{{ t.role }}</p>
+            <h4 class="text-sm font-semibold text-[#2C2327]">
+              {{ t.name }}
+            </h4>
+            <p class="text-xs text-gray-500">
+              {{ t.role }}
+            </p>
           </div>
         </div>
-      </div>
-
-    </div>
-
+      </article>
+    </ng-container>
   </div>
 
-  <!-- Navigation Buttons -->
+  <!-- Navigation buttons -->
   <div class="flex justify-center gap-4 mt-10">
-    <button (click)="prevSlide()" class="w-10 h-10 flex items-center justify-center 
-           rounded-full border hover:bg-gray-100 transition">
+    <button
+      (click)="prevSlide()"
+      class="w-10 h-10 flex items-center justify-center rounded-full
+             border border-gray-200 bg-white hover:bg-gray-100
+             shadow-sm text-gray-600 text-lg transition"
+    >
       ‹
     </button>
 
-    <button (click)="nextSlide()" class="w-10 h-10 flex items-center justify-center 
-           rounded-full border hover:bg-gray-100 transition">
+    <button
+      (click)="nextSlide()"
+      class="w-10 h-10 flex items-center justify-center rounded-full
+             border border-gray-200 bg-white hover:bg-gray-100
+             shadow-sm text-gray-600 text-lg transition"
+    >
       ›
     </button>
   </div>
 
   <!-- Dots -->
   <div class="flex justify-center mt-6 gap-3">
-    <div *ngFor="let t of testimonials; let i = index"
-         (click)="goToSlide(i)"
-         class="w-3 h-3 rounded-full cursor-pointer transition-all"
-         [ngClass]="{
-            'bg-[#4169E1] w-6': currentIndex === i,
-            'bg-gray-300': currentIndex !== i
-         }">
-    </div>
+    <button
+      *ngFor="let t of testimonials; let i = index"
+      (click)="goToSlide(i)"
+      class="h-2 rounded-full transition-all duration-300"
+      [ngClass]="{
+        'bg-[#D4894E] w-6': currentIndex === i,
+        'bg-gray-300 w-2': currentIndex !== i
+      }"
+    ></button>
   </div>
-
 </section>

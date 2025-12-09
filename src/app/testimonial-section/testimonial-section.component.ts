@@ -9,71 +9,49 @@ import { Component } from '@angular/core';
   styleUrl: './testimonial-section.component.scss'
 })
 export class TestimonialSectionComponent {
-   currentIndex = 1; // middle card active
-
-  testimonials = [
+ testimonials = [
     {
-      name: 'Varun Kumar Thapliyal',
-      role: 'CEO, Reliance AI',
-      avatar: 'https://i.pravatar.cc/100?img=11',
-      text: `Working with them has been a game changer for our organization.
-      Their commitment to safeguarding our data and ensuring compliance
-      has given us peace of mind. The team’s expertise and proactive
-      approach have not only enhanced our security posture but also
-      built trust with our clients. Highly recommend their services!`
-    },
-    {
+      text: 'Turnkey transformed our entire home. Their team is reliable, professional, and communicates extremely well. The design-to-execution workflow was smooth and stress-free.',
       name: 'Anita Kapoor',
       role: 'Founder, HomeScape',
-      avatar: 'https://i.pravatar.cc/100?img=32',
-      text: `Turnkey transformed our entire home. Their team is reliable,
-      professional, and communicates extremely well. The design-to-execution
-      workflow was smooth and stress-free.`
+      avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     },
     {
-      name: 'Rohan Sinha',
-      role: 'CTO, MetaWorks',
-      avatar: 'https://i.pravatar.cc/100?img=22',
-      text: `Exceptional craftsmanship and coordination. They delivered
-      our office interiors ahead of time, maintaining outstanding quality.`
-    },
-    {
+      text: 'Working with them has been a game changer for our organization. Their proactive approach enhanced our security posture and built deep trust with our clients.',
       name: 'Varun Kumar Thapliyal',
       role: 'CEO, Reliance AI',
-      avatar: 'https://i.pravatar.cc/100?img=11',
-      text: `Working with them has been a game changer for our organization.
-      Their commitment to safeguarding our data and ensuring compliance
-      has given us peace of mind. The team’s expertise and proactive
-      approach have not only enhanced our security posture but also
-      built trust with our clients. Highly recommend their services!`
+      avatar: 'https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     },
     {
-      name: 'Anita Kapoor',
-      role: 'Founder, HomeScape',
-      avatar: 'https://i.pravatar.cc/100?img=32',
-      text: `Turnkey transformed our entire home. Their team is reliable,
-      professional, and communicates extremely well. The design-to-execution
-      workflow was smooth and stress-free.`
-    },
-    {
+      text: 'Exceptional craftsmanship and coordination. They delivered our office interiors ahead of time while maintaining outstanding quality.',
       name: 'Rohan Sinha',
       role: 'CTO, MetaWorks',
-      avatar: 'https://i.pravatar.cc/100?img=22',
-      text: `Exceptional craftsmanship and coordination. They delivered
-      our office interiors ahead of time, maintaining outstanding quality.`
-    }
+      avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    },
+    // add as many as you want – layout stays same
   ];
 
-  goToSlide(index: number) {
-    this.currentIndex = index;
-  }
+  currentIndex = 0;
 
-  prevSlide() {
-    this.currentIndex =
-      (this.currentIndex - 1 + this.testimonials.length) % this.testimonials.length;
+  get visibleTestimonials() {
+    const len = this.testimonials.length;
+    const prev = this.testimonials[(this.currentIndex - 1 + len) % len];
+    const current = this.testimonials[this.currentIndex];
+    const next = this.testimonials[(this.currentIndex + 1) % len];
+    return [prev, current, next];
   }
 
   nextSlide() {
     this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
+  }
+
+  prevSlide() {
+    this.currentIndex =
+      (this.currentIndex - 1 + this.testimonials.length) %
+      this.testimonials.length;
+  }
+
+  goToSlide(i: number) {
+    this.currentIndex = i;
   }
 }

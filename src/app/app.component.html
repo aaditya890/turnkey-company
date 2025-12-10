@@ -194,10 +194,10 @@
       {{ mobileOpen ? "✕" : "☰" }}
     </button>
   </nav>
-
   <!-- Mobile Menu -->
-  <div *ngIf="mobileOpen"
-    class="xl:hidden w-full floating-nav bg-white/80 backdrop-blur-xl shadow-lg border-t border-gray-200 absolute top-[72px] left-0 z-50 animate-in slide-in-from-top">
+  <div *ngIf="mobileOpen" class="xl:hidden w-full fixed top-[72px] left-0 
+         bg-white/90 backdrop-blur-xl shadow-2xl border-t border-gray-200 
+         z-[999] animate-in slide-in-from-top mx-auto">
     <div class="px-6 py-4 space-y-4">
       <button class="block w-full text-left py-3 text-gray-700 font-medium border-b">Design Ideas</button>
       <button class="block w-full text-left py-3 text-gray-700 font-medium border-b">Magazine</button>
@@ -212,8 +212,8 @@
   </div>
 
   <!-- HERO SECTION -->
-  <div class="relative w-full h-[92vh] flex items-center bg-cover bg-center"
-    style="background-image: url('assets/heroimage.jpg');">
+  <div class="relative w-full h-[100vh] flex items-center bg-cover bg-center"
+    style="background-image: url('assets/1.webp');">
     <div class="absolute inset-0 bg-black/35"></div>
 
     <div class="relative z-10 w-full mx-auto px-4 md:px-14 text-center md:text-left">
@@ -250,7 +250,7 @@
   </div>
 
   <!-- ENHANCED ABOUT US SECTION -->
-  <div class="w-full py-5 md:py-24 bg-white">
+  <div class="w-full py-5 md:py-16 bg-white">
     <!-- Header -->
     <div class="grid md:grid-cols-2 gap-12 items-center mx-auto px-4 md:px-14 mb-10">
 
@@ -267,43 +267,37 @@
     </div>
 
     <!-- Image Slider -->
-    <div class="relative px-4 md:px-14 mx-auto mb-20">
+    <div class="relative mb-20">
+      <!-- <div class="pointer-events-none absolute left-0 top-0 h-full w-20 
+              bg-gradient-to-r from-white to-transparent z-20"></div>
+
+      <div class="pointer-events-none absolute right-0 top-0 h-full w-20 
+              bg-gradient-to-l from-white to-transparent z-20"></div> -->
+
       <div class="relative group" #sliderContainer>
-        <div class="slider-wrapper overflow-hidden relative" #sliderWrapper>
+        <div class="overflow-hidden relative" #sliderWrapper>
           <div class="slider-track flex gap-6 w-max" #sliderTrack>
+
+            <!-- DOUBLE SET (NOT TRIPLE) -->
             <ng-container *ngFor="let img of sliderImages">
-              <img [src]="img.src" [alt]="img.alt" [ngClass]="img.size" class="object-cover rounded-lg flex-shrink-0" />
+              <img [src]="img.src" [alt]="img.alt" class="rounded-xl object-cover flex-shrink-0" [ngClass]="img.size" />
             </ng-container>
 
-            <!-- Duplicate -->
             <ng-container *ngFor="let img of sliderImages">
-              <img [src]="img.src" [alt]="img.alt" [ngClass]="img.size" class="object-cover rounded-lg flex-shrink-0" />
+              <img [src]="img.src" [alt]="img.alt" class="rounded-xl object-cover flex-shrink-0" [ngClass]="img.size" />
             </ng-container>
+
           </div>
-
         </div>
-
-        <!-- Navigation Arrows -->
-        <button (click)="prevSlide()"
-          class="absolute left-4 top-1/2 z-20 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100 md:flex items-center justify-center hidden">
-          <svg class="w-6 h-6 text-[#D4894E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </button>
-
-        <button (click)="nextSlide()"
-          class="absolute right-4 top-1/2 z-20 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100 md:flex items-center justify-center hidden">
-          <svg class="w-6 h-6 text-[#D4894E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </button>
       </div>
 
-      <!-- Indicators -->
+      <!-- INDICATORS -->
       <div class="flex justify-center gap-3 mt-8">
         <button *ngFor="let img of sliderImages; let i = index" (click)="goToSlide(i)"
-          [ngClass]="{'bg-[#D4894E] w-3': currentSlideIndex === i, 'bg-gray-300 w-2': currentSlideIndex !== i}"
-          class="h-2 rounded-full transition-all duration-300 cursor-pointer">
+          class="h-2 rounded-full transition-all duration-300 cursor-pointer" [ngClass]="{
+        'bg-[#D4894E] w-4': currentSlide === i,
+        'bg-gray-300 w-2': currentSlide !== i
+      }">
         </button>
       </div>
     </div>
@@ -311,27 +305,61 @@
     <!-- Achievement Stats -->
     <div class="px-4 md:px-14 mx-auto">
       <div class="grid md:grid-cols-4 gap-6">
-        <div
-          class="text-center p-8 rounded-xl bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 transition-all duration-300">
-          <p class="text-3xl md:text-4xl font-bold text-[#D4894E] mb-2">32</p>
-          <p class="text-gray-700 font-medium">Awards Won</p>
+        
+        <!-- CARD 1 -->
+        <div class="text-center p-10 rounded-2xl 
+           bg-gradient-to-br from-white to-[#faf7f5]
+           border border-[#d4894e]/20 
+           shadow-sm
+           hover:-translate-y-1
+           transition-all duration-300 cursor-pointer
+           group">
+
+          <p class="text-3xl md:text-4xl font-bold text-[#D4894E] mb-2 stat-number" countTo="32">0</p>
+          <p class="text-gray-700 font-medium text-md">Awards Won</p>
         </div>
-        <div
-          class="text-center p-8 rounded-xl bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 transition-all duration-300">
-          <p class="text-3xl md:text-4xl font-bold text-[#D4894E] mb-2">10K+</p>
-          <p class="text-gray-700 font-medium">Happy Clients</p>
+
+        <!-- CARD 2 -->
+        <div class="text-center p-10 rounded-2xl 
+           bg-gradient-to-br from-white to-[#faf7f5]
+           border border-[#d4894e]/20 
+           shadow-sm
+           hover:-translate-y-1
+           transition-all duration-300 cursor-pointer
+           group">
+
+          <p class="text-3xl md:text-4xl font-bold text-[#D4894E] mb-2 stat-number" countTo="10000">0</p>
+          <p class="text-gray-700 font-medium text-md">Happy Clients</p>
         </div>
-        <div
-          class="text-center p-8 rounded-xl bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 transition-all duration-300">
-          <p class="text-3xl md:text-4xl font-bold text-[#D4894E] mb-2">25</p>
-          <p class="text-gray-700 font-medium">Cities</p>
+
+        <!-- CARD 3 -->
+        <div class="text-center p-10 rounded-2xl 
+           bg-gradient-to-br from-white to-[#faf7f5]
+           border border-[#d4894e]/20 
+           shadow-sm
+           hover:-translate-y-1
+           transition-all duration-300 cursor-pointer
+           group">
+
+          <p class="text-3xl md:text-4xl font-bold text-[#D4894E] mb-2 stat-number" countTo="25">0</p>
+          <p class="text-gray-700 font-medium text-md">Cities</p>
         </div>
-        <div
-          class="text-center p-8 rounded-xl bg-gradient-to-br from-white to-[#faf7f5] border border-gray-100 hover:border-[#D4894E]/20 transition-all duration-300">
-          <p class="text-3xl md:text-4xl font-bold text-[#D4894E] mb-2">2M+</p>
-          <p class="text-gray-700 font-medium">Sq. Ft.</p>
+
+        <!-- CARD 4 -->
+        <div class="text-center p-10 rounded-2xl 
+           bg-gradient-to-br from-white to-[#faf7f5]
+           border border-[#d4894e]/20 
+           shadow-sm
+           hover:-translate-y-1
+           transition-all duration-300 cursor-pointer
+           group">
+
+          <p class="text-3xl md:text-4xl font-bold text-[#D4894E] mb-2 stat-number" countTo="2000000">0</p>
+          <p class="text-gray-700 font-medium text-md">Sq. Ft.</p>
         </div>
+
       </div>
+
     </div>
   </div>
 
@@ -354,187 +382,92 @@
       <div class="mt-3 h-[3px] w-16 bg-[#D4894E] mx-auto md:mx-0"></div>
     </div>
 
+    <!-- Bento Slider Wrapper -->
+    <div class="relative overflow-hidden">
 
-    <!-- Bento Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-4 auto-rows-[240px] gap-6 mt-12">
+      <!-- Track (Slides wrapper) -->
+      <div class="flex transition-transform duration-700 ease-out"
+        [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+        <!-- PAGE 1 -->
+        <div class="min-w-full">
+          <div class="grid grid-cols-1 md:grid-cols-4 auto-rows-[260px] gap-6 mt-16">
 
-      <!-- Image 1 – Large Feature -->
-      <div class="relative md:col-span-2 md:row-span-2 rounded-3xl overflow-hidden group cursor-pointer">
+            <ng-container *ngFor="let item of bentoItemsPage1">
+              <div [ngClass]="item.grid" class="relative overflow-hidden rounded-3xl group cursor-pointer 
+                   shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_15px_45px_rgba(0,0,0,0.12)]
+                   transition-all duration-500">
 
-        <!-- Image -->
-        <img
-          src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/living-1759750377-O1Yiw/lr-13-1763111912-Rl3YP.jpg"
-          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <!-- IMAGE -->
+                <img [src]="item.img" class="absolute inset-0 w-full h-full object-cover 
+                     transition-all duration-700 group-hover:scale-110 group-hover:rotate-[1deg]" />
 
-        <!-- Small Label (Default) -->
-        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-md px-3 py-1 rounded-full 
-               transition-all duration-300 group-hover:opacity-0">
-          Living Room
-        </span>
+                <!-- OVERLAY -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent
+                        opacity-0 group-hover:opacity-100 transition duration-500"></div>
 
-        <!-- SLIDE-UP PANEL ON HOVER -->
-        <div class="absolute bottom-0 left-0 w-full 
-           bg-white/20 backdrop-blur-md
-           translate-y-full group-hover:translate-y-0
-           transition-all duration-500 ease-out
-           px-6 py-6">
+                <!-- LABEL -->
+                <span class="absolute bottom-4 left-4 text-white bg-black/50 px-4 py-1.5 rounded-full 
+                         text-[15px] font-medium tracking-wide group-hover:opacity-0">
+                  {{ item.label }}
+                </span>
 
-          <p class="text-3xl md:text-5xl font-bold text-white">
-            Living Room
-          </p>
+                <!-- SLIDE-UP TITLE -->
+                <div class="absolute bottom-0 left-0 w-full p-6 translate-y-[120%] 
+                     group-hover:translate-y-0 transition duration-500">
+                  <h3 class="text-3xl md:text-5xl font-bold text-white">{{ item.label }}</h3>
+                  <div class="h-[3px] w-16 bg-white/80 mt-3 rounded-full"></div>
+                </div>
+              </div>
+            </ng-container>
 
+          </div>
         </div>
 
-      </div>
+        <!-- PAGE 2 -->
+        <div class="min-w-full">
+          <div class="grid grid-cols-1 md:grid-cols-4 auto-rows-[260px] gap-6 mt-16">
 
-      <!-- Image 2 – Master Bedroom -->
-      <div class="relative md:col-span-2 rounded-3xl overflow-hidden group cursor-pointer">
-        <!-- Image -->
-        <img
-          src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/mbr-1759750466-DinYK/mbr-10-1763100361-s4LQX.jpg"
-          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <ng-container *ngFor="let item of bentoItemsPage2">
+              <div [ngClass]="item.grid" class="relative overflow-hidden rounded-3xl group cursor-pointer 
+                   shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_15px_45px_rgba(0,0,0,0.12)]
+                   transition-all duration-500">
 
-        <!-- Small Label (Default) -->
-        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-md px-3 py-1 rounded-full
-               transition-all duration-300 group-hover:opacity-0">
-          Master Bedroom
-        </span>
+                <img [src]="item.img" class="absolute inset-0 w-full h-full object-cover 
+                     transition-all duration-700 group-hover:scale-110 group-hover:rotate-[1deg]" />
 
-        <!-- SLIDE-UP PANEL ON HOVER -->
-        <div class="absolute bottom-0 left-0 w-full
-           bg-white/20 backdrop-blur-md
-           translate-y-full group-hover:translate-y-0
-           transition-all duration-500 ease-out
-           px-6 py-6">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent
+                        opacity-0 group-hover:opacity-100 transition duration-500"></div>
 
-          <p class="text-3xl md:text-5xl font-bold text-white">
-            Master Bedroom
-          </p>
+                <span class="absolute bottom-4 left-4 text-white bg-black/50 px-4 py-1.5 rounded-full 
+                         text-[15px] font-medium tracking-wide group-hover:opacity-0">
+                  {{ item.label }}
+                </span>
 
-        </div>
+                <div class="absolute bottom-0 left-0 w-full p-6 translate-y-[120%] 
+                     group-hover:translate-y-0 transition duration-500">
+                  <h3 class="text-3xl md:text-5xl font-bold text-white">{{ item.label }}</h3>
+                  <div class="h-[3px] w-16 bg-white/80 mt-3 rounded-full"></div>
+                </div>
+              </div>
+            </ng-container>
 
-      </div>
-
-      <!-- Image 3 -->
-      <div class="relative rounded-3xl overflow-hidden group cursor-pointer">
-
-        <!-- Image -->
-        <img
-          src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/tv-1761583761-DjqGd/20-1762773267-P8Vt9.jpg"
-          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-
-        <!-- Small Label (Default) -->
-        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-md px-3 py-1 rounded-full
-               transition-all duration-300 group-hover:opacity-0">
-          False Ceiling
-        </span>
-
-        <!-- SLIDE-UP PANEL -->
-        <div class="absolute bottom-0 left-0 w-full
-           bg-white/20 backdrop-blur-md
-           translate-y-full group-hover:translate-y-0
-           transition-all duration-500 ease-out
-           px-6 py-6">
-
-          <p class="text-3xl md:text-4xl font-bold text-white tracking-wide">
-            False Ceiling
-          </p>
+          </div>
         </div>
       </div>
 
-      <!-- Image 4 -->
-      <div class="relative rounded-3xl overflow-hidden group cursor-pointer">
+      <!-- NEXT BUTTON -->
+      <button (click)="nextBento()" *ngIf="currentIndex === 0"
+        class="absolute right-4 top-2 md:top-1/2  bg-white text-black rounded-full p-3 shadow">
+        ➜
+      </button>
 
-        <!-- Image -->
-        <img
-          src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/wr-1759751175-9MtjY/21-1762774027-Iei06.jpg"
-          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+      <!-- PREV BUTTON -->
+      <button (click)="prevBento()" *ngIf="currentIndex === 1"
+        class="absolute left-4 top-2 md:top-1/2 bg-white text-black rounded-full p-3 shadow">
+        ←
+      </button>
 
-        <!-- Small Label (Default) -->
-        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-md px-3 py-1 rounded-full
-           transition-all duration-300 group-hover:opacity-0">
-          Wardrobe
-        </span>
-
-        <!-- SLIDE-UP WHITE OVERLAY -->
-        <div class="absolute bottom-0 left-0 w-full
-           bg-white/20 backdrop-blur-md
-           translate-y-full group-hover:translate-y-0
-           transition-all duration-500 ease-out
-           px-6 py-6">
-
-          <p class="text-3xl md:text-5xl font-bold text-white tracking-wide">
-            Wardrobe
-          </p>
-
-        </div>
-      </div>
-
-      <!-- Image 5 – Large Full Width -->
-      <!-- <div class="relative md:col-span-4 h-[380px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer">
-          <img src="https://framerusercontent.com/images/4rmGC8C7OCFdTQE64j3kp3rbFNw.png"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-          <span class="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
-            Kitchen
-          </span>
-        </div> -->
-
-      <!-- Image 5 – Left Bottom Half -->
-      <div class="relative md:col-span-2 h-[260px] rounded-3xl overflow-hidden group cursor-pointer">
-
-        <!-- Image -->
-        <img
-          src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/di-1759750788-LFDCZ/16-1762773650-i8mOT.jpg"
-          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-
-        <!-- Small Label (Default) -->
-        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-md px-3 py-1 rounded-full
-           transition-all duration-300 group-hover:opacity-0">
-          Dining Area
-        </span>
-
-        <!-- SLIDE-UP OVERLAY -->
-        <div class="absolute bottom-0 left-0 w-full
-           bg-white/20 backdrop-blur-md
-           translate-y-full group-hover:translate-y-0
-           transition-all duration-500 ease-out
-           px-6 py-6">
-
-          <p class="text-3xl md:text-5xl font-bold text-white tracking-wide">
-            Dining Area
-          </p>
-
-        </div>
-      </div>
-
-      <!-- Image 6 – Right Bottom Half -->
-      <div class="relative md:col-span-2 h-[260px] rounded-3xl overflow-hidden group cursor-pointer">
-
-        <!-- Image -->
-        <img
-          src="https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/ond-2023-1696420252-fyaIE/renders-1696505505-hTG0j/study-table-1696505519-Q0m8k/st10-1702448336-FYVVc.jpg"
-          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-
-        <!-- Small Label -->
-        <span class="absolute bottom-3 left-3 bg-black/70 text-white text-md px-3 py-1 rounded-full
-           transition-all duration-300 group-hover:opacity-0">
-          Study Room
-        </span>
-
-        <!-- Premium Slide-Up Overlay -->
-        <div class="absolute bottom-0 left-0 w-full
-           bg-white/20 backdrop-blur-md
-           translate-y-full group-hover:translate-y-0
-           transition-all duration-500 ease-out
-           px-6 py-6">
-
-          <p class="text-3xl md:text-5xl font-bold text-white tracking-wide">
-            Study Room
-          </p>
-        </div>
-      </div>
     </div>
-
   </div>
 
   <!-- WHY CHOOSE US — CNtravel Premium Layout -->
@@ -721,95 +654,108 @@
     </div>
 
     <!-- Offering section -->
-    <div class="grid md:grid-cols-2 gap-14 items-start pt-10 md:pt-24">
+    <div class="grid md:grid-cols-2 gap-16 items-start pt-16 md:pt-28">
+
       <!-- LEFT SIDE -->
-      <div>
-        <div class="mb-8">
-          <!-- Label -->
-          <p
-            class="text-[11px] md:text-xs font-semibold tracking-[0.25em] text-gray-500 uppercase mb-3 text-center md:text-left">
-            Our Offering
-          </p>
+      <div data-aos="fade-right">
 
-          <!-- Heading -->
-          <h2 class="text-3xl md:text-5xl font-semibold leading-tight text-[#2C2327] text-center md:text-left">
-            <span class="text-[#D4894E]">What</span>
-            <span class="text-[#D4894E] ml-1">We</span><br class="hidden md:block" />
-            <span class="font-normal text-[#2C2327]">Offer</span>
-          </h2>
+        <!-- Label -->
+        <p class="text-[11px] md:text-xs font-semibold tracking-[0.25em] text-gray-500 uppercase mb-3">
+          Our Offering
+        </p>
 
-          <!-- Decorative underline -->
-          <div class="w-16 h-1 bg-[#D4894E] mt-4 mb-6 rounded-full mx-auto md:mx-0"></div>
-        </div>
+        <!-- Title -->
+        <h2 class="text-4xl md:text-5xl leading-tight font-light text-[#2C2327]">
+          <span class="font-semibold text-[#D4894E]">What</span>
+          <span class="font-semibold text-[#D4894E] ml-1">We</span><br />
+          <span class="font-normal text-[#2C2327]">Offer</span>
+        </h2>
+
+        <!-- Underline -->
+        <div class="w-20 h-1 bg-[#D4894E] mt-4 mb-10 rounded-full"></div>
 
         <!-- Bullet List -->
-        <ul class="space-y-5 text-gray-700 text-sm md:text-base leading-relaxed">
+        <ul class="space-y-6 text-gray-700 text-base leading-relaxed">
 
-          <li class="flex gap-3 group">
-            <span class="text-[#D4894E] text-lg group-hover:scale-125 transition">•</span>
+          <li class="flex gap-4 items-start group">
+            <svg class="w-5 h-5 text-[#D4894E] mt-1 group-hover:scale-125 transition" fill="none" stroke="currentColor"
+              stroke-width="2" viewBox="0 0 24 24">
+              <path d="M5 12l5 5L20 7" />
+            </svg>
             <span>Single-point responsibility with complete trade coordination.</span>
           </li>
 
-          <li class="flex gap-3 group">
-            <span class="text-[#D4894E] text-lg group-hover:scale-125 transition">•</span>
+          <li class="flex gap-4 items-start group">
+            <svg class="w-5 h-5 text-[#D4894E] mt-1 group-hover:scale-125 transition" fill="none" stroke="currentColor"
+              stroke-width="2" viewBox="0 0 24 24">
+              <path d="M5 12l5 5L20 7" />
+            </svg>
             <span>Best-in-class quality workmanship at competitive pricing.</span>
           </li>
 
-          <li class="flex gap-3 group">
-            <span class="text-[#D4894E] text-lg group-hover:scale-125 transition">•</span>
+          <li class="flex gap-4 items-start group">
+            <svg class="w-5 h-5 text-[#D4894E] mt-1 group-hover:scale-125 transition" fill="none" stroke="currentColor"
+              stroke-width="2" viewBox="0 0 24 24">
+              <path d="M5 12l5 5L20 7" />
+            </svg>
             <span>One-year service warranty & centralized customer support.</span>
           </li>
 
-          <li class="flex gap-3 group">
-            <span class="text-[#D4894E] text-lg group-hover:scale-125 transition">•</span>
-            <span>Capability to handle projects of any size—residential or commercial.</span>
+          <li class="flex gap-4 items-start group">
+            <svg class="w-5 h-5 text-[#D4894E] mt-1 group-hover:scale-125 transition" fill="none" stroke="currentColor"
+              stroke-width="2" viewBox="0 0 24 24">
+              <path d="M5 12l5 5L20 7" />
+            </svg>
+            <span>Capability to handle projects of any size — residential or commercial.</span>
           </li>
 
         </ul>
+
       </div>
 
       <!-- RIGHT SIDE CARD -->
-      <div class="relative rounded-3xl overflow-hidden bg-[#1F2A37] text-white shadow-2xl p-10 md:p-12">
+      <div class="relative rounded-3xl overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.15)]
+           backdrop-blur-xl border border-white/10 bg-[#1F2A37]/95 p-12 group" data-aos="fade-left">
 
-        <!-- Soft Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-black/20 pointer-events-none">
-        </div>
-
-        <div class="relative space-y-8 z-10">
+        <!-- Inner Content -->
+        <div class="relative z-10 space-y-10">
 
           <div>
-            <h3 class="text-xl font-semibold tracking-wide">INTEGRITY</h3>
-            <p class="text-gray-200 text-sm mt-1">
+            <h3 class="text-2xl font-semibold tracking-wide text-white">INTEGRITY</h3>
+            <p class="text-gray-300 mt-2">
               End-to-end turnkey solutions from design to handover.
             </p>
           </div>
 
           <div>
-            <h3 class="text-xl font-semibold tracking-wide">INNOVATION</h3>
-            <p class="text-gray-200 text-sm mt-1">
+            <h3 class="text-2xl font-semibold tracking-wide text-white">INNOVATION</h3>
+            <p class="text-gray-300 mt-2">
               Comprehensive service across plumbing, electrical, flooring, carpentry & more.
             </p>
           </div>
 
           <div>
-            <h3 class="text-xl font-semibold tracking-wide">TEAM WORK</h3>
-            <p class="text-gray-200 text-sm mt-1">
+            <h3 class="text-2xl font-semibold tracking-wide text-white">TEAM WORK</h3>
+            <p class="text-gray-300 mt-2">
               Dedicated technical team & centralized after-sales support.
             </p>
           </div>
 
           <div>
-            <h3 class="text-xl font-semibold tracking-wide">EXPERIENCE</h3>
-            <p class="text-gray-200 text-sm mt-1">
+            <h3 class="text-2xl font-semibold tracking-wide text-white">EXPERIENCE</h3>
+            <p class="text-gray-300 mt-2">
               Cross-sector expertise: homes, offices, commercial buildings, hospitals & hotels.
             </p>
           </div>
-
         </div>
 
-        <!-- IMAGE SLICE -->
+        <!-- IMAGE SLICE WITH PARALLAX -->
         <div class="absolute top-0 right-0 h-full w-1/3 overflow-hidden hidden md:block">
-          <img src="https://images.livspace-cdn.com/w:282/h:394/dpr:2/plain/https://d3gq2merok8n5r.cloudfront.net/bumblebee/in/interior-designer-near-me-1668702759-oSI2D/design-stories-1668705027-Hz88h/desktop-1668705032-723a7/new-folder-1689150183-B8fsX/master-bedroom-d-1689150615-GAvUx.jpg" class="w-full h-full object-cover opacity-90 mix-blend-lighten" />
+          <img
+            src="https://images.livspace-cdn.com/w:282/h:394/dpr:2/plain/https://d3gq2merok8n5r.cloudfront.net/bumblebee/in/interior-designer-near-me-1668702759-oSI2D/design-stories-1668705027-Hz88h/desktop-1668705032-723a7/new-folder-1689150183-B8fsX/master-bedroom-d-1689150615-GAvUx.jpg"
+            class="w-full h-full object-cover opacity-95 transform transition duration-700 group-hover:scale-110 blur-[1.5px]" />
+
+          <!-- gradient to blend image -->
           <div class="absolute inset-0 bg-gradient-to-l from-[#1F2A37] via-transparent to-transparent"></div>
         </div>
 
@@ -818,89 +764,126 @@
     </div>
   </div>
 
+  <!-- Faq's section -->
   <app-faq></app-faq>
 
+  <!-- Testimonials section -->
   <app-testimonial-section></app-testimonial-section>
-  
-  <footer class="bg-gradient-to-br from-[#D4894E] via-[#c67a43] to-[#d1793e]
-               text-white py-20 px-6 md:px-14 lg:px-20">
-  <!-- MAIN GRID -->
-  <div class="grid lg:grid-cols-3 gap-16">
 
-    <!-- LEFT CTA -->
-    <div>
-      <h2 class="text-4xl md:text-5xl font-semibold leading-tight mb-6">
-        Ready To Build Your <br /> Dream Project?
-      </h2>
+  <footer class="relative overflow-hidden text-white py-20 px-6 md:px-14 lg:px-20">
 
-      <button class="bg-[#f7eecf] text-[#083b3b] px-8 py-4 rounded-full font-medium text-lg
-                     hover:bg-white transition inline-flex items-center gap-2">
-        Get in touch
-        <span class="text-xl">↗</span>
-      </button>
+    <!-- Luxury Gradient + Noise Texture Background -->
+    <div class="absolute inset-0 -z-10 bg-gradient-to-br from-[#D4894E] via-[#c67a43] to-[#d1793e]"></div>
+    <div class="absolute inset-0 -z-10 opacity-[0.12]" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.4) 1px, transparent 0);
+              background-size: 22px 22px;"></div>
+
+    <!-- Subtle top shine -->
+    <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white/20 to-transparent pointer-events-none">
     </div>
 
-    <!-- CENTER LINKS -->
-    <div class="grid grid-cols-2 gap-10">
 
+    <!-- MAIN GRID -->
+    <div class="grid lg:grid-cols-3 gap-16 relative z-10">
+
+      <!-- LEFT CTA -->
       <div>
-        <p class="text-gray-200 text-sm mb-4">Company</p>
-        <ul class="space-y-3 text-[15px]">
-          <li class="hover:text-[#314054] transition cursor-pointer">Projects</li>
-          <li class="hover:text-[#314054] transition cursor-pointer">About</li>
-          <li class="hover:text-[#314054] transition cursor-pointer">Contact</li>
-          <li class="hover:text-[#314054] transition cursor-pointer">Career</li>
-        </ul>
+        <h2 class="text-4xl md:text-5xl font-light leading-tight mb-8 tracking-tight">
+          Ready To Build Your <br />
+          <span class="font-semibold">Dream Project?</span>
+        </h2>
+
+        <button class="bg-[#f7eecf] text-[#2C2327] px-8 py-4 rounded-full font-medium text-lg
+                     hover:bg-white transition inline-flex items-center gap-2 shadow-md">
+          Get in touch
+          <span class="text-xl">↗</span>
+        </button>
       </div>
 
-      <div>
-        <p class="text-gray-200 text-sm mb-4">Pages</p>
-        <ul class="space-y-3 text-[15px]">
-          <li class="hover:text-[#314054] transition cursor-pointer">Terms & Conditions</li>
-          <li class="hover:text-[#314054] transition cursor-pointer">Policies</li>
-          <li class="hover:text-[#314054] transition cursor-pointer">FAQs</li>
-          <li class="hover:text-[#314054] transition cursor-pointer">404</li>
-        </ul>
+
+      <!-- CENTER LINKS -->
+      <div class="grid grid-cols-2 gap-10">
+
+        <div>
+          <p class="text-white/90 font-semibold text-xl mb-5 tracking-wide">Company</p>
+          <ul class="space-y-3 text-[15px]">
+            <li class="group cursor-pointer">
+              <span class="relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[1.5px]
+              after:w-0 after:bg-white after:transition-all group-hover:after:w-full">
+                Projects
+              </span>
+            </li>
+
+            <li class="group cursor-pointer">
+              <span class="relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[1.5px]
+              after:w-0 after:bg-white after:transition-all group-hover:after:w-full">
+                About
+              </span>
+            </li>
+
+            <li class="group cursor-pointer">
+              <span class="relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[1.5px]
+              after:w-0 after:bg-white after:transition-all group-hover:after:w-full">
+                Contact
+              </span>
+            </li>
+
+            <li class="group cursor-pointer">
+              <span class="relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[1.5px]
+              after:w-0 after:bg-white after:transition-all group-hover:after:w-full">
+                Career
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-white/90 font-semibold text-xl mb-5 tracking-wide">Pages</p>
+          <ul class="space-y-3 text-[15px]">
+            <li class="hover:underline underline-offset-4 cursor-pointer">Terms & Conditions</li>
+            <li class="hover:underline underline-offset-4 cursor-pointer">Policies</li>
+            <li class="hover:underline underline-offset-4 cursor-pointer">FAQs</li>
+            <li class="hover:underline underline-offset-4 cursor-pointer">404</li>
+          </ul>
+        </div>
+
+      </div>
+
+
+      <!-- RIGHT CONTACT + SOCIAL -->
+      <div class="space-y-6">
+
+        <!-- Logo Capsule -->
+        <div class="bg-white/95 backdrop-blur-sm shadow-lg rounded-[40px] px-6 py-3 w-fit border border-white/40">
+          <img src="assets/logo-2.png" alt="Turnkey Logo" class="h-12" />
+        </div>
+
+        <p class="text-white/90 text-sm leading-relaxed max-w-xs">
+          Delivering end-to-end turnkey solutions from design to execution with unmatched quality & expertise.
+        </p>
+
+        <!-- CONTACT DETAILS -->
+        <div class="text-sm text-white/90 space-y-1">
+          <p>70 University Ave</p>
+          <p>Palo Alto, CA 94301</p>
+          <p>650.671.1706</p>
+          <p>hello&#64;turnkey.com</p>
+        </div>
+
+        <!-- SOCIAL LINKS -->
+        <div class="flex gap-6 pt-4 text-white/80">
+          <a class="hover:text-white transition">Discord</a>
+          <a class="hover:text-white transition">Twitter</a>
+          <a class="hover:text-white transition">LinkedIn</a>
+        </div>
+
       </div>
 
     </div>
 
-    <!-- RIGHT CONTACT + SOCIAL -->
-    <div class="space-y-6">
-      <!-- TURNKEY LOGO BLOCK -->
-      <div class="bg-white rounded-[40px] px-4 w-fit">
-        <img src="assets/logo-2.png" alt="Turnkey Logo" class="h-12" />
-      </div>
 
-      <p class="text-gray-200 text-sm leading-relaxed max-w-xs">
-        Delivering end-to-end turnkey solutions, from design to execution,
-        with unmatched quality and expertise.
-      </p>
-
-      <!-- CONTACT -->
-      <div class="text-[15px] space-y-1">
-        <p>70 University Ave</p>
-        <p>Palo Alto, CA 94301</p>
-        <p>650.671.1706</p>
-        <p>hello&#64;turnkey.com</p>
-      </div>
-
-      <!-- SOCIAL LINKS -->
-      <div class="flex gap-6 pt-4">
-        <a class="hover:text-[#314054] cursor-pointer transition">Discord</a>
-        <a class="hover:text-[#314054] cursor-pointer transition">Twitter</a>
-        <a class="hover:text-[#314054] cursor-pointer transition">LinkedIn</a>
-      </div>
-
+    <!-- COPYRIGHT -->
+    <div class="border-t border-white/20 mt-16 pt-6 text-center text-sm text-white/80">
+      © 2025 The Turnkey Company — All Rights Reserved.
     </div>
-
-  </div>
-
-  <!-- COPYRIGHT -->
-  <div class="border-t border-white/20 mt-16 pt-6 text-center text-sm text-gray-300">
-    © 2025 The Turnkey Company — All Rights Reserved.
-  </div>
-
-</footer>
-
+  </footer>
 </div>

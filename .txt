@@ -374,3 +374,7 @@
 
   </div>
 </div>
+
+
+blue wala ---> #314054
+orange wala ---> #D4894E

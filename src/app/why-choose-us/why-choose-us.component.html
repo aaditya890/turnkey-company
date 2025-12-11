@@ -1,0 +1,57 @@
+<section class="w-full py-20 overflow-hidden">
+
+  <!-- ✅ HEADING -->
+  <div class="max-w-full mx-auto px-2 md:px-6 mb-8">
+    <h2 class="text-4xl md:text-5xl font-extrabold tracking-wide relative inline-block">
+      See Our
+      <span class="relative inline-block">
+        Works
+        <span class="absolute left-0 bottom-1 w-full h-4 bg-[#D4894E]/70 rounded-full -z-10"></span>
+      </span>
+    </h2>
+  </div>
+
+  <!-- ✅ NEVER-ENDING SLIDER -->
+  <div class="marquee">
+
+    <div class="marquee-track">
+
+      <!-- ✅ GROUP 1 -->
+      <div class="marquee-group">
+        @for (item of reels(); track $index) {
+          <div class="reel-card">
+            <video
+              [src]="item.video"
+              [autoplay]="true"
+              [muted]="true"
+              [loop]="true"
+              playsinline
+              preload="auto"
+              class="w-full h-full object-cover pointer-events-none">
+            </video>
+          </div>
+        }
+      </div>
+
+      <!-- ✅ GROUP 2 (EXACT CLONE OF GROUP 1) -->
+      <div class="marquee-group">
+        @for (item of reels(); track $index) {
+          <div class="reel-card">
+            <video
+              [src]="item.video"
+              [autoplay]="true"
+              [muted]="true"
+              [loop]="true"
+              playsinline
+              preload="auto"
+              class="w-full h-full object-cover pointer-events-none">
+            </video>
+          </div>
+        }
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

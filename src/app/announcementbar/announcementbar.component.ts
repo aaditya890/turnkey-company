@@ -1,10 +1,10 @@
-import { NgClass } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-announcementbar',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass,CommonModule],
   templateUrl: './announcementbar.component.html',
   styleUrl: './announcementbar.component.scss'
 })

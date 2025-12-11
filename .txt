@@ -376,5 +376,147 @@
 </div>
 
 
+<<<<<<< HEAD
 blue wala ---> #314054
 orange wala ---> #D4894E
+=======
+
+
+ <!-- Enquiry section -->
+  <section class="relative w-full h-[90vh] md:h-[85vh] flex items-center"
+    style="background-image: url('https://framerusercontent.com/images/nea6cG4ercYbVNoNyb021NdQye4.png'); background-size: cover; background-position: center;">
+
+    <!-- Gradient Overlay -->
+    <div class="absolute"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-14 lg:px-20">
+      <div class="max-w-2xl">
+        <h1 class="text-white text-4xl md:text-6xl font-semibold leading-tight drop-shadow-xl">
+          Unlock Your Dream <br />
+          Home Today!
+        </h1>
+
+        <p class="text-gray-200 mt-6 text-lg leading-relaxed">
+          We encourage clients to actively participate in discussions,
+          share their ideas, preferences, and feedback.
+        </p>
+
+        <!-- Buttons -->
+        <div class="flex flex-wrap gap-4 mt-10">
+
+          <!-- Primary Button -->
+          <button class="bg-[#004F4A] hover:bg-[#003c38] text-white px-7 py-4 rounded-full
+                 font-semibold shadow-lg transition flex items-center gap-2">
+            Get in touch
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-4 h-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+            </svg>
+          </button>
+
+          <!-- Outline Button -->
+          <button class="border border-white/70 text-white hover:bg-white hover:text-[#2C2327]
+                 px-7 py-4 rounded-full font-semibold transition shadow-lg flex items-center gap-2">
+            Call us: +1 483 944 954
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-4 h-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+            </svg>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <div className="min-h-screen w-full bg-white relative">
+  {/* Noise Texture (Darker Dots) Background */}
+  <div
+    className="absolute inset-0 z-0"
+    style={{
+      background: "#ffffff",
+      backgroundImage: "radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.35) 1px, transparent 0)",
+      backgroundSize: "20px 20px",
+    }}
+  />
+     {/* Your Content/Components */}
+</div>
+
+
+
+bentoItems = [
+    {
+      label: "Living Room",
+      img: "https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/living-1759750377-O1Yiw/lr-13-1763111912-Rl3YP.jpg",
+      grid: "md:col-span-2 md:row-span-2",
+    },
+    {
+      label: "Master Bedroom",
+      img: "https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/mbr-1759750466-DinYK/mbr-10-1763100361-s4LQX.jpg",
+      grid: "md:col-span-2",
+    },
+    {
+      label: "False Ceiling",
+      img: "https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/tv-1761583761-DjqGd/20-1762773267-P8Vt9.jpg",
+      grid: "",
+    },
+    {
+      label: "Wardrobe",
+      img: "https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/wr-1759751175-9MtjY/21-1762774027-Iei06.jpg",
+      grid: "",
+    },
+    {
+      label: "Dining Area",
+      img: "https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/di-1759750788-LFDCZ/16-1762773650-i8mOT.jpg",
+      grid: "md:col-span-2",
+    },
+{
+      label: "Study Room",
+      img: "https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/ond-2023-1696420252-fyaIE/renders-1696505505-hTG0j/study-table-1696505519-Q0m8k/st10-1702448336-FYVVc.jpg",
+      grid: "md:col-span-2",
+    },
+    {
+      label: "Living Room",
+      img: "https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/living-1759750377-O1Yiw/lr-13-1763111912-Rl3YP.jpg",
+      grid: "md:col-span-2 md:row-span-2",
+    },
+    {
+      label: "Master Bedroom",
+      img: "https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/mbr-1759750466-DinYK/mbr-10-1763100361-s4LQX.jpg",
+      grid: "md:col-span-2",
+    },
+    {
+      label: "False Ceiling",
+      img: "https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/tv-1761583761-DjqGd/20-1762773267-P8Vt9.jpg",
+      grid: "",
+    },
+    {
+      label: "Wardrobe",
+      img: "https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/wr-1759751175-9MtjY/21-1762774027-Iei06.jpg",
+      grid: "",
+    },
+    {
+      label: "Dining Area",
+      img: "https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/1-2025-1736068988-NDPD1/ond-1759736307-rv9SV/di-1759750788-LFDCZ/16-1762773650-i8mOT.jpg",
+      grid: "md:col-span-2",
+    },
+    {
+      label: "Study Room",
+      img: "https://images.livspace-cdn.com/w:1920/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/ond-2023-1696420252-fyaIE/renders-1696505505-hTG0j/study-table-1696505519-Q0m8k/st10-1702448336-FYVVc.jpg",
+      grid: "md:col-span-2",
+    },
+  ];
+
+
+
+ sliderImages: SliderImage[] = [
+    { src: "https://framerusercontent.com/images/TvRymMb9eE6gexPti05pMO8KzfI.png", alt: "Interior 1", size: "w-[350px] h-[520px]" },
+    { src: "https://framerusercontent.com/images/MeKJAlOXXupItPDmkok7GEkRjg.png", alt: "Interior 2", size: "w-[420px] h-[420px]" },
+    { src: "https://framerusercontent.com/images/4kzBVuRSxzERYTPFFvq46XUrexA.png", alt: "Interior 3", size: "w-[350px] h-[520px]" },
+    { src: "https://framerusercontent.com/images/4sU8ZcE1VPt5tOMPRWaOZKjCMk.png", alt: "Interior 4", size: "w-[420px] h-[420px]" },
+  ];
+>>>>>>> c886c897ddc3578f0ca94f9cd935107fddf0f543

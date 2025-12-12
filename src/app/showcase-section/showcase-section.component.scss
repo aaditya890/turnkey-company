@@ -1,0 +1,46 @@
+/* CONTAINER */
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* WRAPPER */
+.slider-wrapper {
+  will-change: transform;
+  perspective: 1000px;
+}
+
+/* TRACK */
+.slider-track {
+  display: flex;
+  gap: 24px;
+  padding: 8px;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* IMAGE GPU BOOST */
+img {
+  pointer-events: none;
+  user-select: none;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+  .slider-track {
+    gap: 16px;
+  }
+
+  img {
+    border-radius: 12px;
+  }
+}
+
+/* HOST */
+:host {
+  display: block;
+  overflow: hidden;
+}

@@ -1,0 +1,79 @@
+<section class="w-full py-12 md:py-16 bg-white">
+    <div class="text-center w-full max-w-full mx-auto mb-12">
+        <h2 class="text-4xl md:text-6xl font-extrabold leading-tight" style="color:#314054;">
+            YOUR DREAM <span class="lg:italic lg:font-medium">HOME </span>
+            <!-- Mobile only line break -->
+            <br class="block md:hidden">
+            <span style="color:#D4894E;">IN 5 STEPS</span>
+        </h2>
+
+        <p class="text-gray-600 mt-2 text-sm md:text-lg underline">
+            Designing your home interiors has never been this simple.
+            Here’s how your journey with The Turnkey Company begins.
+        </p>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="relative">
+            <!-- TIMELINE -->
+            <div
+                class="timeline-line absolute top-0 bottom-0 left-1/2 lg:left-1/2 w-[3px] -translate-x-1/2 lg:-translate-x-1/2">
+            </div>
+
+            <div class="flex flex-col gap-20">
+
+                @for(step of steps; track $index) {
+
+                <div class="step-row relative grid grid-cols-1 lg:grid-cols-2 gap-4 items-start
+                    opacity-0 translate-y-4 transition-all duration-700">
+
+                    <!-- DOT -->
+                    <div class="timeline-dot absolute top-2 md:top-3 left-1/2 lg:left-1/2
+                        -translate-x-1/2 w-6 h-6 rounded-full 
+                        border-[3px] border-[#314054] bg-white z-10">
+                    </div>
+
+                    <!-- TEXT BLOCK -->
+                    <div class="flex flex-col justify-start lg-step-padding" [class.order-1]="$index % 2 === 0"
+                        [class.order-2]="$index % 2 === 1">
+
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="step-number">
+                                {{ step.number }}
+                            </div>
+                            <h3 class="text-2xl font-semibold text-[#314054]">
+                                {{ step.title }}
+                            </h3>
+                        </div>
+
+                        <p class="text-gray-600 leading-relaxed">{{ step.description }}</p>
+
+                        <ul class="mt-3 text-sm text-gray-700 space-y-1">
+                            @for(point of step.points; track $index) {
+                            <li class="flex items-start gap-2">
+                                <span class="text-[#D4894E] mt-1">✓</span>
+                                <span>{{ point }}</span>
+                            </li>
+                            }
+                        </ul>
+
+                    </div>
+
+                    <!-- IMAGE BLOCK -->
+                    <div class="hidden lg:flex justify-center items-start lg-step-padding"
+                        [class.order-2]="$index % 2 === 0" [class.order-1]="$index % 2 === 1">
+                        <div class="overflow-hidden rounded-xl shadow-lg">
+                            <img [src]="step.image"
+                                class="w-full max-w-3xl h-64 object-cover transition-transform duration-700 hover:scale-105" />
+                        </div>
+                    </div>
+
+                </div>
+
+                }
+
+            </div>
+
+        </div>
+    </div>
+</section>

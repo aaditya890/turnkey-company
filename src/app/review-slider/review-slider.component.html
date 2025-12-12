@@ -1,0 +1,97 @@
+<section class="relative py-12  md:py-16 mx-auto overflow-x-hidden">
+
+    <!-- ⭐ PREMIUM GRID PATTERN BACKDROP -->
+    <div class="absolute inset-0 z-0 pointer-events-none" style="
+      background-image:
+        linear-gradient(to right, #e7e5e4 1px, transparent 1px),
+        linear-gradient(to bottom, #e7e5e4 1px, transparent 1px);
+      background-size: 40px 40px;
+
+      mask-image:
+        radial-gradient(circle at center, black 45%, transparent 75%);
+      -webkit-mask-image:
+        radial-gradient(circle at center, black 45%, transparent 75%);
+
+      opacity: 0.30;
+    ">
+    </div>
+
+    <!-- REVIEW SECTION HEADING -->
+    <div class="text-center w-full max-w-full mx-auto mb-12 relative">
+
+        <!-- MAIN HEADING -->
+        <h2 class="text-4xl md:text-6xl font-extrabold leading-tight mt-2" style="color:#314054;">
+            Hear what our
+            <span style="color:#D4894E;">Customers say</span>
+        </h2>
+
+        <!-- UPPER SMALL LINE -->
+        <p class="text-sm md:text-lg font-semibold tracking-wide mt-2" style="color:#314054;">
+            Loved by Our Clients. Trusted Across India.
+        </p>
+
+    </div>
+
+    <!-- Slider -->
+    <div class="relative z-10 flex items-center justify-center gap-6 md:gap-10" role="group"
+        aria-roledescription="carousel">
+
+        @for (t of visibleTestimonials; track $index) {
+        <ng-container>
+            <article class="flex flex-col justify-between
+         flex-none w-[350px] sm:w-[300px] md:w-[360px] lg:w-[400px]
+         rounded-3xl border border-gray-100 bg-white
+         transition-all duration-300 ease-out
+         min-h-[300px] lg:min-h-[320px]" [ngClass]="getTestimonialClass($index)" [attr.aria-hidden]="$index !== 1"
+                role="tabpanel">
+                <div class="text-[#f3c29e] text-4xl md:text-5xl" aria-hidden="true">"</div>
+                <p class="text-gray-700 leading-relaxed text-sm md:text-base mb-4">
+                    {{ t.text }}
+                </p>
+
+                <div class="flex items-center gap-3">
+                    <img [src]="t.avatar" [alt]="t.name" class="w-10 h-10 rounded-full object-cover" loading="lazy"
+                        decoding="async" />
+                    <div>
+                        <h4 class="text-sm font-semibold text-[#2C2327]">
+                            {{ t.name }}
+                        </h4>
+                        <p class="text-xs text-gray-500">
+                            {{ t.role }}
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </ng-container>
+        }
+
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="relative z-10 flex justify-center gap-4 mt-10">
+        <button (click)="prevSlide()" class="w-10 h-10 flex items-center justify-center rounded-full 
+             border border-gray-200 bg-white hover:bg-gray-100 shadow-sm 
+             text-gray-600 text-lg transition focus:outline-none focus:ring-2 
+             focus:ring-[#D4894E] focus:ring-offset-2" aria-label="Previous testimonial">
+            ‹
+        </button>
+
+        <button (click)="nextSlide()" class="w-10 h-10 flex items-center justify-center rounded-full 
+             border border-gray-200 bg-white hover:bg-gray-100 shadow-sm 
+             text-gray-600 text-lg transition focus:outline-none focus:ring-2 
+             focus:ring-[#D4894E] focus:ring-offset-2" aria-label="Next testimonial">
+            ›
+        </button>
+    </div>
+
+    <!-- Dots -->
+    <div class="relative z-10 flex justify-center mt-6 gap-3" role="tablist" aria-label="Testimonial navigation dots">
+        @for (t of testimonials; track $index) {
+        <button (click)="goToSlide($index)"
+            class="h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#D4894E]"
+            [ngClass]="getDotClass($index)" [attr.aria-label]="'Go to testimonial ' + ($index + 1)"
+            [attr.aria-current]="currentIndex === $index ? 'page' : undefined" role="tab"></button>
+        }
+
+    </div>
+</section>

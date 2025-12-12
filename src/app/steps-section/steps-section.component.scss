@@ -1,0 +1,76 @@
+$primary: #314054;
+$accent: #D4894E;
+
+/* Timeline gradient */
+.timeline-line {
+  background: linear-gradient(180deg, $accent 0%, rgba($accent, 0.7) 30%, $primary 100%);
+}
+
+/* Dot perfect center */
+.timeline-dot {
+  margin-left: -0.5px;
+}
+
+/* Step number FIX (perfect round on all devices) */
+.step-number {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  background: $primary;
+  color: white;
+  font-weight: 600;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Reveal animation */
+.step-row.in-view {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* MOBILE FIXES 🔥 */
+@media (max-width: 1023px) {
+
+  /* Move timeline line to left */
+  .timeline-line {
+    left: 1.25rem !important;
+    transform: none !important;
+  }
+
+  /* Move dots aligned to line */
+  .timeline-dot {
+    left: 1.25rem !important;
+    transform: translateX(0) !important;
+  }
+
+  /* Add space so text doesn’t overlap line */
+  .step-row {
+    padding-left: 3.2rem !important;
+  }
+
+  /* Ensure number remains perfect circle */
+  .step-number {
+    width: 50px;
+    height: 50px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 640px) {
+/* Dot perfect center */
+.timeline-dot {
+  margin-left: -10px;
+}
+}
+
+/* DESKTOP — untouched */
+@media (min-width: 1024px) {
+  .lg-step-padding {
+    padding-left: 2rem;
+  }
+}

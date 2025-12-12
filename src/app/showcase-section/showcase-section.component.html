@@ -1,0 +1,58 @@
+<!--ABOUT US SECTION -->
+<div class="relative w-full py-5 md:py-12 bg-white">
+
+    <div class="absolute inset-0 z-0 pointer-events-none" style="
+      background-image:
+        linear-gradient(to right, #e7e5e4 1px, transparent 1px),
+        linear-gradient(to bottom, #e7e5e4 1px, transparent 1px);
+      background-size: 40px 40px;
+
+      mask-image:
+        radial-gradient(circle at center, black 45%, transparent 75%);
+      -webkit-mask-image:
+        radial-gradient(circle at center, black 45%, transparent 75%);
+
+      opacity: 0.30;
+    ">
+    </div>
+    <!-- Header -->
+    <div class="relative z-10">
+        <div class="grid md:grid-cols-2 gap-12 items-center mx-auto px-4 mb-6">
+
+            <div class="space-y-2 text-center md:text-left">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-light leading-tight text-[#2C2327] text-balance">
+
+                    <span class="text-[#D4894E] font-semibold">Designs</span> That Make a Difference
+                </h2>
+                <div class="h-1 w-20 bg-[#D4894E] mx-auto md:mx-0"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Slider -->
+    <div class="relative mb-8">
+        <div class="slider-container">
+            <div class="slider-wrapper" #sliderWrapper>
+                <div class="slider-track" #sliderTrack>
+
+                    @for (img of sliderImages; track $index) {
+                    <!-- DOUBLE SET FOR INFINITE LOOP -->
+                    <ng-container>
+                        <img [src]="img.src" [alt]="img.alt" class="rounded-xl object-cover flex-shrink-0"
+                            [ngClass]="img.size" />
+                    </ng-container>
+                    }
+
+                    @for (img of sliderImages; track $index) {
+                    <ng-container>
+                        <img [src]="img.src" [alt]="img.alt" class="rounded-xl object-cover flex-shrink-0"
+                            [ngClass]="img.size" />
+                    </ng-container>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

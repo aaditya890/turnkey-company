@@ -1,52 +1,47 @@
-import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+
+import { NgClass } from '@angular/common';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgClass],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
+
 export class HomeComponent {
-   currentIndex = 0;
-  private intervalId?: any;
 
- banners: string[] = [
-    'https://img.freepik.com/free-photo/optimistic-hopeful-girl-having-faith-desire-come-true-standing-with-crossed-fingers-good_1258-142999.jpg?t=st=1764594806~exp=1764598406~hmac=72ebc1bed0b0e7be9d78929bed8180327d8728fbbdec4570469d742d45d2721b&w=1480',
-    // 'https://img.freepik.com/premium-photo/back-school-fall-fashion-accessory-happy-stylish-girl-leather-wear-child-with-autumn-umbrella-rainy-weather-horizontal-poster-banner-with-copy-space_545934-33001.jpg?w=1480',
-    'https://img.freepik.com/free-photo/friendlylooking-sociable-stylish-woman-with-curly-hair-red-beanie-winking-joyfully-pointi_1258-152292.jpg?t=st=1764595965~exp=1764599565~hmac=444b28f082173618de04fc70ddfb57ce2500d385e5eed61b331106aaeabc64a8&w=1480',
-    'https://img.freepik.com/free-photo/optimistic-hopeful-girl-having-faith-desire-come-true-standing-with-crossed-fingers-good_1258-142999.jpg?t=st=1764594806~exp=1764598406~hmac=72ebc1bed0b0e7be9d78929bed8180327d8728fbbdec4570469d742d45d2721b&w=1480',
+  mobileOpen = false;
+  profileOpen = false;
+  scrolled = false;
 
-  ];
+  @ViewChild("profileDropdown") profileDropdown!: ElementRef;
+  @ViewChild("profileButton") profileButton!: ElementRef;
 
-
-  ngOnInit() {
-    this.startAutoSlide();
+  toggleMobile() {
+    this.mobileOpen = !this.mobileOpen;
   }
 
-  ngOnDestroy() {
-    this.stopAutoSlide();
+  toggleProfile() {
+    this.profileOpen = !this.profileOpen;
   }
 
-  private startAutoSlide(): void {
-    this.intervalId = setInterval(() => {
-      this.currentIndex = (this.currentIndex + 1) % this.banners.length;
-    }, 4000);
+  @HostListener("window:scroll")
+  onWindowScroll() {
+    this.scrolled = window.scrollY > 50;
   }
 
-  stopAutoSlide() {
-    if (this.intervalId) clearInterval(this.intervalId);
-  }
+  @HostListener("document:click", ["$event"])
+  onClickOutside(event: Event) {
+    if (!this.profileOpen) return;
 
-  nextSlide() {
-    this.currentIndex = (this.currentIndex + 1) % this.banners.length;
-  }
+    const dropdown = this.profileDropdown?.nativeElement;
+    const button = this.profileButton?.nativeElement;
 
-  goToSlide(index: any) {
-    this.currentIndex = index;
-    this.stopAutoSlide();
-    this.startAutoSlide(); // restart timer after manual change
+    if (!dropdown.contains(event.target) && !button.contains(event.target)) {
+      this.profileOpen = false;
+    }
   }
 
 }

@@ -9,6 +9,7 @@ import { HomeComponent } from "./home/home.component";
 import { AboutUsSectionComponent } from "./about-us-section/about-us-section.component";
 import { BentoGridSectionComponent } from "./bento-grid-section/bento-grid-section.component";
 import { WhyChooseUsComponent } from "./why-choose-us/why-choose-us.component";
+import { GetInTouchComponent } from "./get-in-touch/get-in-touch.component";
 
 interface SliderImage {
   src: string
@@ -25,11 +26,10 @@ interface Service {
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [CommonModule, FaqComponent, StepsSectionComponent, ReviewSliderComponent, ShowcaseSectionComponent, AboutUsSectionComponent, FooterComponent, HomeComponent, WhyChooseUsComponent,BentoGridSectionComponent],
+  imports: [CommonModule, FaqComponent, StepsSectionComponent, ReviewSliderComponent, ShowcaseSectionComponent, AboutUsSectionComponent, FooterComponent, HomeComponent, WhyChooseUsComponent, GetInTouchComponent],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
 })
 export class AppComponent  {
   title = "turnkey-company"
-
 }

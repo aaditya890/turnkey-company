@@ -1,57 +1,109 @@
-<section class="w-full py-20 overflow-hidden">
+<!-- Clean modern split design without gradients -->
+<section class="relative bg-white py-16 overflow-hidden">
 
-  <!-- ✅ HEADING -->
-  <div class="max-w-full mx-auto px-2 md:px-6 mb-8">
-    <h2 class="text-4xl md:text-5xl font-extrabold tracking-wide relative inline-block">
-      See Our
-      <span class="relative inline-block">
-        Works
-        <span class="absolute left-0 bottom-1 w-full h-4 bg-[#D4894E]/70 rounded-full -z-10"></span>
-      </span>
-    </h2>
-  </div>
+  <div class="w-full px-4">
+    <div class="grid lg:grid-cols-2 gap-12 items-stretch">
 
-  <!-- ✅ NEVER-ENDING SLIDER -->
-  <div class="marquee">
-
-    <div class="marquee-track">
-
-      <!-- ✅ GROUP 1 -->
-      <div class="marquee-group">
-        @for (item of reels(); track $index) {
-          <div class="reel-card">
-            <video
-              [src]="item.video"
-              [autoplay]="true"
-              [muted]="true"
-              [loop]="true"
-              playsinline
-              preload="auto"
-              class="w-full h-full object-cover pointer-events-none">
-            </video>
+      <!-- LEFT SIDE - OUR OFFERINGS -->
+      <div class="space-y-8 h-full flex flex-col">
+        <!-- Header -->
+        <div>
+          <div class="inline-flex items-center gap-2 mb-4">
+            <div class="w-12 h-1 bg-[#D4894E]"></div>
+            <span class="text-sm font-semibold text-[#D4894E] uppercase tracking-wider">
+              Core Values
+            </span>
           </div>
-        }
+          <h2 class="text-4xl lg:text-5xl font-bold text-[#314054] mb-6">
+            OUR OFFERINGS
+          </h2>
+        </div>
+
+        <!-- Offerings Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1 auto-rows-fr">
+          <div *ngFor="let offering of offerings; let i = index"
+               class="group offering-card relative p-6 rounded-xl bg-[#314054] overflow-hidden cursor-pointer">
+
+            <div class="absolute top-0 right-0 w-20 h-20 bg-white/5 rounded-bl-full"></div>
+
+            <div class="relative z-10 mb-4">
+              <svg class="w-10 h-10 text-[#D4894E] group-hover:text-white transition-colors duration-500"
+                   fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      [attr.d]="offering.icon"></path>
+              </svg>
+            </div>
+
+            <h4 class="relative z-10 text-xl font-bold text-[#D4894E] group-hover:text-white transition-colors duration-500 mb-2">
+              {{ offering.title }}
+            </h4>
+
+            <p class="relative z-10 text-gray-300 group-hover:text-white/90 text-xs leading-relaxed transition-colors duration-500">
+              {{ offering.description }}
+            </p>
+          </div>
+        </div>
       </div>
 
-      <!-- ✅ GROUP 2 (EXACT CLONE OF GROUP 1) -->
-      <div class="marquee-group">
-        @for (item of reels(); track $index) {
-          <div class="reel-card">
-            <video
-              [src]="item.video"
-              [autoplay]="true"
-              [muted]="true"
-              [loop]="true"
-              playsinline
-              preload="auto"
-              class="w-full h-full object-cover pointer-events-none">
-            </video>
+      <!-- RIGHT SIDE - WHY CHOOSE US -->
+      <div class="space-y-8 h-full flex flex-col">
+        <!-- Header -->
+        <div>
+          <div class="inline-flex items-center gap-2 mb-4">
+            <div class="w-12 h-1 bg-[#D4894E]"></div>
+            <span class="text-sm font-semibold text-[#D4894E] uppercase tracking-wider">
+              Why Partner With Us
+            </span>
           </div>
-        }
+          <h2 class="text-4xl lg:text-5xl font-bold text-[#314054] mb-6">
+            WHY CHOOSE US
+          </h2>
+        </div>
+
+        <!-- Cards -->
+        <div class="space-y-4 flex-1">
+          <div *ngFor="let point of whyChoosePoints; let i = index"
+               class="group why-card relative p-6 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-200 overflow-hidden">
+
+            <div class="absolute top-0 right-0 w-24 h-24 bg-[#D4894E]/5 rounded-bl-full"></div>
+
+            <div class="relative z-10 flex items-start gap-4">
+              <div class="flex-shrink-0">
+                <div class="relative">
+
+                  <!-- ICON WRAP (FIXED) -->
+                  <div
+                    class="icon-wrap w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-md transition-all duration-700">
+                    <svg class="w-7 h-7 text-[#314054] transition-colors duration-500"
+                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            [attr.d]="point.icon"></path>
+                    </svg>
+                  </div>
+
+                  <div
+                    class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#D4894E] flex items-center justify-center shadow-md">
+                    <span class="text-white font-bold text-xs">{{ i + 1 }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex-1 pt-1">
+                <h4 class="text-[#314054] font-bold text-xl mb-2">
+                  {{ point.title }}
+                </h4>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                  {{ point.description }}
+                </p>
+              </div>
+            </div>
+
+            <div class="absolute bottom-0 left-0 h-1 w-0 bg-[#D4894E]"></div>
+          </div>
+        </div>
+
       </div>
 
     </div>
-
   </div>
-
 </section>

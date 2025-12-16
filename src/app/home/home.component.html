@@ -119,38 +119,95 @@
 
 }
 
-<!-- HERO SECTION -->
-<div class="relative w-full h-[100vh] flex items-center bg-cover bg-center"
+<div class="relative w-full h-[100vh] flex items-center bg-cover bg-center overflow-hidden"
   style="background-image: url('assets/1.webp');">
 
-  <div class="absolute inset-0 bg-black/35"></div>
+  <!-- Enhanced dark overlay with gradient for better depth -->
+  <div class="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/40"></div>
+
+  <!-- Animated background pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 20% 50%, rgba(212, 137, 78, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(49, 64, 84, 0.3) 0%, transparent 50%);"></div>
+  </div>
 
   <div class="relative z-10 w-full mx-auto px-4 md:px-14 text-center md:text-left">
 
-    <div class="slow-spin absolute md:right-[39rem] top-[-30px] hidden md:block opacity-70">
-      <svg viewBox="0 0 300 300" class="w-40 h-40">
-        <defs>
-          <path id="circlePath" d="M150,150 m-120,0 a120,120 0 1,1 240,0 a120,120 0 1,1 -240,0" />
-        </defs>
-        <text fill="white" font-size="20" letter-spacing="6">
-          <textPath href="#circlePath">
-            BEST INTERIOR FIRM • SINCE 1992 • BEST INTERIOR FIRM
-          </textPath>
-        </text>
+    <!-- Enhanced heading with gradient text effect and better typography -->
+    <div class="space-y-6 max-w-4xl">
+      
+      <!-- Main headline with gradient effect -->
+      <h1 class="text-white font-bold tracking-tight leading-[1.1]">
+        <span class="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-2 animate-fade-in-up">
+          Elevating Spaces
+        </span>
+        <span class="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white  animate-fade-in-up" style="animation-delay: 0.2s;">
+          Crafting Dreams
+        </span>
+      </h1>
+
+      <!-- Enhanced description with better readability -->
+      <p class="text-white text-lg md:text-xl max-w-2xl leading-relaxed font-light animate-fade-in-up" style="animation-delay: 0.4s;">
+        We specialize in transforming visions into reality through 
+        <span class="text-[#D4894E] font-semibold">innovative architecture</span> & 
+        <span class="text-[#D4894E] font-semibold">interior design</span>.
+      </p>
+
+      <!-- Enhanced CTA button with gradient and hover effects -->
+      <div class="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up" style="animation-delay: 0.6s;">
+        <button class="group relative px-8 py-4 bg-gradient-to-r from-[#D4894E] to-[#c57d46] text-white text-base font-semibold rounded-full shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105">
+          <span class="relative z-10 flex items-center justify-center gap-2">
+            BOOK CONSULTATION
+            <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </span>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#c57d46] to-[#D4894E] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </button>
+
+        <button class="px-8 py-4 bg-white/10 backdrop-blur-md border-2 border-white/30 text-white text-base font-semibold rounded-full hover:bg-white/20 hover:border-white/50 transition-all duration-300">
+          <span class="flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            VIEW PORTFOLIO
+          </span>
+        </button>
+      </div>
+
+      <!-- Trust indicators with better styling -->
+      <!-- <div class="flex flex-wrap items-center gap-6 md:gap-8 pt-6 animate-fade-in-up" style="animation-delay: 0.8s;">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-[#D4894E]" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+          <span class="text-white/90 text-sm font-medium">4.9 Rating</span>
+        </div>
+        <div class="h-4 w-px bg-white/30"></div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-[#D4894E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          <span class="text-white/90 text-sm font-medium">500+ Clients</span>
+        </div>
+        <div class="h-4 w-px bg-white/30"></div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-[#D4894E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span class="text-white/90 text-sm font-medium">30+ Years</span>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
+    <div class="flex flex-col items-center gap-2">
+      <span class="text-white/70 text-xs uppercase tracking-wider">Scroll Down</span>
+      <svg class="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
       </svg>
     </div>
-
-    <h1 class="text-white font-semibold tracking-tight text-7xl lg:text-8xl mb-6">
-      Elevating Spaces<br class="hidden md:block"> Crafting Dreams
-    </h1>
-
-    <p class="text-white/90 text-lg max-w-2xl">
-      We specialize in transforming visions into reality through innovative architecture & interior design.
-    </p>
-
-    <button
-      class="mt-6 px-8 py-4 bg-[#D4894E] text-white text-base font-semibold rounded-full shadow-xl hover:bg-[#c57d46]">
-      BOOK CONSULTATION
-    </button>
   </div>
 </div>

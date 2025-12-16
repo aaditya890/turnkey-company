@@ -3,3 +3,21 @@
 -----> #D4894E
 
 
+NAV -- DONE 
+HpbpERO -- DONE
+
+
+ <!-- Enhanced rotating badge with better positioning and animation -->
+    <div class="slow-spin absolute md:right-[39rem] top-[-30px] hidden md:block opacity-80 hover:opacity-100 transition-opacity duration-500">
+      <svg viewBox="0 0 300 300" class="w-40 h-40 drop-shadow-lg">
+        <defs>
+          <path id="circlePath" d="M150,150 m-120,0 a120,120 0 1,1 240,0 a120,120 0 1,1 -240,0" />
+        </defs>
+        <circle cx="150" cy="150" r="120" fill="rgba(212, 137, 78, 0.1)" stroke="rgba(212, 137, 78, 0.3)" stroke-width="2"/>
+        <text fill="white" font-size="20" letter-spacing="6" font-weight="600">
+          <textPath href="#circlePath">
+            BEST INTERIOR FIRM • SINCE 1992 • BEST INTERIOR FIRM
+          </textPath>
+        </text>
+      </svg>
+    </div>

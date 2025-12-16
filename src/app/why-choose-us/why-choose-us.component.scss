@@ -1,37 +1,51 @@
-.marquee {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
+/* WHY CHOOSE US CARD – smooth & premium */
+.why-card {
+  transition: 
+    background 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee-scroll 35s linear infinite;
-  will-change: transform;
-}
+  &:hover {
+    background: #314054;
+    border-color: #d4894e;
+    transform: translateY(-6px);
 
-/* ✅ EACH GROUP MUST BE SAME WIDTH */
-.marquee-group {
-  display: flex;
-}
+    h4 {
+      color: #ffffff;
+      transition: color 0.6s ease;
+    }
 
-/* ✅ EACH CARD */
-.reel-card {
-  width: 160px;
-  height: 280px;
-  border-radius: 16px;
-  overflow: hidden;
-  margin-right: 24px;
-  flex-shrink: 0;
-}
+    p {
+      color: #d1d5db;
+      transition: color 0.6s ease;
+    }
 
-/* ✅ PERFECT SEAMLESS LOOP (NO GAP) */
-@keyframes marquee-scroll {
-  from {
-    transform: translateX(0);
+    svg {
+      color: #ffffff;
+    }
+
+    /* 🔥 WHITE CIRCLE FIX */
+    .icon-wrap {
+      background-color: #d4894e;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      transition: background-color 0.6s ease, box-shadow 0.6s ease;
+    }
+
+    .absolute.bottom-0 {
+      width: 100%;
+      transition: width 0.7s ease;
+    }
   }
-  to {
-    transform: translateX(-50%);
+}
+
+/* OFFERINGS CARD */
+.offering-card {
+  transition:
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.6s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    background-color: #d4894e;
   }
 }

@@ -1,4 +1,4 @@
-<section class="w-full bg-white mt-6 md:mt-10 py-10 md:py-12">
+<section class="w-full bg-white mt-6 md:mt-10 py-6 md:py-12">
   <div class="px-4 sm:px-6">
     <!-- HERO ROW: LEFT IMAGE | RIGHT CONTENT -->
     <div class="grid grid-cols-1 md:grid-cols-2 items-start">
@@ -7,137 +7,138 @@
         [ngClass]="{'opacity-0 translate-y-6': !leftImageVisible, 'opacity-100 translate-y-0': leftImageVisible}"
         class="transition-all duration-700 ease-out">
         <img src="https://plus.unsplash.com/premium_photo-1680296669146-b6c258cbc62d?q=80&w=1170&auto=format&fit=crop"
-          alt="Character / healthcare image" class="w-full object-cover h-[420px] rounded-2xl md:rounded-none hidden sm:block" />
+          alt="Character / healthcare image"
+          class="w-full object-cover h-[420px] rounded-2xl md:rounded-none hidden sm:block" />
       </div>
 
-      <!-- RIGHT: Title + Text + CTA (align like ref) -->
+      <!-- RIGHT: Title + Text + CTA -->
       <div #anim data-anim="right-content"
         [ngClass]="{'opacity-0 translate-x-6': !rightContentVisible, 'opacity-100 translate-x-0': rightContentVisible}"
-        class="transition-all duration-700 ease-out flex flex-col justify-center px-3 md:px-10 py-10 md:py-0">
-        <p class="text-sm font-semibold tracking-widest uppercase text-gray-400 mb-3">Why choose us</p>
+        class="transition-all duration-700 ease-out flex flex-col justify-center px-3 md:px-10 pt-5 md:py-0">
+
+        <p class="text-xl font-bold tracking-widest uppercase text-gray-700 mb-2 underline">About Us</p>
 
         <h2 class="text-3xl md:text-5xl font-extrabold text-[#2C2327] leading-tight">
-          <span class="text-[#D4894E]">Explore and</span><span class="font-normal"> learn it better</span>
+          <span class="text-[#D4894E]">Crafting</span><span class="font-normal"> spaces with purpose</span>
         </h2>
 
         <p class="mt-4 text-gray-600 text-base md:text-lg leading-relaxed max-w-xl">
-          Find, explore and learn in an awesome place. Find, explore and buy great awesome place. Find, explore and buy
-          in great awesome place.
+          We are a turnkey interior solutions provider delivering complete home and commercial projects under one
+          unified process.
+          From design to execution, our in-house team manages every stage with efficiency and clarity.
+          <br><br>
+          Our goal is simple — to deliver well-designed, well-built spaces with a smooth, hassle-free experience from
+          start to handover.
         </p>
 
-        <div class="mt-6 flex items-center gap-4">
-          <button class="bg-[#D4894E] text-white px-5 py-3 rounded-lg font-semibold shadow">Get Started</button>
-
-          <button class="flex items-center gap-2 text-gray-700 shadow-sm border px-3 py-2 rounded-md">
-            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#D4894E">
-              <path d="M5 3v18l15-9L5 3z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <span class="text-md font-semibold">Show video</span>
-          </button>
-        </div>
-
-        <!-- small logos row -->
-        <div class="mt-8 flex items-center gap-6 opacity-80">
-          <img
-            src="https://res.cloudinary.com/vistaprint/images/w_2048,h_670,c_scale/f_auto,q_auto/v1706089184/ideas-and-advice-prod/en-us/Coca-Cola_logo.svg_/Coca-Cola_logo.svg_.png?_i=AA"
-            alt="shopify" class="h-6" />
-          <img
-            src="https://res.cloudinary.com/vistaprint/images/f_auto,q_auto/v1719942414/ideas-and-advice-prod/blogadmin/prada-logo/prada-logo.png?_i=AA"
-            alt="disney" class="h-6" />
-          <img
-            src="https://res.cloudinary.com/vistaprint/images/w_1400,h_532,c_scale/f_auto,q_auto/v1719942405/ideas-and-advice-prod/blogadmin/nike-logo/nike-logo.png?_i=AA"
-            alt="reddit" class="h-6" />
-        </div>
       </div>
     </div>
 
-    <!-- BOTTOM BAR: LEFT=white 2x2 counters, RIGHT=dark panel (like ref) -->
+    <!-- BOTTOM BAR -->
     <div class="">
       <div class="grid grid-cols-1 md:grid-cols-2 items-stretch">
-        <!-- LEFT: 2x2 counters card (spans 2 cols on md) -->
+
+        <!-- Stats Card Component -->
         <div class="md:col-span-2" #anim data-anim="left-stats"
           [ngClass]="{'opacity-0 translate-y-6': !leftStatsVisible, 'opacity-100 translate-y-0': leftStatsVisible}"
           class="transition-all duration-700 ease-out">
-          <div class="bg-white p-4 md:p-6 border border-gray-100">
+
+          <div class="bg-white p-6 md:p-8 border border-gray-100 rounded-lg shadow-sm">
             <div class="relative">
 
-              <div class="grid grid-cols-2 gap-6 p-3">
+              <div class="grid grid-cols-2 gap-10 sm:p-4">
 
-                <!-- item 1 -->
+                <!-- Projects Delivered -->
                 <div class="flex flex-col">
-                  <div class="text-lg md:text-xl font-bold text-gray-900">
-                    <span class="stat-number" data-count-to="120000">0</span>+
+                  <div class="flex items-center gap-3 text-lg md:text-xl font-bold text-gray-900">
+                    <!-- Enhanced building/project icon -->
+                    <img src="assets/about-us-icons/1.webp" alt="#" class="w-8 h-8">
+                    <span class="stat-number" data-count-to="120000">0</span><span class="text-[#D4894E]">+</span>
                   </div>
-                  <div class="text-xs md:text-sm text-gray-600 mt-1">Our active members</div>
+                  <div class="text-sm md:text-base text-gray-600 mt-2 font-medium">Projects Delivered</div>
                 </div>
 
-                <!-- item 2 -->
+                <!-- Design Hours -->
                 <div class="flex flex-col">
-                  <div class="text-lg md:text-xl font-bold text-gray-900">
-                    <span class="stat-number" data-count-to="27000">0</span>+
+                  <div class="flex items-center gap-3 text-lg md:text-xl font-bold text-gray-900">
+                    <!-- Enhanced clock icon with better details -->
+                    <img src="assets/about-us-icons/2.webp" alt="#" class="w-8 h-8">
+                    <span class="stat-number" data-count-to="27000">0</span><span class="text-[#D4894E]">+</span>
                   </div>
-                  <div class="text-xs md:text-sm text-gray-600 mt-1">Our monthly products</div>
+                  <div class="text-sm md:text-base text-gray-600 mt-2 font-medium">Design Hours</div>
                 </div>
 
-                <!-- item 3 -->
+                <!-- Sq.ft Executed -->
                 <div class="flex flex-col">
-                  <div class="text-lg md:text-xl font-bold text-gray-900">
-                    <span class="stat-number" data-count-to="300000">0</span>+
+                  <div class="flex items-center gap-3 text-lg md:text-xl font-bold text-gray-900">
+                    <!-- Enhanced square/area measurement icon -->
+                    <img src="assets/about-us-icons/3.webp" alt="#" class="w-8 h-8">
+                    <span class="stat-number" data-count-to="300000">0</span><span class="text-[#D4894E]">+</span>
                   </div>
-                  <div class="text-xs md:text-sm text-gray-600 mt-1">Hour of records</div>
+                  <div class="text-sm md:text-base text-gray-600 mt-2 font-medium">Sq.ft Executed</div>
                 </div>
 
-                <!-- item 4 -->
+                <!-- Happy Customers -->
                 <div class="flex flex-col">
-                  <div class="text-lg md:text-xl font-bold text-gray-900">
-                    <span class="stat-number" data-count-to="35000">0</span>+
+                  <div class="flex items-center gap-3 text-lg md:text-xl font-bold text-gray-900">
+                    <!-- Enhanced location/customer pin icon -->
+                    <img src="assets/about-us-icons/4.webp" alt="#" class="w-8 h-8">
+                    <span class="stat-number" data-count-to="35000">0</span><span class="text-[#D4894E]">+</span>
                   </div>
-                  <div class="text-xs md:text-sm text-gray-600 mt-1">Our new customers</div>
+                  <div class="text-sm md:text-base text-gray-600 mt-2 font-medium">Happy Customers</div>
                 </div>
 
               </div>
 
-              <!-- divider lines (unchanged) -->
-              <div class="hidden md:block absolute left-1/2 top-3 bottom-3 w-px bg-gray-200 transform -translate-x-1/2">
+              <!-- Clean Center Divider Lines -->
+              <div class="hidden md:block absolute left-1/2 top-4 bottom-4 w-px bg-gray-200 transform -translate-x-1/2">
               </div>
-              <div class="hidden md:block absolute left-3 top-1/2 right-3 h-px bg-gray-200 transform -translate-y-1/2">
+              <div class="hidden md:block absolute left-6 right-6 top-1/2 h-px bg-gray-200 transform -translate-y-1/2">
               </div>
 
             </div>
           </div>
-
         </div>
 
-        <!-- RIGHT: dark panel -->
+
+        <!-- RIGHT PANEL -->
         <div #anim data-anim="right-panel"
           [ngClass]="{'opacity-0 translate-y-6': !rightPanelVisible, 'opacity-100 translate-y-0': rightPanelVisible}"
           class="transition-all duration-700 ease-out">
+
           <div
             class="bg-[#314054] text-white p-6 md:p-8 flex flex-col justify-between h-full rounded-md md:rounded-none">
             <div>
-              <h3 class="text-xl md:text-2xl font-bold">Let's learn better</h3>
-              <p class="mt-3 text-sm md:text-base text-gray-300 max-w-sm">
-                Find and learn with amazing products.
+              <h3 class="text-xl md:text-2xl font-bold">WHAT WE DO</h3>
+
+              <p class="mt-3 text-sm md:text-base text-gray-300 max-w-full">
+                We provide complete turnkey interiors for homes and commercial spaces — covering kitchens, wardrobes,
+                living areas, office interiors and key civil work like flooring, tiling, ceilings and installations.
+                <br><br>
+                With in-house teams for plumbing, electrical, carpentry and furniture, we manage the entire project from
+                design to final handover smoothly and efficiently.
               </p>
             </div>
 
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+
+            <!-- <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div class="flex items-center gap-4 opacity-80">
                 <img
                   src="https://res.cloudinary.com/vistaprint/images/w_2048,h_670,c_scale/f_auto,q_auto/v1706089184/ideas-and-advice-prod/en-us/Coca-Cola_logo.svg_/Coca-Cola_logo.svg_.png?_i=AA"
-                  alt="shopify" class="h-6" />
+                  alt="cocacola" class="h-6" />
                 <img
                   src="https://res.cloudinary.com/vistaprint/images/f_auto,q_auto/v1706191816/ideas-and-advice-prod/blogadmin/Screenshot-2024-01-25-at-15.09.28/Screenshot-2024-01-25-at-15.09.28.png?_i=AA"
-                  alt="disney" class="h-6" />
+                  alt="starbucks" class="h-6" />
                 <img
                   src="https://res.cloudinary.com/vistaprint/images/w_1400,h_532,c_scale/f_auto,q_auto/v1719942405/ideas-and-advice-prod/blogadmin/nike-logo/nike-logo.png?_i=AA"
-                  alt="reddit" class="h-6" />
+                  alt="nike" class="h-6" />
               </div>
 
-              <div class="text-sm text-gray-400 mt-3 md:mt-0">Find and learn in great awesome place</div>
-            </div>
+              <div class="text-sm text-gray-400 mt-3 md:mt-0">Trusted by leading brands</div>
+            </div> -->
           </div>
         </div>
+
       </div>
     </div>
 

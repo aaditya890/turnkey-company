@@ -26,7 +26,7 @@ interface Service {
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [CommonModule, FaqComponent, StepsSectionComponent, ReviewSliderComponent, ShowcaseSectionComponent, AboutUsSectionComponent, FooterComponent, HomeComponent, WhyChooseUsComponent, GetInTouchComponent],
+  imports: [CommonModule, FaqComponent, StepsSectionComponent, ReviewSliderComponent, ShowcaseSectionComponent, AboutUsSectionComponent, FooterComponent, HomeComponent, WhyChooseUsComponent, GetInTouchComponent,BentoGridSectionComponent],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
 })

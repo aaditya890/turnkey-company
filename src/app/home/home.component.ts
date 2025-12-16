@@ -1,11 +1,12 @@
 
 import { NgClass } from '@angular/common';
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { AnnouncementbarComponent } from "../announcementbar/announcementbar.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, AnnouncementbarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

@@ -1,209 +1,70 @@
 <app-navbar></app-navbar>
-<div class="relative w-full h-[100vh] overflow-hidden">
+
+<!-- Improved responsive hero section with mobile optimization -->
+<div class="relative w-full h-screen overflow-hidden bg-gray-900">
   <!-- Slides Container -->
   <div class="relative w-full h-full">
-    <!-- Slide 1 -->
-    <div 
-      class="absolute inset-0 w-full h-full flex items-center bg-cover bg-center transition-opacity duration-1000"
-      [ngClass]="currentSlide === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'"
-      style="background-image: url('assets/1.webp');">
-      
-      <!-- Enhanced dark overlay with gradient -->
-      <div class="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/40"></div>
+    <!-- Dynamic Slides -->
+    <div *ngFor="let slide of slides; let i = index"
+      class="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out"
+      [ngClass]="currentSlide === i ? 'opacity-100 z-10' : 'opacity-0 z-0'"
+      [style.background-image]="'url(' + (isMobile ? slide.mobileImage : slide.desktopImage) + ')'"
+      [attr.aria-hidden]="currentSlide !== i">
 
-      <!-- Animated background pattern -->
-      <div class="absolute inset-0 opacity-10">
-        <div class="absolute inset-0"
-          style="background-image: radial-gradient(circle at 20% 50%, rgba(212, 137, 78, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(49, 64, 84, 0.3) 0%, transparent 50%);">
-        </div>
-      </div>
+      <!-- Gradient Overlay for better contrast -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
 
-      <div class="relative z-10 w-full mx-auto px-4 md:px-14 text-center md:text-left">
-        <div class="space-y-6 max-w-5xl">
-          <h1 class="text-white font-bold tracking-tight leading-[0.9]">
-            <span class="block text-[4.5rem] sm:text-6xl md:text-7xl lg:text-8xl sm:mb-2">
-              Elevating Spaces
-            </span>
-            <span class="block text-[4.5rem] sm:text-6xl md:text-7xl lg:text-8xl text-white">
-              Crafting Dreams
-            </span>
-          </h1>
-
-          <p class="text-white text-lg md:text-xl max-w-2xl leading-relaxed font-light">
-            We specialize in transforming visions into reality through
-            <span class="text-[#D4894E] font-semibold">innovative architecture</span> &
-            <span class="text-[#D4894E] font-semibold">interior design</span>.
-          </p>
-
-          <div class="flex flex-col sm:flex-row gap-4 pt-4">
-            <button
-              class="group relative px-8 py-4 bg-gradient-to-r from-[#D4894E] to-[#c57d46] text-white text-base font-semibold rounded-full shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105">
-              <span class="relative z-10 flex items-center justify-center gap-2">
-                BOOK CONSULTATION
-                <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </span>
-              <div
-                class="absolute inset-0 bg-gradient-to-r from-[#c57d46] to-[#D4894E] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              </div>
-            </button>
-
-            <button
-              class="px-8 py-4 bg-white/10 backdrop-blur-md border-2 border-white/30 text-white text-base font-semibold rounded-full hover:bg-white/20 hover:border-white/50 transition-all duration-300">
-              <span class="flex items-center justify-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                VIEW PORTFOLIO
-              </span>
-            </button>
+      <!-- Content Container - Positioned at bottom on mobile, centered on desktop -->
+      <div
+        class="relative z-10 h-full flex flex-col justify-end sm:justify-end items-center px-4 sm:px-6 md:px-8 pb-24 sm:pb-32 md:pb-28">
+        <!-- CTA Button with dynamic text per slide -->
+        <button (click)="onBookConsultation()"
+          class="group relative px-6 sm:px-10 md:px-12 py-3 sm:py-4 bg-gradient-to-r from-[#D4894E] to-[#c57d46] text-white text-sm sm:text-base md:text-lg font-semibold rounded-full shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-[#D4894E]/50 hover:shadow-2xl hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-[#D4894E]/50 w-full sm:w-auto max-w-xs sm:max-w-sm"
+          [attr.aria-label]="slide.buttonText">
+          <span class="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
+            <!-- Mobile: Short text, Desktop: Full text -->
+            <span class="hidden sm:inline">{{ slide.buttonText }}</span>
+            <span class="sm:hidden">{{ slide.buttonText === 'CALCULATE NOW' ? 'CALCULATE' : 'BOOK NOW' }}</span>
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </span>
+          <!-- Hover effect overlay -->
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-[#c57d46] to-[#b36a38] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Slide 2 -->
-    <div 
-      class="absolute inset-0 w-full h-full flex items-center bg-cover bg-center transition-opacity duration-1000"
-      [ngClass]="currentSlide === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0'"
-      style="background-image: url('assets/2.webp');">
-      
-      <div class="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/40"></div>
-
-      <div class="absolute inset-0 opacity-10">
-        <div class="absolute inset-0"
-          style="background-image: radial-gradient(circle at 20% 50%, rgba(212, 137, 78, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(49, 64, 84, 0.3) 0%, transparent 50%);">
-        </div>
-      </div>
-
-      <div class="relative z-10 w-full mx-auto px-4 md:px-14 text-center md:text-left">
-        <div class="space-y-6 max-w-5xl">
-          <h1 class="text-white font-bold tracking-tight leading-[0.9]">
-            <span class="block text-[4.5rem] sm:text-6xl md:text-7xl lg:text-8xl mb-2">
-              Timeless Design
-            </span>
-            <span class="block text-[4.5rem] sm:text-6xl md:text-7xl lg:text-8xl text-white">
-              Modern Elegance
-            </span>
-          </h1>
-
-          <p class="text-white text-lg md:text-xl max-w-2xl leading-relaxed font-light">
-            Creating sophisticated interiors that blend
-            <span class="text-[#D4894E] font-semibold">contemporary aesthetics</span> with
-            <span class="text-[#D4894E] font-semibold">functional beauty</span>.
-          </p>
-
-          <div class="flex flex-col sm:flex-row gap-4 pt-4">
-            <button
-              class="group relative px-8 py-4 bg-gradient-to-r from-[#D4894E] to-[#c57d46] text-white text-base font-semibold rounded-full shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105">
-              <span class="relative z-10 flex items-center justify-center gap-2">
-                EXPLORE DESIGNS
-                <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </span>
-              <div
-                class="absolute inset-0 bg-gradient-to-r from-[#c57d46] to-[#D4894E] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Slide 3 -->
-    <div 
-      class="absolute inset-0 w-full h-full flex items-center bg-cover bg-center transition-opacity duration-1000"
-      [ngClass]="currentSlide === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0'"
-      style="background-image: url('assets/3.webp');">
-      
-      <div class="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/40"></div>
-
-      <div class="absolute inset-0 opacity-10">
-        <div class="absolute inset-0"
-          style="background-image: radial-gradient(circle at 20% 50%, rgba(212, 137, 78, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(49, 64, 84, 0.3) 0%, transparent 50%);">
-        </div>
-      </div>
-
-      <div class="relative z-10 w-full mx-auto px-4 md:px-14 text-center md:text-left">
-        <div class="space-y-6 max-w-5xl">
-          <h1 class="text-white font-bold tracking-tight leading-[0.9]">
-            <span class="block text-[3.5rem] sm:text-6xl md:text-7xl lg:text-8xl mb-2">
-              Architectural Vision
-            </span>
-            <span class="block text-[3.5rem] sm:text-6xl md:text-7xl lg:text-8xl text-white">
-              Inspired Living
-            </span>
-          </h1>
-
-          <p class="text-white text-lg md:text-xl max-w-2xl leading-relaxed font-light">
-            Pioneering architectural solutions that redefine
-            <span class="text-[#D4894E] font-semibold">sustainable design</span> and
-            <span class="text-[#D4894E] font-semibold">luxury lifestyle</span>.
-          </p>
-
-          <div class="flex flex-col sm:flex-row gap-4 pt-4">
-            <button
-              class="group relative px-8 py-4 bg-gradient-to-r from-[#D4894E] to-[#c57d46] text-white text-base font-semibold rounded-full shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105">
-              <span class="relative z-10 flex items-center justify-center gap-2">
-                START YOUR PROJECT
-                <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </span>
-              <div
-                class="absolute inset-0 bg-gradient-to-r from-[#c57d46] to-[#D4894E] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              </div>
-            </button>
-          </div>
-        </div>
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- Navigation Arrows -->
-  <button 
-    (click)="previousSlide()"
-    class="absolute left-4 md:left-4 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 bg-white/60 backdrop-blur-md border border-white/30 rounded-full text-white hover:bg-white/50  transition-all duration-300 group">
-    <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="black" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+  <!-- Navigation Arrows - Hidden on mobile, visible on desktop -->
+  <button (click)="previousSlide()"
+    class="hidden sm:flex absolute left-3 md:left-6 lg:left-8 top-1/2 -translate-y-1/2 z-20 items-center justify-center w-10 h-10 md:w-12 md:h-12 bg-white/70 backdrop-blur-sm rounded-full hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-white/50"
+    aria-label="Previous slide">
+    <svg class="w-5 h-5 md:w-6 md:h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
     </svg>
   </button>
 
-  <button 
-    (click)="nextSlide()"
-    class="absolute right-4 md:right-4 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 bg-white/60 backdrop-blur-md border border-white/30 rounded-full text-white hover:bg-white/50 transition-all duration-300 group">
-    <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="black" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+  <button (click)="nextSlide()"
+    class="hidden sm:flex absolute right-3 md:right-6 lg:right-8 top-1/2 -translate-y-1/2 z-20 items-center justify-center w-10 h-10 md:w-12 md:h-12 bg-white/70 backdrop-blur-sm rounded-full hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-white/50"
+    aria-label="Next slide">
+    <svg class="w-5 h-5 md:w-6 md:h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
     </svg>
   </button>
 
-  <!-- Slide Indicators -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
-    <button 
-      *ngFor="let slide of slides; let i = index"
-      (click)="goToSlide(i)"
-      class="transition-all duration-300"
-      [ngClass]="currentSlide === i ? 'w-12 h-3 bg-[#D4894E]' : 'w-3 h-3 bg-white/50 hover:bg-white/70'"
-      [attr.aria-label]="'Go to slide ' + (i + 1)"
-      style="border-radius: 9999px;">
+  <!-- Slide Indicators - Responsive sizing -->
+  <div class="absolute bottom-6 sm:bottom-10 md:bottom-12 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+    <button *ngFor="let slide of slides; let i = index" (click)="goToSlide(i)"
+      class="transition-all duration-300 rounded-full focus:outline-none focus:ring-2 focus:ring-white/70"
+      [ngClass]="currentSlide === i ? 'w-8 sm:w-10 md:w-12 h-2 sm:h-2.5 md:h-3 bg-[#D4894E]' : 'w-2 sm:w-2.5 md:w-3 h-2 sm:h-2.5 md:h-3 bg-white/60 hover:bg-white/80'"
+      [attr.aria-label]="'Go to slide ' + (i + 1)" [attr.aria-current]="currentSlide === i ? 'true' : 'false'">
     </button>
   </div>
 
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-24 left-1/2 -translate-x-1/2 animate-bounce hidden md:block z-20">
-    <div class="flex flex-col items-center gap-2">
-      <span class="text-white/70 text-xs uppercase tracking-wider">Scroll Down</span>
-      <svg class="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-      </svg>
-    </div>
-  </div>
+  <!-- Loading indicator for images (optional enhancement) -->
+  <div class="absolute inset-0 bg-gray-900 z-0" aria-hidden="true"></div>
 </div>

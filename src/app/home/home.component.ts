@@ -1,91 +1,94 @@
-import { CommonModule, NgClass } from "@angular/common"
-import { Component, type ElementRef, HostListener, type OnDestroy, type OnInit, ViewChild } from "@angular/core"
+import { Component, type OnInit, type OnDestroy, HostListener } from "@angular/core"
+import { CommonModule } from "@angular/common"
 import { NavbarComponent } from "../navbar/navbar.component"
+
+interface Slide {
+  desktopImage: string
+  mobileImage: string
+  buttonText: string
+  alt: string
+}
 
 @Component({
   selector: "app-home",
   standalone: true,
-  imports: [CommonModule, NgClass, NavbarComponent],
+  imports: [CommonModule, NavbarComponent],
   templateUrl: "./home.component.html",
-  styleUrl: "./home.component.scss",
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  mobileOpen = false
-  profileOpen = false
-  scrolled = false
-
   currentSlide = 0
-  slides = [0, 1, 2] // Array representing the number of slides
-  private slideInterval: any
-  private readonly autoSlideDelay = 5000 // 5 seconds between slides
+  isMobile = false
 
-  @ViewChild("profileDropdown") profileDropdown!: ElementRef
-  @ViewChild("profileButton") profileButton!: ElementRef
+  slides: Slide[] = [
+    {
+      desktopImage: "assets/1.png",
+      mobileImage: "assets/mobile-1.png",
+      buttonText: "BOOK CONSULTATION",
+      alt: "Professional consultation service",
+    },
+    {
+      desktopImage: "assets/2.png",
+      mobileImage: "assets/mobile-2.png",
+      buttonText: "BOOK CONSULTATION",
+      alt: "Expert advice and guidance",
+    },
+    {
+      desktopImage: "assets/3.png",
+      mobileImage: "assets/mobile-3.png",
+      buttonText: "BOOK CONSULTATION",
+      alt: "Calculate your options",
+    },
+  ]
 
-  ngOnInit() {
-    // Start automatic sliding
+  private autoSlideInterval: any
+
+  ngOnInit(): void {
+    this.checkViewport()
     this.startAutoSlide()
   }
 
-  ngOnDestroy() {
-    // Clean up the interval when component is destroyed
+  ngOnDestroy(): void {
     this.stopAutoSlide()
   }
 
-  toggleMobile() {
-    this.mobileOpen = !this.mobileOpen
+  @HostListener("window:resize")
+  checkViewport(): void {
+    this.isMobile = window.innerWidth < 640
   }
 
-  toggleProfile() {
-    this.profileOpen = !this.profileOpen
+  startAutoSlide(): void {
+    this.autoSlideInterval = setInterval(() => {
+      this.nextSlide()
+    }, 5000)
   }
 
-  nextSlide() {
+  stopAutoSlide(): void {
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval)
+    }
+  }
+
+  nextSlide(): void {
     this.currentSlide = (this.currentSlide + 1) % this.slides.length
     this.resetAutoSlide()
   }
 
-  previousSlide() {
+  previousSlide(): void {
     this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1
     this.resetAutoSlide()
   }
 
-  goToSlide(index: number) {
+  goToSlide(index: number): void {
     this.currentSlide = index
     this.resetAutoSlide()
   }
 
-  startAutoSlide() {
-    this.slideInterval = setInterval(() => {
-      this.nextSlide()
-    }, this.autoSlideDelay)
-  }
-
-  stopAutoSlide() {
-    if (this.slideInterval) {
-      clearInterval(this.slideInterval)
-    }
-  }
-
-  resetAutoSlide() {
+  resetAutoSlide(): void {
     this.stopAutoSlide()
     this.startAutoSlide()
   }
 
-  @HostListener("window:scroll")
-  onWindowScroll() {
-    this.scrolled = window.scrollY > 50
-  }
-
-  @HostListener("document:click", ["$event"])
-  onClickOutside(event: Event) {
-    if (!this.profileOpen) return
-
-    const dropdown = this.profileDropdown?.nativeElement
-    const button = this.profileButton?.nativeElement
-
-    if (!dropdown.contains(event.target) && !button.contains(event.target)) {
-      this.profileOpen = false
-    }
+  onBookConsultation(): void {
+    console.log("Book consultation clicked for slide:", this.currentSlide)
   }
 }

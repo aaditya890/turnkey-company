@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common"
-import {Component,ElementRef,HostListener,ViewChild,AfterViewInit,OnInit,OnDestroy,} from "@angular/core"
+import {Component} from "@angular/core"
 import { FaqComponent } from "./faq/faq.component";
 import { StepsSectionComponent } from "./steps-section/steps-section.component";
 import { ReviewSliderComponent } from "./review-slider/review-slider.component";

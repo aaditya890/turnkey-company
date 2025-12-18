@@ -21,3 +21,171 @@ HpbpERO -- DONE
         </text>
       </svg>
     </div>
+
+
+
+    <!-- MAIN NAVBAR -->
+<nav class="w-full bg-white border-b border-gray-200 text-[#2C2327] shadow sticky top-0 z-50">
+  <div class="max-w-[1200px] mx-auto py-4 flex items-center justify-between gap-10">
+    <div class="flex gap-10 items-center">
+      <!-- LOGO -->
+      <div class="flex items-center cursor-pointer">
+        <img src="assets/logo-2.png" alt="logo" class="h-10" />
+      </div>
+
+      <!-- DESKTOP MENU -->
+      <ul class="hidden xl:flex items-center gap-8 text-[14px] font-medium">
+
+        <!-- DESIGN IDEAS -->
+        <li class="relative group cursor-pointer">
+          <div class="flex items-center gap-1 hover:text-[#D4894E]">
+            Design Ideas
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </div>
+        </li>
+        <!-- MAGAZINE -->
+        <li class="relative group cursor-pointer">
+          <div class="flex items-center gap-1 hover:text-[#D4894E]">
+            Magazine
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </div>
+        </li>
+        <!-- CITIES -->
+        <li class="relative group cursor-pointer">
+          <div class="flex items-center gap-1 hover:text-[#D4894E]">
+            Cities
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </div>
+        </li>
+        <li class="cursor-pointer hover:text-[#D4894E]">Projects</li>
+        <li class="cursor-pointer hover:text-[#D4894E]">Store</li>
+
+        <!-- MORE -->
+        <li class="relative group cursor-pointer">
+          <div class="flex items-center gap-1 hover:text-[#D4894E]">
+            More
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </div>
+        </li>
+
+        <!-- DIVIDER -->
+        <div class="h-6 w-px bg-gray-300"></div>
+
+        <!-- SHOP -->
+        <li class="flex items-center gap-2 cursor-pointer hover:text-[#D4894E]">
+          Shop Furnishings
+          <span class="px-2 py-0.5 bg-[#D4894E] text-white text-xs font-semibold rounded-full">
+            NEW
+          </span>
+        </li>
+      </ul>
+    </div>
+    <!-- PROFILE -->
+    <div class="cursor-pointer flex items-center gap-px">
+      <div class="bg-gray-100 px-2 py-2 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-6 text-gray-700" fill="none" viewBox="0 0 24 24"
+          stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 20.1a7.5 7.5 0 0 1 15 0" />
+        </svg>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+      </svg>
+    </div>
+
+    <!-- MOBILE BUTTON -->
+    <button class="xl:hidden text-3xl" (click)="toggleMobileMenu()" aria-label="Open menu">
+      {{ mobileMenuOpen ? '✕' : '☰' }}
+    </button>
+
+  </div>
+</nav>
+<!-- MOBILE MENU -->
+<div *ngIf="mobileMenuOpen" class="xl:hidden fixed inset-0 z-40 bg-black/40" (click)="mobileMenuOpen = false">
+
+</div>
+
+<div class="xl:hidden fixed top-[64px] left-0 right-0 z-50
+         bg-white shadow-lg border-t
+         transition-all duration-300" [class.translate-y-0]="mobileMenuOpen"
+  [class.-translate-y-full]="!mobileMenuOpen">
+  <div class="px-6 py-6 space-y-6">
+
+    <!-- MAIN LINKS -->
+    <ul class="space-y-4 text-[15px] font-medium text-[#2C2327]">
+      <li class="cursor-pointer">Design Ideas</li>
+      <li class="cursor-pointer">Magazine</li>
+      <li class="cursor-pointer">Cities</li>
+      <li class="cursor-pointer">Projects</li>
+      <li class="cursor-pointer">Store</li>
+
+      <li class="flex items-center gap-2">
+        Shop Furnishings
+        <span class="px-2 py-0.5 bg-[#D4894E] text-white text-xs rounded-full">
+          NEW
+        </span>
+      </li>
+    </ul>
+
+    <hr />
+
+    <!-- SUB NAV LINKS (from second navbar) -->
+    <ul class="space-y-3 text-sm text-gray-700">
+      <li>How it works</li>
+      <li>Offerings</li>
+      <li>Price Calculators</li>
+      <li>The Modular Journey</li>
+      <li>Own a franchise</li>
+    </ul>
+
+    <!-- CTA -->
+    <button class="w-full bg-[#D4894E] text-white py-3 rounded-full font-semibold mt-4">
+      CONSULT ONLINE NOW
+    </button>
+
+  </div>
+</div>
+
+<!-- SUB NAVBAR -->
+<div class="w-full bg-white border-b border-gray-200 sticky top-[73px] z-40">
+  <div class="max-w-[1200px] mx-auto px-6 py-2 flex items-center justify-between">
+
+    <!-- LEFT LINKS -->
+    <ul class="flex items-center gap-8 text-[14px] text-gray-700 font-medium">
+      <li class="cursor-pointer hover:text-[#D4894E]">How it works</li>
+      <li class="cursor-pointer hover:text-[#D4894E] flex items-center gap-1">
+        Offerings
+        <svg class="size-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+      </li>
+      <li class="cursor-pointer hover:text-[#D4894E] flex items-center gap-1">
+        Price Calculators
+        <svg class="size-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+      </li>
+      <li class="cursor-pointer hover:text-[#D4894E]">The Modular Journey</li>
+      <li class="cursor-pointer hover:text-[#D4894E]">Own a franchise</li>
+    </ul>
+
+    <!-- RIGHT CTA -->
+    <button class="bg-[#D4894E] hover:bg-[#a76d41] text-white text-xs font-semibold px-5 py-2 rounded-full">
+      CONSULT ONLINE NOW
+    </button>
+  </div>
+</div>

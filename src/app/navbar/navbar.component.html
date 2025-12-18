@@ -1,0 +1,170 @@
+<app-announcementbar></app-announcementbar>
+<!-- Main Navigation Bar -->
+<nav class="navbar">
+  <div class="navbar-container">
+
+    <!-- Logo & Desktop Menu -->
+    <div class="navbar-left">
+      <img src="assets/logo-2.png" alt="Company Logo" class="navbar-logo" />
+
+      <ul class="desktop-menu">
+        <li class="menu-item">
+          <div class="flex items-center gap-1 hover:text-[#D4894E]">
+            Design Ideas
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </div>
+        </li>
+        <li class="menu-item">
+          <div class="flex items-center gap-1 hover:text-[#D4894E]">
+            Magazine
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </div>
+        </li>
+        <li class="menu-item">Cities</li>
+        <li class="menu-item">Projects</li>
+        <li class="menu-item">Store</li>
+        <li class="menu-item">Store</li>
+
+        <li class="menu-item">
+          <div class="flex items-center gap-1 hover:text-[#D4894E]">
+            More
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </div>
+        </li>
+
+        <li class="menu-item menu-item-featured">
+          Shop Furnishings
+          <span class="badge">NEW</span>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- PROFILE ICON -->
+    <div class="desktop-profile flex items-center gap-1 cursor-pointer relative" (click)="toggleProfile()">
+      <div class="profile-icon bg-gray-100 p-2 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </div>
+
+      <svg class="size-3 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+
+      <!-- DROPDOWN -->
+      <div *ngIf="profileOpen" class="absolute right-0 top-12 w-[320px] bg-white
+           rounded-2xl shadow-2xl border border-gray-100
+           p-5 z-50" (click)="$event.stopPropagation()">
+
+        <!-- LOGIN BUTTON -->
+        <button class="w-full flex items-center justify-center gap-2
+             border-2 border-[#D4894E] text-[#D4894E]
+             rounded-full py-3 font-semibold
+             hover:bg-orange-50 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M4 20a8 8 0 0 1 16 0" />
+          </svg>
+          Login / Signup
+        </button>
+
+        <!-- DIVIDER -->
+        <div class="h-px bg-gray-200 my-4"></div>
+
+        <!-- APP SECTION -->
+        <p class="text-sm font-medium text-gray-800 mb-3">
+          Explore our mobile app
+        </p>
+
+        <div class="flex gap-3">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+            class="h-10 cursor-pointer" alt="Google Play" />
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+            class="h-10 cursor-pointer" alt="App Store" />
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-button" (click)="toggleMobileMenu()" [attr.aria-expanded]="mobileMenuOpen"
+      aria-label="Toggle mobile menu">
+      <span class="menu-icon" [class.open]="mobileMenuOpen">
+        <span class="menu-icon-line"></span>
+        <span class="menu-icon-line"></span>
+        <span class="menu-icon-line"></span>
+      </span>
+    </button>
+  </div>
+</nav>
+
+<!-- Secondary Navigation Bar (Desktop Only) -->
+<div class="secondary-nav">
+  <div class="secondary-nav-container">
+    <ul class="secondary-menu">
+      <li class="secondary-menu-item">How it works</li>
+      <li class="secondary-menu-item">Offerings</li>
+      <li class="secondary-menu-item">Price Calculators</li>
+      <li class="secondary-menu-item">The Modular Journey</li>
+      <li class="secondary-menu-item">Own a franchise</li>
+    </ul>
+
+    <button class="cta-button">
+      CONSULT ONLINE NOW
+    </button>
+  </div>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-overlay" [class.active]="mobileMenuOpen" (click)="closeMobileMenu()">
+</div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" [class.active]="mobileMenuOpen" role="dialog" aria-modal="true">
+  <div class="mobile-menu-content">
+
+    <!-- Main Links -->
+    <ul class="mobile-main-links">
+      <li class="mobile-menu-item" (click)="closeMobileMenu()">Design Ideas</li>
+      <li class="mobile-menu-item" (click)="closeMobileMenu()">Magazine</li>
+      <li class="mobile-menu-item" (click)="closeMobileMenu()">Cities</li>
+      <li class="mobile-menu-item" (click)="closeMobileMenu()">Projects</li>
+      <li class="mobile-menu-item" (click)="closeMobileMenu()">Store</li>
+      <li class="mobile-menu-item mobile-menu-item-featured" (click)="closeMobileMenu()">
+        Shop Furnishings
+        <span class="badge">NEW</span>
+      </li>
+    </ul>
+
+    <hr class="mobile-divider" />
+
+    <!-- Sub Links -->
+    <ul class="mobile-sub-links">
+      <li class="mobile-sub-item" (click)="closeMobileMenu()">How it works</li>
+      <li class="mobile-sub-item" (click)="closeMobileMenu()">Offerings</li>
+      <li class="mobile-sub-item" (click)="closeMobileMenu()">Price Calculators</li>
+      <li class="mobile-sub-item" (click)="closeMobileMenu()">The Modular Journey</li>
+      <li class="mobile-sub-item" (click)="closeMobileMenu()">Own a franchise</li>
+    </ul>
+
+    <!-- Mobile CTA -->
+    <div class="mobile-cta-wrapper">
+      <button class="mobile-cta-button" (click)="closeMobileMenu()">
+        CONSULT ONLINE NOW
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,25 +1,25 @@
 /* Navbar blur animation */
-nav {
-  backdrop-filter: blur(10px);
-}
+// nav {
+//   backdrop-filter: blur(10px);
+// }
 
-.floating-nav {
-  border-radius: 40px;
-  transition: all 0.4s ease;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-}
+// .floating-nav {
+//   border-radius: 40px;
+//   transition: all 0.4s ease;
+//   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+// }
 
-/* Circular rotating text */
-@keyframes slow-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+// /* Circular rotating text */
+// @keyframes slow-rotate {
+//   from { transform: rotate(0deg); }
+//   to { transform: rotate(360deg); }
+// }
 
-.slow-spin {
-  animation: slow-rotate 20s linear infinite;
-}
+// .slow-spin {
+//   animation: slow-rotate 20s linear infinite;
+// }
 
-/* Host wrapper */
-:host {
-  display: block;
-}
+// /* Host wrapper */
+// :host {
+//   display: block;
+// }

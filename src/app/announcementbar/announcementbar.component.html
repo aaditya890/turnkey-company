@@ -1,49 +1,61 @@
 <!-- Compact Announcement Bar -->
 <div
+  *ngIf="showAnnouncement"
   class="w-full"
   aria-live="polite"
   role="region"
 >
-  <div
-    class="mx-auto max-w-full"
-    style="background: #314054;"
-  >
-    <div class="flex items-center justify-between max-w-7xl mx-auto px-3 py-1.5">
-      
-      <!-- Left: Icon + message -->
-      <div class="flex items-center gap-2">
-        <span
-          class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 text-white text-[10px]"
-          aria-hidden="true"
-        >✨</span>
+  <div class="w-full bg-[#314054]">
+    <div
+      class="max-w-7xl mx-auto
+             px-3 sm:px-4
+             py-2
+             flex items-center justify-between
+             gap-3"
+    >
 
-        <div class="overflow-hidden h-4 flex items-center">
+      <!-- LEFT: Icon + Message -->
+      <div class="flex items-center gap-2 min-w-0">
+        <!-- message wrapper -->
+        <div class="overflow-hidden h-4 flex items-center min-w-0">
           <p
-            class="text-white text-xs font-medium transform transition-all duration-300 ease-out"
+            class="text-white text-xs font-medium
+                   truncate
+                   transform transition-all duration-300 ease-out"
             [ngClass]="{
               'opacity-0 -translate-y-1': state === 'hidden',
               'opacity-100 translate-y-0': state === 'visible'
             }"
-            style="white-space: nowrap;"
           >
             {{ messages[current] }}
           </p>
         </div>
       </div>
 
-      <!-- Right: CTA + Close -->
-      <div class="flex items-center gap-2">
-        <a
+      <!-- RIGHT: CTA + Close -->
+      <div class="flex items-center gap-2 flex-shrink-0">
+
+        <!-- CTA (hidden on very small screens) -->
+        <!-- <a
           href="/contact"
-          class="hidden sm:inline-block px-3 py-1 rounded-full bg-[#D4894E] text-white text-xs font-medium shadow hover:opacity-95 transition"
+          class="hidden sm:inline-flex
+                 px-3 py-1
+                 rounded-full
+                 bg-[#D4894E]
+                 text-white text-xs font-medium
+                 shadow hover:opacity-95 transition"
         >
           Book Now
-        </a>
+        </a> -->
 
+        <!-- CLOSE -->
         <button
+          type="button"
           (click)="close()"
-          aria-label="Close"
-          class="text-white/80 hover:text-white text-sm p-1"
+          aria-label="Close announcement"
+          class="text-gray-900 hover:text-gray-600
+                 text-sm bg-gray-100 rounded-2xl
+                 p-1 leading-none"
         >
           ✕
         </button>
@@ -51,6 +63,4 @@
 
     </div>
   </div>
-
-
 </div>

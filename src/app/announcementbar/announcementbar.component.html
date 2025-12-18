@@ -1,66 +1,35 @@
 <!-- Compact Announcement Bar -->
 <div
   *ngIf="showAnnouncement"
-  class="w-full"
+  class="w-full bg-[#314054] relative z-50"
   aria-live="polite"
   role="region"
 >
-  <div class="w-full bg-[#314054]">
-    <div
-      class="max-w-7xl mx-auto
-             px-3 sm:px-4
-             py-2
-             flex items-center justify-between
-             gap-3"
-    >
-
-      <!-- LEFT: Icon + Message -->
-      <div class="flex items-center gap-2 min-w-0">
-        <!-- message wrapper -->
-        <div class="overflow-hidden h-4 flex items-center min-w-0">
-          <p
-            class="text-white text-xs font-medium
-                   truncate
-                   transform transition-all duration-300 ease-out"
-            [ngClass]="{
-              'opacity-0 -translate-y-1': state === 'hidden',
-              'opacity-100 translate-y-0': state === 'visible'
-            }"
-          >
-            {{ messages[current] }}
-          </p>
-        </div>
-      </div>
-
-      <!-- RIGHT: CTA + Close -->
-      <div class="flex items-center gap-2 flex-shrink-0">
-
-        <!-- CTA (hidden on very small screens) -->
-        <!-- <a
-          href="/contact"
-          class="hidden sm:inline-flex
-                 px-3 py-1
-                 rounded-full
-                 bg-[#D4894E]
-                 text-white text-xs font-medium
-                 shadow hover:opacity-95 transition"
+  <div class="max-w-7xl mx-auto px-3 sm:px-4 py-2 flex items-center justify-between gap-3">
+    
+    <!-- LEFT: Message -->
+    <div class="flex items-center gap-2 min-w-0 flex-1">
+      <div class="overflow-hidden h-4 flex items-center min-w-0">
+        <p
+          class="text-white text-xs font-medium truncate transition-all duration-300 ease-out"
+          [ngClass]="{
+            'opacity-0 -translate-y-1': state === 'hidden',
+            'opacity-100 translate-y-0': state === 'visible'
+          }"
         >
-          Book Now
-        </a> -->
-
-        <!-- CLOSE -->
-        <button
-          type="button"
-          (click)="close()"
-          aria-label="Close announcement"
-          class="text-gray-900 hover:text-gray-600
-                 text-sm bg-gray-100 rounded-2xl
-                 p-1 leading-none"
-        >
-          ✕
-        </button>
+          {{ messages[current] }}
+        </p>
       </div>
-
     </div>
+
+    <!-- RIGHT: Close -->
+    <button
+      type="button"
+      (click)="close()"
+      aria-label="Close announcement"
+      class="text-gray-900 hover:text-gray-600 text-sm bg-gray-100 rounded-full p-1 leading-none flex-shrink-0 transition-colors"
+    >
+      ✕
+    </button>
   </div>
 </div>

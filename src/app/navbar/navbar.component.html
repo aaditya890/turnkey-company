@@ -1,169 +1,415 @@
+<!-- Separated announcement bar into its own component -->
 <app-announcementbar></app-announcementbar>
+
 <!-- Main Navigation Bar -->
-<nav class="navbar">
-  <div class="navbar-container">
+<nav class="w-full bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 lg:px-6">
+    <div class="flex items-center justify-between h-20">
 
-    <!-- Logo & Desktop Menu -->
-    <div class="navbar-left">
-      <img src="assets/logo-2.png" alt="Company Logo" class="navbar-logo" />
+      <!-- Logo & Desktop Menu -->
+      <div class="flex items-center gap-10">
+        <img src="assets/logo-2.png" alt="TurnKey Company" class="h-12 cursor-pointer" />
 
-      <ul class="desktop-menu">
-        <li class="menu-item">
-          <div class="flex items-center gap-1 hover:text-[#D4894E]">
-            Design Ideas
-            <svg xmlns="http://www.w3.org/2000/svg" class="size-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-              stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
-          </div>
-        </li>
-        <li class="menu-item">
-          <div class="flex items-center gap-1 hover:text-[#D4894E]">
-            Magazine
-            <svg xmlns="http://www.w3.org/2000/svg" class="size-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-              stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
-          </div>
-        </li>
-        <li class="menu-item">Cities</li>
-        <li class="menu-item">Projects</li>
-        <li class="menu-item">Store</li>
-        <li class="menu-item">Store</li>
+        <!-- Desktop Menu -->
+        <ul class="hidden xl:flex items-center gap-8">
+          <!-- Design Ideas - Mega Menu -->
+          <li class="relative group" (mouseenter)="showDropdown('design')" (mouseleave)="hideDropdown()">
+            <div
+              class="flex items-center gap-1 text-sm font-medium text-[#2c2327] cursor-pointer hover:text-[#D4894E] transition-colors py-2">
+              Design Ideas
+              <svg xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </div>
 
-        <li class="menu-item">
-          <div class="flex items-center gap-1 hover:text-[#D4894E]">
-            More
-            <svg xmlns="http://www.w3.org/2000/svg" class="size-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-              stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
-          </div>
-        </li>
+            <!-- Enhanced Mega Dropdown with better image cards -->
+            <div *ngIf="activeDropdown === 'design'"
+              class="absolute left-0 top-full mt-0 w-[900px] bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 transition-all duration-300"
+              (mouseenter)="showDropdown('design')" (mouseleave)="hideDropdown()">
 
-        <li class="menu-item menu-item-featured">
-          Shop Furnishings
-          <span class="badge">NEW</span>
-        </li>
-      </ul>
-    </div>
-    
-    <!-- PROFILE ICON -->
-    <div class="desktop-profile flex items-center gap-1 cursor-pointer relative" (click)="toggleProfile()">
-      <div class="profile-icon bg-gray-100 p-2 rounded-full">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
+              <div class="grid grid-cols-2 gap-10">
+                <div *ngFor="let category of designIdeasCategories">
+                  <h3
+                    class="text-sm font-bold text-[#314054] mb-5 uppercase tracking-wide border-l-4 border-[#D4894E] pl-3">
+                    {{ category.title }}</h3>
+                  <div class="grid grid-cols-2 gap-4">
+                    <a *ngFor="let item of category.links" class="group/card cursor-pointer block">
+                      <div class="relative overflow-hidden rounded-xl mb-2 aspect-[4/3]">
+                        <img [src]="item.image" [alt]="item.name"
+                          class="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110" />
+                        <div
+                          class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                          <span class="text-white text-sm font-semibold">Explore →</span>
+                        </div>
+                      </div>
+                      <p class="text-sm font-medium text-gray-700 group-hover/card:text-[#D4894E] transition-colors">{{
+                        item.name }}</p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-8 pt-6 border-t border-gray-200 flex items-center justify-between">
+                <p class="text-xs text-gray-500">Need help choosing? Talk to our design experts</p>
+                <button
+                  class="text-sm font-semibold text-[#D4894E] hover:text-[#a76d41] transition-colors flex items-center gap-2">
+                  View All Designs
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </li>
+
+          <!-- Magazine - Mega Menu -->
+          <li class="relative group" (mouseenter)="showDropdown('magazine')" (mouseleave)="hideDropdown()">
+            <div
+              class="flex items-center gap-1 text-sm font-medium text-[#2c2327] cursor-pointer hover:text-[#D4894E] transition-colors py-2">
+              Magazine
+              <svg xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </div>
+
+            <!-- Magazine Mega Dropdown -->
+            <div *ngIf="activeDropdown === 'magazine'"
+              class="absolute left-0 top-full mt-0 w-[700px] bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 transition-all duration-300"
+              (mouseenter)="showDropdown('magazine')" (mouseleave)="hideDropdown()">
+
+              <h3
+                class="text-sm font-bold text-[#314054] mb-5 uppercase tracking-wide border-l-4 border-[#D4894E] pl-3">
+                Explore Our Magazine</h3>
+              <div class="grid grid-cols-2 gap-5">
+                <a *ngFor="let item of magazineCategories" class="group/card cursor-pointer block">
+                  <div class="relative overflow-hidden rounded-xl aspect-[16/10]">
+                    <img [src]="item.image" [alt]="item.name"
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110" />
+                    <div
+                      class="absolute inset-0 bg-gradient-to-t from-[#314054]/90 via-[#314054]/40 to-transparent flex items-end p-5">
+                      <div>
+                        <p class="text-base font-bold text-white mb-1">{{ item.name }}</p>
+                        <p class="text-xs text-white/80">Read Article →</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="mt-8 pt-6 border-t border-gray-200">
+                <button
+                  class="text-sm font-semibold text-[#D4894E] hover:text-[#a76d41] transition-colors flex items-center gap-2">
+                  Browse All Articles
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </li>
+
+          <li><a href="/cities"
+              class="text-sm font-medium text-[#2c2327] cursor-pointer hover:text-[#D4894E] transition-colors py-2 block">Cities</a>
+          </li>
+          <li><a href="/projects"
+              class="text-sm font-medium text-[#2c2327] cursor-pointer hover:text-[#D4894E] transition-colors py-2 block">Projects</a>
+          </li>
+          <li><a href="/store"
+              class="text-sm font-medium text-[#2c2327] cursor-pointer hover:text-[#D4894E] transition-colors py-2 block">Store</a>
+          </li>
+
+          <!-- More - Mega Menu -->
+          <li class="relative group" (mouseenter)="showDropdown('more')" (mouseleave)="hideDropdown()">
+            <div
+              class="flex items-center gap-1 text-sm font-medium text-[#2c2327] cursor-pointer hover:text-[#D4894E] transition-colors py-2">
+              More
+              <svg xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </div>
+
+            <!-- Services Mega Dropdown -->
+            <div *ngIf="activeDropdown === 'more'"
+              class="absolute left-0 top-full mt-0 w-[600px] bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 transition-all duration-300"
+              (mouseenter)="showDropdown('more')" (mouseleave)="hideDropdown()">
+
+              <h3
+                class="text-sm font-bold text-[#314054] mb-5 uppercase tracking-wide border-l-4 border-[#D4894E] pl-3">
+                Our Services</h3>
+              <div class="grid grid-cols-2 gap-4">
+                <a *ngFor="let service of servicesData"
+                  class="group/card cursor-pointer p-5 rounded-xl hover:bg-gradient-to-br hover:from-orange-50 hover:to-orange-100/50 transition-all duration-300 border border-transparent hover:border-[#D4894E]/30 hover:shadow-lg">
+                  <div class="text-4xl mb-3">{{ service.icon }}</div>
+                  <h4 class="text-sm font-bold text-[#314054] mb-2 group-hover/card:text-[#D4894E] transition-colors">{{
+                    service.title }}</h4>
+                  <p class="text-xs text-gray-600 leading-relaxed">{{ service.desc }}</p>
+                </a>
+              </div>
+
+              <div class="mt-8 pt-6 border-t border-gray-200">
+                <button
+                  class="text-sm font-semibold text-[#D4894E] hover:text-[#a76d41] transition-colors flex items-center gap-2">
+                  View All Services
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </li>
+
+          <li class="flex items-center gap-2 cursor-pointer group">
+            <a href="/shop-furnishings"
+              class="text-sm font-medium text-[#2c2327] group-hover:text-[#D4894E] transition-colors py-2 flex items-center gap-2">
+              Shop Furnishings
+              <span class="px-2.5 py-1 bg-[#D4894E] text-white text-xs font-bold rounded-full shadow-sm">NEW</span>
+            </a>
+          </li>
+        </ul>
       </div>
 
-      <svg class="size-3 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
-
-      <!-- DROPDOWN -->
-      <div *ngIf="profileOpen" class="absolute right-0 top-12 w-[320px] bg-white
-           rounded-2xl shadow-2xl border border-gray-100
-           p-5 z-50" (click)="$event.stopPropagation()">
-
-        <!-- LOGIN BUTTON -->
-        <button class="w-full flex items-center justify-center gap-2
-             border-2 border-[#D4894E] text-[#D4894E]
-             rounded-full py-3 font-semibold
-             hover:bg-orange-50 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
-            <circle cx="12" cy="8" r="4" />
-            <path d="M4 20a8 8 0 0 1 16 0" />
+      <!-- Profile Icon (Desktop) -->
+      <div class="hidden xl:flex items-center gap-1 cursor-pointer relative desktop-profile" (click)="toggleProfile()">
+        <div class="bg-gray-100 p-2.5 rounded-full hover:bg-gray-200 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
           </svg>
-          Login / Signup
-        </button>
+        </div>
+        <svg class="w-4 h-4 text-gray-600 transition-transform" [class.rotate-180]="profileOpen"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
 
-        <!-- DIVIDER -->
-        <div class="h-px bg-gray-200 my-4"></div>
+        <!-- Profile Dropdown -->
+        <div *ngIf="profileOpen"
+          class="absolute right-0 top-14 w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 z-50"
+          (click)="$event.stopPropagation()">
+          <button
+            class="w-full flex items-center justify-center gap-2 border-2 border-[#D4894E] text-[#D4894E] rounded-full py-3 font-bold text-sm hover:bg-orange-50 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 20a8 8 0 0 1 16 0" />
+            </svg>
+            Login / Signup
+          </button>
 
-        <!-- APP SECTION -->
-        <p class="text-sm font-medium text-gray-800 mb-3">
-          Explore our mobile app
-        </p>
+          <div class="h-px bg-gray-200 my-5"></div>
 
-        <div class="flex gap-3">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-            class="h-10 cursor-pointer" alt="Google Play" />
-          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-            class="h-10 cursor-pointer" alt="App Store" />
+          <p class="text-sm font-semibold text-gray-800 mb-3">Download our mobile app</p>
+          <div class="flex gap-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+              class="h-10 cursor-pointer hover:opacity-80 transition-opacity" alt="Google Play" />
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+              class="h-10 cursor-pointer hover:opacity-80 transition-opacity" alt="App Store" />
+          </div>
         </div>
       </div>
+
+      <!-- Enhanced Mobile Menu Button with better animation -->
+      <button class="xl:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors" (click)="toggleMobileMenu()"
+        aria-label="Toggle menu">
+        <div class="w-6 h-5 flex flex-col justify-between">
+          <span class="w-full h-0.5 bg-[#2c2327] rounded-full transition-all duration-300 origin-center"
+            [ngClass]="{'rotate-45 translate-y-2': mobileMenuOpen}"></span>
+          <span class="w-full h-0.5 bg-[#2c2327] rounded-full transition-all duration-300"
+            [ngClass]="{'opacity-0 scale-0': mobileMenuOpen}"></span>
+          <span class="w-full h-0.5 bg-[#2c2327] rounded-full transition-all duration-300 origin-center"
+            [ngClass]="{'-rotate-45 -translate-y-2': mobileMenuOpen}"></span>
+        </div>
+      </button>
     </div>
-
-
-    <!-- Mobile Menu Button -->
-    <button class="mobile-menu-button" (click)="toggleMobileMenu()" [attr.aria-expanded]="mobileMenuOpen"
-      aria-label="Toggle mobile menu">
-      <span class="menu-icon" [class.open]="mobileMenuOpen">
-        <span class="menu-icon-line"></span>
-        <span class="menu-icon-line"></span>
-        <span class="menu-icon-line"></span>
-      </span>
-    </button>
   </div>
 </nav>
 
-<!-- Secondary Navigation Bar (Desktop Only) -->
-<div class="secondary-nav">
-  <div class="secondary-nav-container">
-    <ul class="secondary-menu">
-      <li class="secondary-menu-item">How it works</li>
-      <li class="secondary-menu-item">Offerings</li>
-      <li class="secondary-menu-item">Price Calculators</li>
-      <li class="secondary-menu-item">The Modular Journey</li>
-      <li class="secondary-menu-item">Own a franchise</li>
-    </ul>
+<!-- Secondary Navigation (Desktop Only) -->
+<div class="hidden xl:block w-full bg-white border-b border-gray-200 sticky top-20 z-30 shadow-sm">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-center justify-between h-14">
+      <ul class="flex items-center gap-8">
+        <li><a href="/how-it-works"
+            class="text-sm font-medium text-gray-600 cursor-pointer hover:text-[#D4894E] transition-colors">How it
+            works</a></li>
+        <li><a href="/offerings"
+            class="text-sm font-medium text-gray-600 cursor-pointer hover:text-[#D4894E] transition-colors">Offerings</a>
+        </li>
+        <li><a href="/price-calculators"
+            class="text-sm font-medium text-gray-600 cursor-pointer hover:text-[#D4894E] transition-colors">Price
+            Calculators</a></li>
+        <li><a href="/modular-journey"
+            class="text-sm font-medium text-gray-600 cursor-pointer hover:text-[#D4894E] transition-colors">The Modular
+            Journey</a></li>
+        <li><a href="/franchise"
+            class="text-sm font-medium text-gray-600 cursor-pointer hover:text-[#D4894E] transition-colors">Own a
+            franchise</a></li>
+        <li><a href="/franchise"
+            class="text-sm font-medium text-gray-600 cursor-pointer hover:text-[#D4894E] transition-colors">Own a
+            franchise</a></li>
+        <li><a href="/franchise"
+            class="text-sm font-medium text-gray-600 cursor-pointer hover:text-[#D4894E] transition-colors">Own a
+            franchise</a></li>
 
-    <button class="cta-button">
-      CONSULT ONLINE NOW
-    </button>
+      </ul>
+
+      <button
+        class="bg-[#D4894E] text-white text-xs font-bold px-6 py-2.5 rounded-full hover:bg-[#a76d41] transition-all hover:shadow-lg">
+        CONSULT ONLINE NOW
+      </button>
+    </div>
   </div>
 </div>
 
-<!-- Mobile Menu Overlay -->
-<div class="mobile-overlay" [class.active]="mobileMenuOpen" (click)="closeMobileMenu()">
-</div>
+<!-- Mobile Overlay -->
+<div *ngIf="mobileMenuOpen" class="fixed inset-0 bg-black/60 z-40 xl:hidden transition-opacity backdrop-blur-sm"
+  (click)="closeMobileMenu()"></div>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" [class.active]="mobileMenuOpen" role="dialog" aria-modal="true">
-  <div class="mobile-menu-content">
+<!-- Enhanced Mobile Menu with accordion style mega menus -->
+<div
+  class="fixed top-0 left-0 right-0 bottom-0 bg-white z-50 xl:hidden transition-transform duration-300 overflow-y-auto"
+  [ngClass]="{'translate-x-0': mobileMenuOpen, '-translate-x-full': !mobileMenuOpen}">
+  <div class="flex flex-col h-full">
 
-    <!-- Main Links -->
-    <ul class="mobile-main-links">
-      <li class="mobile-menu-item" (click)="closeMobileMenu()">Design Ideas</li>
-      <li class="mobile-menu-item" (click)="closeMobileMenu()">Magazine</li>
-      <li class="mobile-menu-item" (click)="closeMobileMenu()">Cities</li>
-      <li class="mobile-menu-item" (click)="closeMobileMenu()">Projects</li>
-      <li class="mobile-menu-item" (click)="closeMobileMenu()">Store</li>
-      <li class="mobile-menu-item mobile-menu-item-featured" (click)="closeMobileMenu()">
-        Shop Furnishings
-        <span class="badge">NEW</span>
-      </li>
-    </ul>
+    <!-- Mobile Header -->
+    <div class="flex items-center justify-between p-4 border-b border-gray-200 bg-white sticky top-0 z-10">
+      <img src="assets/logo-2.png" alt="TurnKey Company" class="h-10" />
+      <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors" (click)="closeMobileMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
 
-    <hr class="mobile-divider" />
+    <!-- Mobile Menu Content -->
+    <div class="flex-1 overflow-y-auto p-6">
 
-    <!-- Sub Links -->
-    <ul class="mobile-sub-links">
-      <li class="mobile-sub-item" (click)="closeMobileMenu()">How it works</li>
-      <li class="mobile-sub-item" (click)="closeMobileMenu()">Offerings</li>
-      <li class="mobile-sub-item" (click)="closeMobileMenu()">Price Calculators</li>
-      <li class="mobile-sub-item" (click)="closeMobileMenu()">The Modular Journey</li>
-      <li class="mobile-sub-item" (click)="closeMobileMenu()">Own a franchise</li>
-    </ul>
+      <!-- Main Links -->
+      <div class="space-y-1 mb-6">
+        <!-- Design Ideas Accordion -->
+        <div class="border-b border-gray-200">
+          <button class="w-full flex items-center justify-between py-4 text-base font-semibold text-[#2c2327]"
+            (click)="toggleMobileDropdown('design')">
+            Design Ideas
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform"
+              [ngClass]="{'rotate-180': mobileActiveDropdown === 'design'}" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+          <div *ngIf="mobileActiveDropdown === 'design'" class="pb-4 space-y-4">
+            <div *ngFor="let category of designIdeasCategories">
+              <h4 class="text-xs font-bold text-[#D4894E] uppercase tracking-wide mb-2">{{ category.title }}</h4>
+              <div class="grid grid-cols-2 gap-2">
+                <a *ngFor="let item of category.links" class="block" (click)="closeMobileMenu()">
+                  <div class="relative overflow-hidden rounded-lg aspect-[4/3] mb-1">
+                    <img [src]="item.image" [alt]="item.name" class="w-full h-full object-cover" />
+                  </div>
+                  <p class="text-xs font-medium text-gray-700">{{ item.name }}</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <!-- Mobile CTA -->
-    <div class="mobile-cta-wrapper">
-      <button class="mobile-cta-button" (click)="closeMobileMenu()">
+        <!-- Magazine Accordion -->
+        <div class="border-b border-gray-200">
+          <button class="w-full flex items-center justify-between py-4 text-base font-semibold text-[#2c2327]"
+            (click)="toggleMobileDropdown('magazine')">
+            Magazine
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform"
+              [ngClass]="{'rotate-180': mobileActiveDropdown === 'magazine'}" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+          <div *ngIf="mobileActiveDropdown === 'magazine'" class="pb-4 grid grid-cols-2 gap-3">
+            <a *ngFor="let item of magazineCategories" class="block" (click)="closeMobileMenu()">
+              <div class="relative overflow-hidden rounded-lg aspect-[4/3]">
+                <img [src]="item.image" [alt]="item.name" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-2">
+                  <p class="text-xs font-semibold text-white">{{ item.name }}</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="/cities" class="block py-4 text-base font-semibold text-[#2c2327] border-b border-gray-200"
+          (click)="closeMobileMenu()">Cities</a>
+        <a href="/projects" class="block py-4 text-base font-semibold text-[#2c2327] border-b border-gray-200"
+          (click)="closeMobileMenu()">Projects</a>
+        <a href="/store" class="block py-4 text-base font-semibold text-[#2c2327] border-b border-gray-200"
+          (click)="closeMobileMenu()">Store</a>
+
+        <!-- More Services Accordion -->
+        <div class="border-b border-gray-200">
+          <button class="w-full flex items-center justify-between py-4 text-base font-semibold text-[#2c2327]"
+            (click)="toggleMobileDropdown('more')">
+            More
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform"
+              [ngClass]="{'rotate-180': mobileActiveDropdown === 'more'}" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </button>
+          <div *ngIf="mobileActiveDropdown === 'more'" class="pb-4 space-y-2">
+            <a *ngFor="let service of servicesData"
+              class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+              (click)="closeMobileMenu()">
+              <span class="text-2xl">{{ service.icon }}</span>
+              <div>
+                <h4 class="text-sm font-semibold text-[#314054]">{{ service.title }}</h4>
+                <p class="text-xs text-gray-600 mt-0.5">{{ service.desc }}</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="/shop-furnishings"
+          class="flex items-center gap-2 py-4 text-base font-semibold text-[#2c2327] border-b border-gray-200"
+          (click)="closeMobileMenu()">
+          Shop Furnishings
+          <span class="px-2 py-0.5 bg-[#D4894E] text-white text-xs font-bold rounded-full">NEW</span>
+        </a>
+      </div>
+
+      <!-- Secondary Links -->
+      <div class="space-y-1 mb-6">
+        <p class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-3">Quick Links</p>
+        <a href="/how-it-works" class="block py-3 text-sm text-gray-600 hover:text-[#D4894E] transition-colors"
+          (click)="closeMobileMenu()">How it works</a>
+        <a href="/offerings" class="block py-3 text-sm text-gray-600 hover:text-[#D4894E] transition-colors"
+          (click)="closeMobileMenu()">Offerings</a>
+        <a href="/price-calculators" class="block py-3 text-sm text-gray-600 hover:text-[#D4894E] transition-colors"
+          (click)="closeMobileMenu()">Price Calculators</a>
+        <a href="/modular-journey" class="block py-3 text-sm text-gray-600 hover:text-[#D4894E] transition-colors"
+          (click)="closeMobileMenu()">The Modular Journey</a>
+        <a href="/franchise" class="block py-3 text-sm text-gray-600 hover:text-[#D4894E] transition-colors"
+          (click)="closeMobileMenu()">Own a franchise</a>
+      </div>
+
+      <!-- Mobile CTA -->
+      <button
+        class="w-full bg-[#D4894E] text-white py-4 rounded-full font-bold text-sm hover:bg-[#a76d41] transition-colors shadow-lg"
+        (click)="closeMobileMenu()">
         CONSULT ONLINE NOW
+      </button>
+
+      <!-- Login Button -->
+      <button
+        class="w-full mt-3 border-2 border-[#D4894E] text-[#D4894E] py-4 rounded-full font-bold text-sm hover:bg-orange-50 transition-colors">
+        Login / Signup
       </button>
     </div>
   </div>

@@ -10,6 +10,7 @@ import { AboutUsSectionComponent } from "./about-us-section/about-us-section.com
 import { BentoGridSectionComponent } from "./bento-grid-section/bento-grid-section.component";
 import { WhyChooseUsComponent } from "./why-choose-us/why-choose-us.component";
 import { GetInTouchComponent } from "./get-in-touch/get-in-touch.component";
+import { CardSectionComponent } from "./cards/cards.component";
 
 interface SliderImage {
   src: string
@@ -26,7 +27,7 @@ interface Service {
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [CommonModule, FaqComponent, StepsSectionComponent, ReviewSliderComponent, ShowcaseSectionComponent, AboutUsSectionComponent, FooterComponent, HomeComponent, WhyChooseUsComponent, GetInTouchComponent,BentoGridSectionComponent],
+  imports: [CommonModule, FaqComponent, StepsSectionComponent, ReviewSliderComponent, ShowcaseSectionComponent, AboutUsSectionComponent, FooterComponent, HomeComponent, WhyChooseUsComponent, GetInTouchComponent, BentoGridSectionComponent, CardSectionComponent],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
 })

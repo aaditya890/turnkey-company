@@ -1,0 +1,122 @@
+<section class="w-full py-14 md:py-20">
+  <div class="max-w-7xl mx-auto px-4">
+
+    <!-- HEADER -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-center gap-6 mb-10">
+      <div>
+        <h2 class="text-4xl md:text-6xl font-extrabold leading-tight mt-2" style="color:#314054;">
+          Get a Glimpse of
+          <span style="color:#D4894E;">Turnkey interiors</span>
+        </h2>
+        <p class="text-sm md:text-lg font-medium tracking-wide mt-2 text-center" style="color:#314054;">
+          Premium interior projects delivered the hassle-free way.
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDER -->
+    <div class="relative">
+      <div class="overflow-hidden">
+        <div #sliderTrack class="flex transition-transform duration-500 ease-out"
+          [style.transform]="'translateX(-' + (projectIndex * (100 / slidesPerView)) + '%)'">
+          @for (slide of projectSlides; track $index) {
+          <div [style.min-width]="(100 / slidesPerView) + '%'" class="px-3">
+            <div class="relative rounded-2xl overflow-hidden shadow-lg group
+                   transition-all duration-200">
+              <img [src]="slide.image" [alt]="slide.title" class="w-full h-[420px] sm:h-[460px] lg:h-[500px]
+                       object-cover transition-transform duration-500
+                       group-hover:scale-105" />
+
+              <!-- OVERLAY -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+
+              <!-- TEXT -->
+              <p class="absolute bottom-4 left-4 right-4 text-white text-sm md:text-base font-semibold">
+                {{ slide.title }}
+              </p>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- LEFT ARROW -->
+      <button (click)="prevProject()" [disabled]="projectIndex === 0" [class.opacity-50]="projectIndex === 0"
+        [class.cursor-not-allowed]="projectIndex === 0" class="absolute -left-3 top-1/2 -translate-y-1/2
+               bg-white shadow-md rounded-full p-3 hidden md:flex z-10
+               hover:bg-gray-50 transition-colors duration-200
+               disabled:hover:bg-white">
+        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <!-- RIGHT ARROW -->
+      <button (click)="nextProject()" [disabled]="projectIndex >= maxIndex"
+        [class.opacity-50]="projectIndex >= maxIndex" [class.cursor-not-allowed]="projectIndex >= maxIndex" class="absolute -right-3 top-1/2 -translate-y-1/2
+               bg-white shadow-md rounded-full p-3 hidden md:flex z-10
+               hover:bg-gray-50 transition-colors duration-200
+               disabled:hover:bg-white">
+        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+  </div>
+  
+  <!-- BLOG / MAGAZINE SECTION -->
+  <div class="mt-16 px-4 md:px-8 lg:px-10 mx-auto max-w-7xl">
+    <!-- HEADER -->
+    <div class="flex items-center justify-between mb-6">
+      <div class="">
+        <h2 class="text-4xl md:text-4xl font-extrabold leading-tight mt-2" style="color:#314054;">
+          Premium interior projects delivered the
+          <span style="color:#D4894E;">hassle-free way.</span>
+        </h2>
+        <div class="flex">
+          <p class="text-sm md:text-lg font-medium tracking-wide mt-2" style="color:#314054;">
+            Find everything from design fixes to expert tips on Turnkey magazine
+          </p>
+        </div>
+      </div>
+      <!-- <button
+      class="hidden sm:flex items-center gap-1 text-[#D4894E] font-semibold text-sm hover:gap-2 transition-all">
+      See more
+      <span>→</span>
+    </button> -->
+    </div>
+
+    <!-- CARDS -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (card of blogCards; track $index) {
+      <div
+        class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer">
+
+        <!-- IMAGE -->
+        <div class="overflow-hidden">
+          <img [src]="card.image" [alt]="card.title" class="w-full h-[220px] object-cover" />
+        </div>
+
+        <!-- CONTENT -->
+        <div class="p-4">
+          <h3 class="text-base font-semibold text-[#2C2327] leading-snug">
+            {{ card.title }}
+          </h3>
+
+          <p class="text-sm text-gray-600 mt-2 line-clamp-2">
+            {{ card.description }}
+          </p>
+        </div>
+      </div>
+      }
+    </div>
+
+    <!-- MOBILE SEE MORE -->
+    <div class="mt-6 sm:hidden">
+      <button class="text-[#D4894E] font-semibold text-sm flex items-center gap-1">
+        See more →
+      </button>
+    </div>
+  </div>
+</section>
